@@ -6,7 +6,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.user = current_user
+    # @trip.user = current_user
     if @trip.save
       redirect_to trips_path(@trip)
     end
@@ -18,7 +18,8 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    @trip.update
+    @trip.update(trip_params)
+    redirect_to trips_path(@trip)
   end
 
   def show
