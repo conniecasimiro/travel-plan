@@ -1,0 +1,55 @@
+.card-square {
+    margin-top: 20px;
+    width: 300px;
+    height: 450px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    align-items: center;
+    border-radius: 5px;
+    justify-self: center;
+  }
+
+  .container-square {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+
+
+    }
+
+
+.card-square-img {
+  height: 300px;
+  width: 300px;
+  left: 0%;
+  top: 0%;
+  object-fit: cover;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+}
+
+  .card-square-infos {
+    padding: 15px;
+    h3 {
+      margin: 0 auto;
+    }
+    p{
+      margin: 0 auto;
+
+    }
+  }
+.square-1 {
+  position: relative;
+}
+
+  .square-3 {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .home-links{
+    text-align: end;
+    padding: 20px;
+  }
