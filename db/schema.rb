@@ -73,8 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_163515) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.string "start_point"
-    t.string "end_point"
+    t.date "travel_date"
+    t.string "destination"
     t.string "method"
     t.integer "duration"
     t.bigint "trip_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_163515) do
   end
 
   create_table "trips", force: :cascade do |t|
+    t.date "start_date"
     t.string "title"
     t.text "description"
     t.integer "likes"

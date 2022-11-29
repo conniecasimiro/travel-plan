@@ -3,5 +3,32 @@
 
   </div>
 
+  <%# trip title and description %>
+  <div class="info">
+    <h1><%= @trip.title %></h1>
+    <%# picture %>
+    <p><%= @trip.description %></p>
+  </div>
 
+    <%# map added and info about it %>
+
+    <%# landmark title and info %>
+  <div class="landmarks">
+    <h1>Landmarks</h1>
+    <% @landmarks.each do |landmark| %>
+    <%# picture %>
+    <h3><%= landmark.title %></h3>
+    <li><%= landmark.location %></li>
+    <li><%= landmark.description %></li>
+    <% end %>
+  </div>
+
+  <%# comment section %>
+  <div class="comments">
+    <h1>comments</h1>
+    <% @comments.each do |comment| %>
+      <h3><%= comment.user.first_name %></h3>
+      <h3><%= comment.description %></h3>
+    <% end %>
+  </div>
 </div>

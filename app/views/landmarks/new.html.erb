@@ -1,0 +1,11 @@
+<div class="container">
+  <div>
+    <h1>New Route</h1>
+    <%= simple_form_for([@trip, @landmark]) do |f| %>
+      <%= f.input :title, label: "Name your landmark!"%>
+      <%= f.input :location, label: "Where exactly is your landmark!?"%>
+      <%= f.input :photo, label: "Upload a photo of your Landmark!", as: :file%>
+      <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
+    <% end %>
+  </div>
+</div>

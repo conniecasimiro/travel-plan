@@ -4,14 +4,16 @@ class LandmarksController < ApplicationController
   end
 
   def new
+    @trip = Trip.find(params[:trip_id])
     @landmark = Landmark.new
   end
 
   def create
+    @trip = Trip.find(params[:trip_id])
     @landmark = Landmark.new(landmark_params)
-    @landmark.user = current_user
+    @landmark.trip = @trip
     if @landmark.save
-      redirect_to trip_landmarks_path(@landmark)
+      redirect_to trip_path(@trip)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,6 +38,6 @@ class LandmarksController < ApplicationController
   private
 
   def landmark_params
-    params.require(:landmark).permit(:title, :location, :description)
+    params.require(:landmark).permit(:title, :location, :description, :photo)
   end
 end

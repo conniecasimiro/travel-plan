@@ -1,8 +1,17 @@
-<div>
-<h1>New Trip</h1>
-  <%= simple_form_for(@trip) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
-  <% end %>
+<div class="container">
+  <div class="container">
+    <div data-controller="create-trip">
+      <h1>New Trip</h1>
+      <%= simple_form_for(@trip) do |f| %>
+        <%= f.input :start_date, as: :date, html5: true%>
+        <%= f.input :title, label: "Enter trip title"%>
+        <%= f.input :description, label: "Give you trip a description"%>
+        <%= f.input :duration, label: "How many days was your trip?", as: :integer %>
+        <%= f.input :location, label: "Add your trip's start address"%>
+        <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+  </div>
 </div>
