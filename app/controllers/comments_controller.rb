@@ -1,19 +1,26 @@
 class CommentsController < ApplicationController
   def new
+    @trip = Trip.find(params[:trip_id])
     @comment = Comment.new
   end
 
   def create
+    @trip = Trip.find(params[:trip_id])
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-
+    @comment.trip = @trip
+    @comment.save!
     if @comment.save
-      redirect_to trip_comments_path(@comment)
+      redirect_to trip_path(@trip)
     end
   end
 
   def index
     @comments = Comment.all
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
   end
 
   def edit
@@ -37,7 +44,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_param
-    params.require(:comment).permit(:description, :user_id, :trip_id)
+  def comment_params
+    params.require(:comment).permit(:description, :trip_id)
   end
 end

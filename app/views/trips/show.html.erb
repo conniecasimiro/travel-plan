@@ -27,7 +27,7 @@
   <div class="comments">
     <h1>comments</h1>
     <% @comments.each do |comment| %>
-      <h3><%= User.find(comment.user_id).first_name %></h3>
+      <h3><%= comment.user.first_name %></h3>
       <h3><%= comment.description %></h3>
     <% end %>
   </div>

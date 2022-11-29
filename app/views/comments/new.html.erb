@@ -1,0 +1,7 @@
+<div>
+<h1>New comment</h1>
+  <%= simple_form_for [@trip, @comment] do |f| %>
+    <%= f.input :description %>
+    <%= f.submit 'Create Comment :)', class: "btn btn-flat mb-4"%>
+  <% end %>
+</div>
