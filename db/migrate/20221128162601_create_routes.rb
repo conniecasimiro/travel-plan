@@ -1,8 +1,8 @@
 class CreateRoutes < ActiveRecord::Migration[7.0]
   def change
     create_table :routes do |t|
-      t.string :start_point
-      t.string :end_point
+      t.date :travel_date
+      t.string :destination
       t.string :method
       t.integer :duration
       t.references :trip, foreign_key: true

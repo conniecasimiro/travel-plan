@@ -1,33 +1,37 @@
 class RoutesController < ApplicationController
   def index
-    @route = Routes.all
+    @route = Route.all
   end
 
   def new
-    @route = Routes.new
+    @trip = Trip.find(params[:trip_id])
+    @route = Route.new
   end
 
   def create
-    @route = Routes.new(route_params)
-    @route.user = current_user
+    @trip = Trip.find(params[:trip_id])
+    @route = Route.new(route_params)
+    @route.trip = @trip
     if @route.save
-      redirect_to trip_routes_path(@route)
+      redirect_to new_trip_landmark_path(@trip)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    @route = Routes.find(params[:id])
+    @route = Route.find(params[:id])
     @route.update
   end
 
   def destroy
-    @route = Routes.find(params[:id])
+    @route = Route.find(params[:id])
     @route.destroy
   end
 
   private
 
-  def landmark_params
-    params.require(:landmark).permit(:start_point, :end_point, :method, :duration)
+  def route_params
+    params.require(:route).permit(:destination, :method, :duration, :travel_date)
   end
 end

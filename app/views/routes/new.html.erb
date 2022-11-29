@@ -1,0 +1,12 @@
+<div class="container">
+  <div>
+    <h1>New Route</h1>
+    <%= simple_form_for([@trip, @route]) do |f| %>
+      <%= f.input :travel_date, as: :date, html5: true%>
+      <%= f.input :destination, label: "Where was the destination?"%>
+      <%= f.input :method, label: "Which method did you use to travel?", collection: [ "Car", "Plane", "Train", "Ferry"]%>
+      <%= f.input :duration, label: "How many hour was your trip?", as: :integer, collection: 1..24 %>
+      <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
+    <% end %>
+  </div>
+</div>

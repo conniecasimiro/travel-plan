@@ -6,9 +6,11 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    # @trip.user = current_user
+    @trip.user = current_user
     if @trip.save
-      redirect_to trips_path(@trip)
+      redirect_to new_trip_route_path(@trip)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -41,6 +43,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description)
+    params.require(:trip).permit(:title, :description, :location, :duration, :start_date)
   end
 end
