@@ -38,6 +38,6 @@ class LandmarksController < ApplicationController
   private
 
   def landmark_params
-    params.require(:landmark).permit(:title, :location, :description)
+    params.require(:landmark).permit(:title, :location, :description, :photo)
   end
 end
