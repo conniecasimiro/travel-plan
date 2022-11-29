@@ -1,5 +1,15 @@
-<h1>Trips!</h1>
-<% @trips.each do |trip|%>
-<li><%= trip.title%></li>
-<li><%= trip.description %></li>
-<% end %>
+<div class="container">
+  <%# narbar section %>
+
+  <%# trip picture and details %>
+  <div class="trip-cards">
+    <h1>Trips!</h1>
+    <% @trips.each do |trip|%>
+    <li><%= trip.title%></li>
+    <li><%= trip.duration %></li>
+    <li><%= trip.location %></li>
+    <%# trip price %>
+    <%# trip tags %>
+    <% end %>
+  </div>
+</div>
