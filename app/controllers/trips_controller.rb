@@ -24,6 +24,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @landmarks = Landmark.where(trip_id: @trip.id)
+    @comments = Comment.where(trip_id: @trip.id)
   end
 
   def index
@@ -41,6 +43,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description)
+    params.require(:trip).permit(:title, :description, :location, :duration)
   end
 end
