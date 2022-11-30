@@ -8,8 +8,8 @@
 require "open-uri"
 
 Tag.destroy_all
-Route.destroy_all
 Landmark.destroy_all
+Route.destroy_all
 Trip.destroy_all
 User.destroy_all
 
@@ -158,7 +158,7 @@ route3 = Route.create!(
 
 landmark6 = Landmark.create!(
   title: "Pisco tour at the Mistral Pisco Distillery",
-  location: " D-485 20980, Paihuano, Coquimbo, Chile",
+  location: "Paihuano, Coquimbo, Chile",
   description: "Tour of their vineyard and how they produce Pisco, two tastings, and a monogramed Pisco glass. Enjoy drinking Pisco Sours afterwards on their large outdoor terrace and eating fresh ceviche.",
   route_id: route3.id
 )
