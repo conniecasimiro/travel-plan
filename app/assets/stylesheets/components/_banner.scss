@@ -13,7 +13,6 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     font-size: 70px;
     font-weight:400;
-    font-family:Georgia, 'Times New Roman', Times, serif;
     letter-spacing: 5px;
   }
 
@@ -23,4 +22,33 @@
     opacity: .7;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
+}
+
+.banner-profile {
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0px 0px 3px rgb(56, 55, 55);
+  height: 400px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 50px;
+  margin-bottom: 20px;
+
+
+
+}
+
+.container-profile {
+color: black;
+display: flex;
+padding-left: 90px;
+padding-right: 60px;
+margin-top: -75px;
+box-shadow: 0px 1px 1px rgb(56, 55, 55);
+
+}
+
+.profile-1 {
+  padding: 50px;
+  margin-top: 20px;
 }

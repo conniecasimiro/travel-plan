@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :trips
   has_many :comments
   has_one_attached :photo
+  has_one_attached :coverphoto
+
 end
