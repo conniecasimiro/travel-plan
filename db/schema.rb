@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_175544) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_130618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,10 +66,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175544) do
     t.string "title"
     t.string "location"
     t.text "description"
-    t.bigint "trip_id"
+    t.bigint "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_landmarks_on_trip_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["route_id"], name: "index_landmarks_on_route_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -92,7 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175544) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.date "start_date"
     t.string "title"
     t.text "description"
     t.integer "likes"
@@ -101,7 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175544) do
     t.datetime "updated_at", null: false
     t.string "location"
     t.integer "duration"
-    t.string "start_point"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
@@ -126,7 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_175544) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "trips"
   add_foreign_key "comments", "users"
-  add_foreign_key "landmarks", "trips"
+  add_foreign_key "landmarks", "routes"
   add_foreign_key "routes", "trips"
   add_foreign_key "tags", "trips"
   add_foreign_key "trips", "users"
