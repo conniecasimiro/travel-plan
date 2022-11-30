@@ -3,7 +3,11 @@
   padding-top: 7%;
   padding-left: 10%;
   padding-right: 10%;
-  padding-bottom: 7%;
+  max-height: 100vh;
+  .fa-solid {
+    font-size: x-large;
+    margin-bottom: 38px;
+  }
 }
 #container-flex {
   display: grid;
@@ -11,9 +15,25 @@
   grid-template-columns: 1fr 1fr;
   padding: 0 0;
   background-color: white;
+  max-height: 100vh;
 }
 #bg-blue {
 background-color: #BEDEF3;
+}
+.create-flex {
+  max-height: 100vh;
+  display: flex;
+  align-items:stretch;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  #grey-icon {
+    color: #6d6d6d;
+  }
+  .fa-solid {
+    color: rgb(255, 255, 255);
+    font-size: medium;
+  }
 }
 #bg-light-blue {
  background-color: #E9F4FB;
@@ -29,6 +49,5 @@ background-color: #BEDEF3;
   object-position: 0px;
   width: 100%;
   height: 100%;
-  margin-top: 100px;
  }
 }
