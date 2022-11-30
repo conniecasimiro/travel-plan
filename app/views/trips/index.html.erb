@@ -1,33 +1,15 @@
- <div class="container">
- <div class="container-inner">
-  <h1>Index cards</h1>
-  <div class="container-square">
+<div class="container">
+  <%# narbar section %>
 
-<%= render "shared/card" %>
-<%= render "shared/card" %>
-<%= render "shared/card" %>
-<%= render "shared/card" %>
-</div>
-   <div class="container-inner">
-  <h1>Landmarks</h1>
-  <h1>Days 1-3 Tulum</h1>
-  <div class="container-landmark">
- <%= render "shared/card_landmark" %>
-  <%= render "shared/card_landmark" %>
-  <%= render "shared/card_landmark" %>
-  <%= render "shared/card_landmark" %>
-</div>
-
-<div class="container-inner">
-
-  <h1>My bookmarks</h1>
-  <div class="container-bookmark">
-  <%= render "shared/card_bookmark" %>
-  <%= render "shared/card_bookmark" %>
-  <%= render "shared/card_bookmark" %>
-</div>
-
-</div>
-</div>
-</div>
+  <%# trip picture and details %>
+  <div class="trip-cards">
+    <h1>Trips!</h1>
+    <% @trips.each do |trip|%>
+    <li><%= trip.title%></li>
+    <li><%= trip.duration %></li>
+    <li><%= trip.location %></li>
+    <%# trip price %>
+    <%# trip tags %>
+    <% end %>
+  </div>
 </div>
