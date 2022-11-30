@@ -1,0 +1,34 @@
+.container-width {
+  width: auto;
+  padding-top: 7%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 7%;
+}
+#container-flex {
+  display: grid;
+  justify-self: center;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 0;
+  background-color: white;
+}
+#bg-blue {
+background-color: #BEDEF3;
+}
+#bg-light-blue {
+ background-color: #E9F4FB;
+ overflow:hidden;
+ h1 {
+  margin-bottom: 20px;
+ }
+ h2 {
+  margin-bottom: 20px;
+ }
+ img {
+  object-fit: cover;
+  object-position: 0px;
+  width: 100%;
+  height: 100%;
+  margin-top: 100px;
+ }
+}
