@@ -6,7 +6,7 @@
   <%# trip title and description %>
   <div class="info">
     <h1><%= @trip.title %></h1>
-    <%# picture %>
+    <%# <%= @trip.photo %>
     <p><%= @trip.description %></p>
   </div>
 
@@ -16,7 +16,7 @@
   <div class="landmarks">
     <h1>Landmarks</h1>
     <% @landmarks.each do |landmark| %>
-    <%# picture %>
+    <% landmark.photo %>
     <h3><%= landmark.title %></h3>
     <li><%= landmark.location %></li>
     <li><%= landmark.description %></li>
