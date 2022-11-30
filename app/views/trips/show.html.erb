@@ -3,6 +3,18 @@
 
   </div>
 
+  <%# Trip likes counter and button connected to JS controller likes %>
+  <div class="likes" data-controller="likes" data-likes-target="likes">
+    <button class="like-button" data-likes-target="like" data-action ="click->likes#update">Like?</button>
+    <p class="likes-counter"data-likes-target="counter"><%= @trip.likes %></p>
+    <div class="d-none">
+      <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
+        <%= f.input :likes, input_html: {value: @trip.likes + 1}  %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+
   <%# trip title and description %>
   <div class="info">
     <h1><%= @trip.title %></h1>
