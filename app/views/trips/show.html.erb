@@ -1,5 +1,21 @@
-<div class="container">
-  <div class="navbar"></div>
+<div class="body">
+  <%= render "shared/navbar" %>
+  <div class="container">
+    <div class="navbar">
+
+    </div>
+
+  <%# Trip likes counter and button connected to JS controller likes %>
+  <div class="likes" data-controller="likes" data-likes-target="likes">
+    <button class="like-button" data-likes-target="like" data-action ="click->likes#update">Like?</button>
+    <p class="likes-counter"data-likes-target="counter"><%= @trip.likes %></p>
+    <div class="d-none">
+      <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
+        <%= f.input :likes, input_html: {value: @trip.likes + 1}  %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 
   <%# trip title and description %>
   <div class="info">
@@ -37,7 +53,7 @@
     <p><%= @trip.description %></p>
   </div>
 
-    <%# map added and info about it %>
+      <%# map added and info about it %>
 
     <%# landmark title and info %>
   <div class="landmarks">
@@ -55,13 +71,15 @@
         <% i += 1 %>
     <% end %>
   </div>
-
-  <%# comment section %>
-  <div class="comments">
-    <h1>comments</h1>
-    <% @comments.each do |comment| %>
-      <h3><%= comment.user.first_name %></h3>
-      <h3><%= comment.description %></h3>
-    <% end %>
+  
+    <%# comment section %>
+    <div class="comments">
+      <h1>comments</h1>
+      <% @comments.each do |comment| %>
+        <h3><%= comment.user.first_name %></h3>
+        <h3><%= comment.description %></h3>
+      <% end %>
+    </div>
   </div>
+  <%= render "shared/footer" %>
 </div>

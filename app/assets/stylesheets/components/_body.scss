@@ -1,6 +1,9 @@
-body {
+.body {
   min-height:100vh;
   position: relative;
-  padding-bottom: 60px;
-  background-color: rgb(233, 244, 251);
+  background-color: $bgblue;
+}
+
+.container {
+padding: 10px 0px 50px;
 }

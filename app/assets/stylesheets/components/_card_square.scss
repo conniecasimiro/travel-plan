@@ -12,8 +12,6 @@
   .container-square {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-
 
     }
 
@@ -34,8 +32,9 @@
     h3 {
       margin: 0 auto;
     }
-    p{
-      margin: 0 auto;
+    h5{
+      margin: 3 auto;
+      padding-top: 15px;
 
     }
   }
@@ -44,7 +43,9 @@
 }
 
   .square-3 {
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 30px;
+    padding-top: 2px;
     display: flex;
     justify-content: space-between;
   }
