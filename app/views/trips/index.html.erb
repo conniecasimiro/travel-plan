@@ -1,17 +1,21 @@
-<div class="container">
-  <%# narbar section %>
+<div class="body">
+  <%= render "shared/navbar" %>
+  <div class="container">
+    <%# narbar section %>
 
-  <%# trip picture and details %>
-  <div class="trip-cards">
-    <h1>Trips!</h1>
-    <% @trips.each do |trip|%>
-    <li><%= trip.title%></li>
-    <li><%= trip.duration %></li>
-    <li><%= trip.location %></li>
-    <%= link_to 'Details', trip_path(trip), class: "btn btn-primary"%>
-    <%# <li><%= trip.photo %><%#/li>
-    <%# trip price %>
-    <%# trip tags %>
-    <% end %>
+    <%# trip picture and details %>
+    <div class="trip-cards">
+      <h1>Trips!</h1>
+      <% @trips.each do |trip|%>
+      <li><%= trip.title%></li>
+      <li><%= trip.duration %></li>
+      <li><%= trip.location %></li>
+      <%= link_to 'Details', trip_path(trip), class: "btn btn-primary"%>
+      <%# <li><%= trip.photo %><%#/li>
+      <%# trip price %>
+      <%# trip tags %>
+      <% end %>
+    </div>
   </div>
+  <%= render "shared/footer" %>
 </div>

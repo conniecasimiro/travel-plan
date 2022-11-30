@@ -1,21 +1,24 @@
-<div class="container" id="container-flex">
+<div id="container-flex">
   <div class="container-width" id="bg-blue">
-    <div data-controller="create-trip">
+      <i class="fa-solid fa-delete-left"></i>
       <h1>Step one</h1>
       <%= simple_form_for(@trip) do |f| %>
         <%# <%= f.input :start_date, as: :date, html5: true%>
-        <%= f.input :title, label: "Trip Title", hint: 'Example: "My Euro Travels"'%>
-        <%= f.input :description, label: "Trip Description", hint: "Please be as discriptive as possible"%>
-        <%= f.input :duration, label: "Trip Duration", hint: "How many days was your trip?", as: :integer %>
-        <%= f.input :start_date, as: :date, label: "Trip Start-date", html5: true%>
-        <%= f.input :location, label: "Trip start address", hint: "The first location you arrived"%>
+        <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
+        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
+        <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
+        <%= f.input :location, label: "Area", hint: "The main area duration"%>
         <%= f.submit 'Next', class: "btn btn-flat mb-4"%>
       <% end %>
-    </div>
   </div>
   <div class="container-width" id="bg-light-blue">
     <h1>Create your trip</h1>
     <h2>Firstly we need the trip's overview</h2>
+    <div class="create-flex">
+      <i class="fa-solid fa-circle" id="grey-icon"></i>
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle"></i>
+    </div>
     <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>
   </div>
 </div>
