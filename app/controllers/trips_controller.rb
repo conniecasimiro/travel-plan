@@ -26,7 +26,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @landmarks = Landmark.where(trip: @trip)
+    @routes = @trip.routes
+    @landmarks = @trip.landmarks
     @comments = Comment.where(trip_id: @trip.id)
 
   end

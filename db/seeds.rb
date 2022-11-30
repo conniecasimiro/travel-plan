@@ -24,11 +24,10 @@ user1 = User.create!(
 trip1 = Trip.create!(
   title: "City to Valley - North to South of Chile in 2 weeks",
   location: "Chile",
-  duration: 14,
+  duration: 13,
   description: "Stunning diverse landscapes cover Chile all the way from the North to the South. Our 2 week Chile itinerary will take you through four regions: the wild south of Patagonia in Torres Del Paine National Park, the bohemian port city of Valparaiso, the mystical Elqui Valley where mountains are covered in cacti, and lastly to the Atacama Desert, considered one of the best places in the world for star gazing. Your 2 weeks in Chile will be filled with adventure!",
   likes: 124,
   user: user1,
-  start_point: "Santiago"
 )
 
 Tag.create!(
@@ -51,11 +50,39 @@ Tag.create!(
   trip_id: trip1.id
 )
 
+route0 = Route.create!(
+  destination: "Santiago",
+  method: "Plane",
+  duration: 3,
+  travel_date: "2022-11-10",
+  trip_id: trip1.id
+)
+
+landmark0 = Landmark.new(
+  title: "Oporto Steak Bar",
+  location: " Isidora Goyenechea 3477, 7550106 Santiago, Las Condes, Región Metropolitana, Chile",
+  description: "Get a taste of authentic Chile food at one of the best restaurants in the country. The meat was cooked to perfection and the service was of the highest quality.",
+  route_id: route0.id
+  # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
+)
+file0 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669812456/AVvXsEjCGj-r1XrZMVISbgmzUfsRIDu2sX7XPjO59XOn4f0loHgO4myEftEPgjYGiptJH9unmXL4GS26PTV5fV6gHwbRVq812zQZdwpL1f9TSeQHPfe-fsLtZbkjZ_pCMNivtt_1ABFBPhaEZSn_7P_Q8lF2OiBFBTsSTKnGFXvUu28D2imAC3d9Tq-7Ws3Ckg_w1200-h630-p-k-no-nu_nbhcfr.jpg')
+landmark0.photo.attach(io: file0, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
+# puts "#{landmark.valid?}"
+landmark0.save
+
+route1 = Route.create!(
+  destination: "Puerto Natales",
+  method: "Plane",
+  duration: 3,
+  travel_date: "2022-11-11",
+  trip_id: trip1.id
+)
+
 landmark1 = Landmark.new(
   title: "Torres del Paine National Park",
-  location: "Puerto Natales",
+  location: "Torres de Paine, Magallanes and Chilean Antarctica, Chile",
   description: "A hiker's dream, this national park contains huge granite mountains surrounded by clear lakes and a series of well-maintained trails that vary in degree of difficulty.",
-  trip_id: trip1.id
+  route_id: route1.id
   # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
 )
 file1 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg')
@@ -71,34 +98,28 @@ landmark1.save
 
 landmark2 = Landmark.create!(
   title: "Toore Patagonia Hotel",
-  location: "Puerto Natales",
+  location: "Carlos Bories 228, 6160000 Puerto Natales, Natales, Magallanes y la Antártica Chilena, Chile",
   description: "After hiking in Torres Del Paine National park wind down in a fabulous spacious bungalow at Toore Patagonia. The bungalows are tastefully designed and the hotel has a wonderful locals craft store.",
-  trip_id: trip1.id
+  route_id: route1.id
 )
 
 file2 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735603/88158990_av9cmk.jpg')
 landmark2.photo.attach(io: file2, filename: 'lala.jpg', content_type: 'image/jpg')
 landmark2.save
 
-Route.create!(
-  destination: "Puerto Natales",
-  method: "Plane",
-  duration: 3,
-  trip_id: trip1.id
-)
-
-Route.create!(
+route2 = Route.create!(
   destination: "Valparaiso",
   method: "Plane",
   duration: 4,
+  travel_date: "2022-11-14",
   trip_id: trip1.id
 )
 
 landmark3 = Landmark.create!(
   title: "Concepcion neighbourhood",
-  location: "Valparaiso",
+  location: "Cerro Concepción, Abtao 675, Valparaíso, Chile",
   description: "The best viewpoints, miradors and alleys are here and in these streets the richest cultural activities converge, surrounded by the best gastronomy. ",
-  trip_id: trip1.id,
+  route_id: route2.id,
 )
 
 file3 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735676/view-over-valparaiso_erpsvf.jpg')
@@ -107,9 +128,9 @@ landmark3.save
 
 landmark4 = Landmark.create!(
   title: "Winebox hotel",
-  location: "Valparaiso",
+  location: "Baquedano 763, Valparaíso, Chile",
   description: "Cook your own private dinner on the balcony of your room and have cocktails up on the rooftop.",
-  trip_id: trip1.id
+  route_id: route2.id
 )
 
 file4 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735889/154548063_rjodgl.jpg')
@@ -118,45 +139,47 @@ landmark4.save
 
 landmark5 = Landmark.create!(
   title: "Funicular",
-  location: "Valparaiso",
+  location: "Errázuriz, Valparaíso, Chile",
   description: "Around 30 funiculars were constructed to connect the businesses of the Lower Town with the residential districts on the hills above. Take the funicular up the hills and walk down to explore different neighbourhoods.",
-  trip_id: trip1.id
+  route_id: route2.id
 )
 
 file5 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735953/ei5qcGc_hycokk.jpg')
 landmark5.photo.attach(io: file5, filename: 'lala.jpg', content_type: 'image/jpg')
 landmark5.save
 
-Route.create!(
+route3 = Route.create!(
   destination: "Pisco Elqui",
   method: "Car",
   duration: 7,
+  travel_date: "2022-11-17",
   trip_id: trip1.id
 )
 
 landmark6 = Landmark.create!(
   title: "Pisco tour at the Mistral Pisco Distillery",
-  location: "Pisco Elqui",
+  location: " D-485 20980, Paihuano, Coquimbo, Chile",
   description: "Tour of their vineyard and how they produce Pisco, two tastings, and a monogramed Pisco glass. Enjoy drinking Pisco Sours afterwards on their large outdoor terrace and eating fresh ceviche.",
-  trip_id: trip1.id
+  route_id: route3.id
 )
 
 file6 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669736053/anejamiento-en-barricas_xz7o6e.jpg')
 landmark6.photo.attach(io: file6, filename: 'lala.jpg', content_type: 'image/jpg')
 landmark6.save
 
-Route.create!(
+route4 = Route.create!(
   destination: "Atacama Desert",
   method: "Bus",
   duration: 7,
+  travel_date: "2022-11-19",
   trip_id: trip1.id
 )
 
 landmark7 = Landmark.create!(
   title: "Paranal Obervatory",
-  location: "Atacama Desert",
+  location: "Taltal, Antofagasta, Chile",
   description: " get to see the telescope and where the astronomers work, we got to see their famous residence featured in the movie James Bond Quantum Solace! Even better, the tour is free. Space is limited since they only run tours on Saturdays.",
-  trip_id: trip1.id
+  route_id: route4.id
 )
 
 file7 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669736122/dauv_hude_aerial2_bbxloq.jpg')
@@ -165,9 +188,9 @@ landmark7.save
 
 landmark8 = Landmark.create!(
   title: "Atacama Desert Stargazing",
-  location: "Atacama Desert",
+  location: "Cerro Armazones, Antofagasta, Chile",
   description: "The Original Stargazing Tour with the most personalized service, enjoy a unique experience in one of the cleanest and clearest skies in the world.",
-  trip_id: trip1.id
+  route_id: route4.id
 )
 
 file8 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669736250/47_bazjdw.jpg')
