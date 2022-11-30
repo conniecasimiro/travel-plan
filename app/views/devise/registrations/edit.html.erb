@@ -21,6 +21,8 @@
           <%= f.input :first_name, required: false, autofocus: true %>
           <%= f.input :last_name, required: false, autofocus: true %>
           <%= f.input :bio, required: false, autofocus: true %>
+          <%= f.input :photo, required: false, as: :file, input_html: { multiple: false } %>
+          <%= f.input :coverphoto, required: false, as: :file, input_html: { multiple: false } %>
       </div>
 
       <div class="card p-3 mb-3">

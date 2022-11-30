@@ -1,4 +1,27 @@
-<h1>Hello, Welcome to your personal page!</h1>
-<%= @user.first_name %>
-<%= @user.last_name %>
-<%= @user.id %>
+<div class="banner-profile" style="background-image: url('<%= cl_image_path @user.coverphoto.key%>')">
+  </div>
+<div class="container-profile">
+<div class="profile-info">
+    <% if @user.photo.attached? %>
+     <%= cl_image_tag @user.photo.key, class: "avatar-profile" %>
+     <% end %>
+    </div>
+    <div class="profile-1">
+    <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
+    <h4><%= @user.bio %></h4>
+    </div>
+</div>
+
+  <div class="container">
+  <h1>Bookmarks</h1>
+<div class="container-bookmark">
+<%= render "shared/card_bookmark" %>
+<%= render "shared/card_bookmark" %>
+<%= render "shared/card_bookmark" %>
+</div>
+ <h1>Landmarks</h1>
+<div class="container-landmark">
+<%= render "shared/card_landmark" %>
+<%= render "shared/card_landmark" %>
+<%= render "shared/card_landmark" %>
+  </div>
