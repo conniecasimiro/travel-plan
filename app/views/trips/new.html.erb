@@ -3,7 +3,7 @@
     <div data-controller="create-trip">
       <h1>New Trip</h1>
       <%= simple_form_for(@trip) do |f| %>
-        <%= f.input :start_date, as: :date, html5: true%>
+        <%# <%= f.input :start_date, as: :date, html5: true%>
         <%= f.input :title, label: "Enter trip title"%>
         <%= f.input :description, label: "Give you trip a description"%>
         <%= f.input :duration, label: "How many days was your trip?", as: :integer %>
