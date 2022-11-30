@@ -21,7 +21,10 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     @trip.update(trip_params)
-    redirect_to trips_path(@trip)
+    respond_to do |format|
+      format.html { redirect_to trip_path }
+      format.json { render json: @trip.to_json }
+    end
   end
 
   def show
@@ -46,6 +49,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :location, :duration, :start_date)
+    params.require(:trip).permit(:title, :description, :location, :duration, :start_date, :likes)
   end
 end
