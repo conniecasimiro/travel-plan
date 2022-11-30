@@ -58,7 +58,7 @@ landmark1 = Landmark.new(
   trip_id: trip1.id
   # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
 )
-file1 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1668772811/cld-sample-2.jpg')
+file1 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg')
 landmark1.photo.attach(io: file1, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
 # puts "#{landmark.valid?}"
 landmark1.save
