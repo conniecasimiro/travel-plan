@@ -1,7 +1,4 @@
 <div class="container">
-  <div class="navbar">
-
-  </div>
 
   <%# Trip likes counter and button connected to JS controller likes %>
   <div class="likes" data-controller="likes" data-likes-target="likes">
@@ -28,13 +25,10 @@
   <div class="landmarks">
     <h1>Landmarks</h1>
     <% @landmarks.each do |landmark| %>
-
-    <%# picture %>
       <h3><%= landmark.title %></h3>
       <li><%= landmark.location %></li>
       <li><%= landmark.description %></li>
       <%= cl_image_tag landmark.photo.key, height: 300, width: 400, crop: :fill %>
-
     <% end %>
   </div>
 
