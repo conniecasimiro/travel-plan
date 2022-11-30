@@ -9,3 +9,6 @@ application.register("create-trip", CreateTripController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LikesController from "./likes_controller"
+application.register("likes", LikesController)

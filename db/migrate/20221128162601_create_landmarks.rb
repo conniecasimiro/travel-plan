@@ -4,7 +4,7 @@ class CreateLandmarks < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :location
       t.text :description
-      t.references :trip, foreign_key: true
+      t.references :route, foreign_key: true
 
       t.timestamps
     end
