@@ -1,5 +1,5 @@
 <%= render "shared/navbar" %>
-<div class="body">
+<body class="body">
 <div class="banner-profile" style="background-image: url('<%= cl_image_path @user.coverphoto.key%>')">
   </div>
 <div class="container-profile">
@@ -15,7 +15,16 @@
 </div>
 <div class="container">
 <h1>Information to go here</h1>
+<div class="container-square">
+        <%= render "shared/card" %>
+        <%= render "shared/card" %>
+        <%= render "shared/card" %>
+        <%= render "shared/card" %>
+        <%= render "shared/card" %>
+        <%= render "shared/card" %>
+        <%= render "shared/card" %>
+</div>
 
 </div>
-</div>
+</body>
 <%= render "shared/footer" %>

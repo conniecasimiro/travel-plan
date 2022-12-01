@@ -32,7 +32,6 @@ class TripsController < ApplicationController
     @routes = @trip.routes
     @landmarks = @trip.landmarks
     @comments = Comment.where(trip_id: @trip.id)
-
   end
 
   def index
