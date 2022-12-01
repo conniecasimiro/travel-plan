@@ -10,11 +10,13 @@
       <li><%= trip.title%></li>
       <li><%= trip.duration %></li>
       <li><%= trip.location %></li>
+        </div>
       <%= link_to 'Details', trip_path(trip), class: "btn btn-primary"%>
       <%# <li><%= trip.photo %><%#/li>
       <%# trip price %>
       <%# trip tags %>
       <% end %>
+      <%= cl_image_tag @landmarks.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
     </div>
   </div>
   <%= render "shared/footer" %>
