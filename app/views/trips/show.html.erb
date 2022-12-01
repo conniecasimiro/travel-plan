@@ -1,6 +1,14 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container-landmark-outer">
+  <div class="container-landmark-outer" 
+    data-controller="map"
+    data-map-lmarkers-value="<%= @lmarkers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-map-rmarkers-value="<%= @rmarkers.to_json %>"
+    data-map-rmarkersplane-value="<%= @rmarkersplane.to_json %>"
+    data-map-rmarkerscar-value="<%= @rmarkerscar.to_json %>"
+    data-map-rmarkersbus-value="<%= @rmarkersbus.to_json %>"
+    data-map-myarray-value= "<%= @arr%>">
 
 
   <%# Trip likes counter and button connected to JS controller likes %>
@@ -15,8 +23,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-
 
   <%# trip title and description %>
   <div class="infoscon">
@@ -25,36 +31,39 @@
       <h3><em><%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
-      <%# <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div> %>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= cl_image_tag @landmarks[0].photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
-        </div>
-        <% @landmarks[1..-1].each do |landmark| %>
-          <div class="carousel-item">
-            <%= cl_image_tag landmark.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+      <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
+        <%# <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div> %>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag @landmarks[0].photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
           </div>
-        <% end %>
+          <% @landmarks[1..-1].each do |landmark| %>
+            <div class="carousel-item">
+              <%= cl_image_tag landmark.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <%# <%= @trip.photo %>
+      <p><%= @trip.description %></p>
     </div>
-    <%# <%= @trip.photo %>
-    <p><%= @trip.description %></p>
-  </div>
 
       <%# map added and info about it %>
+      <div style="width: 100%; height: 600px;" class="d-flex"
+        data-map-target="map">
+      </div>
 
     <%# landmark title and info %>
   <div class="something">
@@ -71,7 +80,7 @@
       <div class="container-landmark">
       <% @routes[i].landmarks.each do |landmark| %>
         <% location = landmark.location.split(",").first %>
-        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location %>
+        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
       <% end %>
       </div>
 
@@ -82,7 +91,7 @@
       <div class="container-landmark">
     <% @routes[-1].landmarks.each do |landmark| %>
       <% location = landmark.location.split(",").first %>
-      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location %>
+      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
     <% end %>
       </div>
   </div>
@@ -95,7 +104,9 @@
         <h3><%= comment.description %></h3>
       <% end %>
     </div>
-    <p> </p>
+
   </div>
-  <%= render "shared/footer" %>
+    <div class="bottom">
+      <%= render "shared/footer" %>
+    </div>
 </div>

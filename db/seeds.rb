@@ -50,27 +50,8 @@ Tag.create!(
   trip_id: trip1.id
 )
 
+
 route0 = Route.create!(
-  destination: "Santiago",
-  method: "Plane",
-  duration: 3,
-  travel_date: "2022-11-10",
-  trip_id: trip1.id
-)
-
-landmark0 = Landmark.new(
-  title: "Oporto Steak Bar",
-  location: " Isidora Goyenechea 3477, 7550106 Santiago, Las Condes, Región Metropolitana, Chile",
-  description: "Get a taste of authentic Chile food at one of the best restaurants in the country. The meat was cooked to perfection and the service was of the highest quality.",
-  route_id: route0.id
-  # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
-)
-file0 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669812456/AVvXsEjCGj-r1XrZMVISbgmzUfsRIDu2sX7XPjO59XOn4f0loHgO4myEftEPgjYGiptJH9unmXL4GS26PTV5fV6gHwbRVq812zQZdwpL1f9TSeQHPfe-fsLtZbkjZ_pCMNivtt_1ABFBPhaEZSn_7P_Q8lF2OiBFBTsSTKnGFXvUu28D2imAC3d9Tq-7Ws3Ckg_w1200-h630-p-k-no-nu_nbhcfr.jpg')
-landmark0.photo.attach(io: file0, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
-# puts "#{landmark.valid?}"
-landmark0.save
-
-route1 = Route.create!(
   destination: "Puerto Natales",
   method: "Plane",
   duration: 3,
@@ -78,17 +59,17 @@ route1 = Route.create!(
   trip_id: trip1.id
 )
 
-landmark1 = Landmark.new(
+landmark0 = Landmark.new(
   title: "Torres del Paine National Park",
   location: "Torres de Paine, Magallanes and Chilean Antarctica, Chile",
   description: "A hiker's dream, this national park contains huge granite mountains surrounded by clear lakes and a series of well-maintained trails that vary in degree of difficulty.",
-  route_id: route1.id
+  route_id: route0.id
   # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
 )
-file1 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg')
-landmark1.photo.attach(io: file1, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
+file0 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg')
+landmark0.photo.attach(io: file0, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
 # puts "#{landmark.valid?}"
-landmark1.save
+landmark0.save
 
 # file = open("app/assets/images/torres-del-paine.jpg")
 # landmark.photo.attach(io: file, filename: "nes.jpg", content_type: "image/jpg")
@@ -96,15 +77,35 @@ landmark1.save
 
 # landmark.valid?
 
-landmark2 = Landmark.create!(
+landmark1 = Landmark.create!(
   title: "Toore Patagonia Hotel",
   location: "Carlos Bories 228, 6160000 Puerto Natales, Natales, Magallanes y la Antártica Chilena, Chile",
   description: "After hiking in Torres Del Paine National park wind down in a fabulous spacious bungalow at Toore Patagonia. The bungalows are tastefully designed and the hotel has a wonderful locals craft store.",
-  route_id: route1.id
+  route_id: route0.id
 )
 
-file2 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735603/88158990_av9cmk.jpg')
-landmark2.photo.attach(io: file2, filename: 'lala.jpg', content_type: 'image/jpg')
+file1 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669735603/88158990_av9cmk.jpg')
+landmark1.photo.attach(io: file1, filename: 'lala.jpg', content_type: 'image/jpg')
+landmark1.save
+
+route1 = Route.create!(
+  destination: "Santiago, Chile",
+  method: "Plane",
+  duration: 3,
+  travel_date: "2022-11-10",
+  trip_id: trip1.id
+)
+
+landmark2 = Landmark.new(
+  title: "Oporto Steak Bar",
+  location: " Isidora Goyenechea 3477, 7550106 Santiago, Las Condes, Región Metropolitana, Chile",
+  description: "Get a taste of authentic Chile food at one of the best restaurants in the country. The meat was cooked to perfection and the service was of the highest quality.",
+  route_id: route1.id
+  # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
+)
+file2 = URI.open('https://res.cloudinary.com/dblvfwtds/image/upload/v1669812456/AVvXsEjCGj-r1XrZMVISbgmzUfsRIDu2sX7XPjO59XOn4f0loHgO4myEftEPgjYGiptJH9unmXL4GS26PTV5fV6gHwbRVq812zQZdwpL1f9TSeQHPfe-fsLtZbkjZ_pCMNivtt_1ABFBPhaEZSn_7P_Q8lF2OiBFBTsSTKnGFXvUu28D2imAC3d9Tq-7Ws3Ckg_w1200-h630-p-k-no-nu_nbhcfr.jpg')
+landmark2.photo.attach(io: file2, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
+# puts "#{landmark.valid?}"
 landmark2.save
 
 route2 = Route.create!(

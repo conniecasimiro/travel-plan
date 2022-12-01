@@ -32,6 +32,49 @@ class TripsController < ApplicationController
     @routes = @trip.routes
     @landmarks = @trip.landmarks
     @comments = Comment.where(trip_id: @trip.id)
+
+    # The `geocoded` scope filters only flats with coordinates
+    @lmarkers = @landmarks.geocoded.map do |landmark|
+      {
+        lat: landmark.latitude,
+        lng: landmark.longitude,
+        id: landmark.id
+      }
+    end
+
+    @rmarkers = @routes.geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkersplane = @routes.where(method: "Plane").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkersbus = @routes.where(method: "Bus").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkerscar = @routes.where(method: "Car").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+
+    @arr = []
+    @routes.each do |route|
+      @arr << [route.longitude, route.latitude]
+    end
   end
 
   def index
