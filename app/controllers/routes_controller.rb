@@ -16,7 +16,7 @@ class RoutesController < ApplicationController
     @routes = @trip.routes
     if @route.save
       @route = Route.new
-      render :new
+      redirect_to new_trip_route_path(@trip)
     else
       render :new, status: :unprocessable_entity
     end

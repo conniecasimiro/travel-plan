@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :trips do
-    resources :landmarks, only: [:index, :create, :new, :edit, :destroy, :show, :update]
-    resources :routes, only: [:index, :create, :new, :edit, :destroy, :show, :update]
+    resources :landmarks, only: [:index, :edit, :destroy, :show, :update]
+    resources :routes, only: [:index, :create, :new, :edit, :destroy, :show, :update ]do
+      resources :landmarks, only: [:create, :new]
+    end
+
     resources :tags, only: [:create, :new, :edit, :destroy, :update]
     resources :comments, only: [:index, :create, :new, :edit, :destroy, :show, :update]
   end

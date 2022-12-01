@@ -15,3 +15,6 @@ application.register("hello", HelloController)
 
 import LikesController from "./likes_controller"
 application.register("likes", LikesController)
+
+import RevealFormController from "./reveal_form_controller"
+application.register("reveal-form", RevealFormController)
