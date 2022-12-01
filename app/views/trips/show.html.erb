@@ -1,6 +1,6 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container-landmark-outer" 
+  <div class="container-landmark-outer"
     data-controller="map"
     data-map-lmarkers-value="<%= @lmarkers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -71,8 +71,8 @@
     <% i = 0 %>
     <% day = 0 %>
     <% while i < (@routes.length - 1) do %>
-      <% if i == 0 && ((day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i) == 1 ) %>
-        <h3>Day 1 -  <em><%= @routes[i].destination %></em></h3>
+      <% if (@routes[i+1].travel_date - @routes[i].travel_date).to_i == 1  %>
+        <h3>Day <%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i %> -  <em><%= @routes[i].destination %></em></h3>
       <% elsif (i + 1) < @routes.length %>
         <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%> -  <em><%= @routes[i].destination %></em></h3>
       <% end %>
@@ -86,7 +86,12 @@
 
       <% i += 1 %>
     <% end %>
-    <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
+      <% if (@trip.duration - day) == 1  %>
+        <h3>Day <%= @trip.duration %> -  <em><%= @routes[i].destination %></em></h3>
+      <% else%>
+        <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
+      <% end %>
+
 
       <div class="container-landmark">
     <% @routes[-1].landmarks.each do |landmark| %>

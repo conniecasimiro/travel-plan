@@ -55,7 +55,7 @@ route0 = Route.create!(
   destination: "Puerto Natales",
   method: "Plane",
   duration: 3,
-  travel_date: "2022-11-11",
+  travel_date: "2022-11-10",
   trip_id: trip1.id
 )
 
@@ -92,7 +92,7 @@ route1 = Route.create!(
   destination: "Santiago, Chile",
   method: "Plane",
   duration: 3,
-  travel_date: "2022-11-10",
+  travel_date: "2022-11-13",
   trip_id: trip1.id
 )
 
