@@ -1,11 +1,36 @@
-<div class="container">
-  <div>
-    <h1>New Route</h1>
-    <%= simple_form_for([@trip, @landmark]) do |f| %>
-      <%= f.input :title, label: "Name your landmark!"%>
-      <%= f.input :location, label: "Where exactly is your landmark!?"%>
-      <%= f.input :photo, label: "Upload a photo of your Landmark!", as: :file%>
-      <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
-    <% end %>
+<div id="container-flex">
+  <div class="container-width" id="bg-blue" data-controller="add-method">
+      <i class="fa-solid fa-delete-left"></i>
+      <h1>Step Three</h1>
+      <% if @routes.count == 1 %>
+        <p>Please add at least one landmark for your tirp</p>
+        <div class="add-travel" data-add-method-target="button">
+          <h2>Add landmark</h2>
+          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
+        </div>
+        <div class="create-hide" data-add-method-target="form">
+          <%= simple_form_for([@trip, @landmark]) do |f| %>
+          <%= f.input :title, label: "Name your landmark!"%>
+          <%= f.input :location, label: "Where exactly is your landmark!?"%>
+          <%= f.input :photo, label: "Upload a photo of your Landmark!", as: :file%>
+          <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
+          <% end %>
+          <% if @routes.first.landmarks.count > 0 %>
+            <p>Or, if you dont want to add any more landmarks</p>
+            <a><%= link_to "skip to next step", new_trip_landmark_path(@trip), class: "btn btn-flat mb-4" %></a>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+  <div class="container-width" id="bg-light-blue">
+    <h1>Add your landmarks!</h1>
+    <h2>Create some landmarks for your first destination <%="#{current_user.trips.last.routes.first.destination}"%></h2>
+    <div class="create-flex">
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle" id="grey-icon"></i>
+      <i class="fa-solid fa-circle"></i>
+    </div>
+    <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>
   </div>
 </div>

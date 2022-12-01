@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddMethodController from "./add_method_controller"
+application.register("add-method", AddMethodController)
+
 import CreateTripController from "./create_trip_controller"
 application.register("create-trip", CreateTripController)
 

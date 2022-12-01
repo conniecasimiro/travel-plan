@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :trips do
     resources :landmarks, only: [:index, :create, :new, :edit, :destroy, :show, :update]
     resources :routes, only: [:index, :create, :new, :edit, :destroy, :show, :update]
+    resources :tags, only: [:create, :new, :edit, :destroy, :update]
     resources :comments, only: [:index, :create, :new, :edit, :destroy, :show, :update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,37 +1,54 @@
 <div id="container-flex">
-  <div class="container-width" id="bg-blue">
-      <i class="fa-solid fa-delete-left"></i>
-      <h1>Step one</h1>
+  <div class="container-width" id="bg-blue" data-controller="add-method">
+    <i class="fa-solid fa-delete-left"></i>
+    <h1>Step two</h1>
+    <% unless current_user.trips.last.routes %>
+      <p>Please add where you first arrive!</p>
+      <div class="add-travel" data-add-method-target="button">
+      <h2>Add travel method</h2>
+      <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
+            <div class="create-hide" data-add-method-target="form">
       <%= simple_form_for([@trip, @route]) do |f| %>
-        <%# <%= f.input :start_date, as: :date, html5: true%>
-        <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
-        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
-        <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
-        <%= f.input :location, label: "Area", hint: "The main area duration"%>
-        <%= f.submit 'Next', class: "btn btn-flat mb-4"%>
+      <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
+      <%= f.input :destination, label: "First locatoin"%>
+      <%= f.submit 'Next step', class: "btn btn-flat mb-4"%>
       <% end %>
+      <% if current_user.trips.last.routes.count > 1 %>
+        <a><%= link_to "skip ", new_trip_route_path(@trip), class: "btn btn-flat" %></a>
+      <% end %>
+    </div>
+    </div>
+      <% else %>
+        <p>If you traveled during you trip please add a travel method</p>
+      <% end %>
+      <% @routes.each do |route|  %>
+      <%= route.method %>
+      <%= route.destination %>
+      <% end %>
+      <div class="add-travel" data-add-method-target="button">
+        <h2>Add travel method</h2>
+        <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
+      </div>
+      <div class="create-hide" data-add-method-target="form">
+        <%= simple_form_for([@trip, @route]) do |f| %>
+        <%= f.input :travel_date, as: :date, html5: true%>
+        <%= f.input :destination, label: "Where was the destination?"%>
+        <%= f.input :method, label: "Which method did you use to travel?", collection: [ "Car", "Plane", "Train", "Ferry"]%>
+        <%= f.input :duration, label: "How many hour was your trip?", as: :integer, collection: 1..24 %>
+        <%= f.submit 'Add another', class: "btn btn-flat mb-4"%>
+        <% end %>
+      </div>
+      <a><%= link_to "skip ", new_trip_landmark_path(@trip), class: "btn btn-flat" %></a>
   </div>
   <div class="container-width" id="bg-light-blue">
-    <h1>Create your trip</h1>
-    <h2>Firstly we need the trip's overview</h2>
+    <h1>Add your travel methods</h1>
+    <h2>Tell us where you went within <%="#{current_user.trips.last.location}"%></h2>
     <div class="create-flex">
+      <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle" id="grey-icon"></i>
       <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle"></i>
     </div>
     <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>
-  </div>
-</div>
-
-<div class="container">
-  <div>
-    <h1>New Route</h1>
-    <%= simple_form_for([@trip, @route]) do |f| %>
-      <%= f.input :travel_date, as: :date, html5: true%>
-      <%= f.input :destination, label: "Where was the destination?"%>
-      <%= f.input :method, label: "Which method did you use to travel?", collection: [ "Car", "Plane", "Train", "Ferry"]%>
-      <%= f.input :duration, label: "How many hour was your trip?", as: :integer, collection: 1..24 %>
-      <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
-    <% end %>
   </div>
 </div>
