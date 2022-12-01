@@ -1,6 +1,6 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container"
+  <div class="container-landmark-outer" 
     data-controller="map"
     data-map-lmarkers-value="<%= @lmarkers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -10,11 +10,11 @@
     data-map-rmarkersbus-value="<%= @rmarkersbus.to_json %>"
     data-map-myarray-value= "<%= @arr%>">
 
-    <div class="navbar"></div>
 
-    <%# Trip likes counter and button connected to JS controller likes %>
+  <%# Trip likes counter and button connected to JS controller likes %>
+  <div class="likes-section">
     <div class="likes" data-controller="likes" data-likes-target="likes">
-      <button class="like-button" data-likes-target="like" data-action ="click->likes#update">Like?</button>
+      <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
       <p class="likes-counter"data-likes-target="counter"><%= @trip.likes %></p>
       <div class="d-none">
         <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
@@ -24,12 +24,12 @@
       </div>
     </div>
 
-    <%# trip title and description %>
-    <div class="info">
-      <div class="d-flex justify-content-start align-items-center mb-2">
-        <h1 class="me-2"><%= @trip.title %></h1>
-        <h3> - <%= @trip.user.first_name %> <%= @trip.user.last_name %></h3>
-      </div>
+  <%# trip title and description %>
+  <div class="infoscon">
+    <div class="container-title">
+      <h1 class="me-2"><%= @trip.title %></h1>
+      <h3><em><%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
+    </div>
 
       <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
         <%# <div class="carousel-indicators">
@@ -65,36 +65,40 @@
         data-map-target="map">
       </div>
 
-      <%# landmark title and info %>
-    <div class="landmarks">
-      <h1>Landmarks</h1>
-      <% i = 0 %>
-      <% day = 0 %>
-      <% while i < (@routes.length - 1) do %>
-        <% if i == 0 && ((day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i) == 1 ) %>
-          <h3>Day 1</h3>
-        <% elsif (i + 1) < @routes.length %>
-          <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%></h3>
-        <% end %>
-        <%= @routes[i].destination %>
-        <% @routes[i].landmarks.each do |landmark| %>
-          <% location = landmark.location.split(",").first %>
-          <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
-        <% end %>
-        <% i += 1 %>
+    <%# landmark title and info %>
+  <div class="something">
+    <h1>Landmarks</h1>
+    <% i = 0 %>
+    <% day = 0 %>
+    <% while i < (@routes.length - 1) do %>
+      <% if i == 0 && ((day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i) == 1 ) %>
+        <h3>Day 1 -  <em><%= @routes[i].destination %></em></h3>
+      <% elsif (i + 1) < @routes.length %>
+        <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%> -  <em><%= @routes[i].destination %></em></h3>
       <% end %>
-      <h3>Day <%= day + 1 %>-<%= @trip.duration %></h3>
-      <%= @routes[-1].destination %>
-      <% @routes[-1].landmarks.each do |landmark| %>
-          <% location = landmark.location.split(",").first %>
-          <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
-        </div>
+
+      <div class="container-landmark">
+      <% @routes[i].landmarks.each do |landmark| %>
+        <% location = landmark.location.split(",").first %>
+        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
       <% end %>
-    </div>
+      </div>
+
+      <% i += 1 %>
+    <% end %>
+    <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
+
+      <div class="container-landmark">
+    <% @routes[-1].landmarks.each do |landmark| %>
+      <% location = landmark.location.split(",").first %>
+      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
+    <% end %>
+      </div>
+  </div>
 
     <%# comment section %>
-    <div class="comments">
-      <h1>comments</h1>
+    <div class="show-comments">
+      <h1>Comments</h1>
       <% @comments.each do |comment| %>
         <h3><%= comment.user.first_name %></h3>
         <h3><%= comment.description %></h3>

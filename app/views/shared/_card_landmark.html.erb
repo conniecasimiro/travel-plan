@@ -1,13 +1,14 @@
-<div class="card-landmark" data-action="click->map#landmark" data-id="<%= id %>">
-  <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
-    <div class="landmark-1">
-      <%= cl_image_tag photo, class: "card-landmark-img"%>
-      <div class="location-end">
-        <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
-          <a href="#" target="_blank"><i class="fa-sharp fa-solid fa-map-pin"></i> <%= location %></a>
-          <div class="card-landmark-infos">
-            <div class="landmark-2">
-              <h3><%= name %> </h3>
+
+      <div class="card-landmark" data-action="click->map#landmark" data-id="<%= id %>">
+          <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
+          <div class="landmark-1">
+            <%= cl_image_tag photo, class: "card-landmark-img"%>
+              <div class="location-end">
+              <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
+              <a href="#" target="_blank"><i class="fa-sharp fa-solid fa-map-pin"></i> <%= location %></a>
+            <div class="card-landmark-infos">
+              <div class="landmark-2">
+              <h4><%= name %> </h4>
               <p><%= description %></p>
             </div>
           </div>

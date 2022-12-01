@@ -10,7 +10,6 @@ export default class extends Controller {
 
   update() {
     this.counterTarget.innerText = parseInt(this.counterTarget.innerText) + 1
-    this.likeTarget.innerText = "Liked"
     this.likeTarget.setAttribute("disabled", "")
     console.log(this.formTarget)
 
