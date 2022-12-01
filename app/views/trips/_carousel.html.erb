@@ -1,0 +1,28 @@
+
+ <% @trips.each do |trip|%>
+        <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
+      <%# <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div> %>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+    <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+    </div>
+        <% trip.landmarks[1..-1].each do |landmark| %>
+          <div class="carousel-item">
+            <%= cl_image_tag landmark.photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+          </div>
+        <% end %>
+           </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+        <% end %>
