@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  searchkick
+
   # Search bar logic
   include PgSearch::Model
   pg_search_scope :global_search,

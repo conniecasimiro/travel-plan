@@ -28,19 +28,26 @@
 }
 
   .card-square-infos {
-    padding: 15px;
-    h3 {
-      margin: 0 auto;
-    }
-    h5{
-      margin: 3 auto;
-      padding-top: 15px;
+    padding: 12px 15px 1px;
 
-    }
   }
+
 .square-1 {
   position: relative;
 }
+
+.square-2 {
+h5{
+  width: 200px;
+  margin-top: -30px;
+  font-weight: bold;
+  font-size: 20px;
+}
+p {
+  margin: 2px;
+}
+}
+
 
   .square-3 {
     padding-left: 15px;

@@ -1,23 +1,23 @@
-      <div class="card-square">
-          <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
-          <div class="square-1">
-            <img class="card-square-img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hiking-quotes-1586278882.jpg?crop=0.668xw:1.00xh;0.167xw,0&resize=640:*"/>
-              <div class="avatar-end">
-              <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
-              <% end %>
-          <% end %>
-            </div>
-          </div>
-            <div class="card-square-infos">
-              <div class="square-2">
-              <h3>Title</h3>
-               <h5>Hiking Surfing Sun</h5>
-                </div>
-                </div>
-              <div class="square-3">
-               <p>9 days</p>
-                <p>246 <i class="fa-solid fa-heart"></i></p>
+<div class="card-square">
+    <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
+    <div class="square-1">
+    <%= photo %>
+      <div class="avatar-end">
+        <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
+        <% end %>
+       <% end %>
+    </div>
+</div>
+    <div class="card-square-infos">
+      <div class="square-2">
+      <h5><%= title %></h5>
+      <p> Tags </p>
+      </div>
+    </div>
+    <div class="square-3">
+      <p> <%= duration %> days </p>
+      <p>246 <i class="fa-solid fa-heart"></i></p>
 
-              </div>
-            </div>
+    </div>
+</div>

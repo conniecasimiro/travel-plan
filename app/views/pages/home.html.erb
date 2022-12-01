@@ -19,10 +19,10 @@
     <div class="container-inner">
     <div class="container-square">
 
-  <%= render "shared/card" %>
-  <%= render "shared/card" %>
-  <%= render "shared/card" %>
-  <%= render "shared/card" %>
+      <% @trips.each do |trip| %>
+        <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel") %>
+    <% end %>
+
 
           </div>
               <div class="home-links">
