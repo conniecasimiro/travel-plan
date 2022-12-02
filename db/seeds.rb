@@ -271,7 +271,7 @@ landmark10.save
 landmark11 = Landmark.new(
   title: "Turtle Spotting ",
   location: " Limón Province, Costa Rica",
-  description: "Hop in a canoe and navigate the network of arterial waterways that snake around this 77,032-acre protected area. Keep your camera at the ready because you'll be on the hunt for various denizens of the reserve, including howler and capuchin monkeys, river otters, and rare birds. ",
+  description: "Hop in a canoe and navigate the network of arterial waterways that snake around this 77,032-acre protected area. Keep your camera at the ready because you'll be on the hunt for various denizens of the reserve.",
   route_id: route6.id
   )
 file11 = URI.open('https://cdn.kimkim.com/files/a/trip_plan/days/photos/6f4f9adcdeceb93279f81207fbbc8e3b87b85a6d/big-a24c39f8a22fa87ffdc03155714edf45.jpg')
@@ -287,7 +287,7 @@ route7 = Route.create!(
 )
 
 landmark12 = Landmark.new(
-  title: "Whitewater Rafting on the Sarapiquí River",
+  title: "Whitewater Rafting",
   location: "Río Sarapiquí, Heredia Province, Puerto Viejo de Sarapiqui, Costa Rica",
   description: "After a lesson from your professional guide, you'll begin the seven-mile river journey featuring over 30 class III and IV rapids. About halfway through the trip, you’ll take a break on shore for some refreshing tropical fruit and a traditional Costa Rican lunch.",
   route_id: route7.id
@@ -301,7 +301,7 @@ landmark12.save
 landmark13 = Landmark.create!(
   title: "Tabacón Hot Springs",
   location: "Tabacon Hot Springs, 21007, Provincia de Alajuela, La Fortuna, 21007, Costa Rica",
-  description: " soothe your muscles with a dip in the mineral-rich waters in and around the Tabacón Thermal Resort. These hot springs have been used as therapeutic baths for more than 200 years, and the resort includes a spa where various treatments, like couples massages, are performed in outdoor bungalows. ",
+  description: " soothe your muscles with a dip in the mineral-rich waters in and around the Tabacón Thermal Resort. These hot springs have been used as therapeutic baths for more than 200 years, and the resort includes a spa where various treatments, like couples massages. ",
   route_id: route7.id
 )
 
@@ -312,7 +312,7 @@ landmark13.save
 landmark14 = Landmark.create!(
   title: "Hike Arenal 1968 ",
   location: "Calle Real el Castillo, Alajuela Province, San Carlos, 21007, Costa Rica",
-  description: "A private reserve named after the year of the last major eruption of the volcano. The event was so catastrophic that it transformed some of the region’s topography: lava fields now dominate one side of Arenal. Hiking trails wind through those lava fields as well as the surrounding rainforest. Along the way, you'll find lookout points featuring prime views of the volcano. ",
+  description: "A private reserve named after the year of the last major eruption of the volcano. The event was so catastrophic that it transformed some of the region’s topography: lava fields now dominate one side of Arenal. Hiking trails wind through those lava fields.",
   route_id: route7.id
 )
 
@@ -323,7 +323,7 @@ landmark14.save
 landmark15 = Landmark.create!(
   title: "Chocolate Experience",
   location: "Catarata Río Fortuna, Provincia de Alajuela, San Carlos, Costa Rica",
-  description: "with a two-hour, hands-on tour in which you’ll learn about the origin, history, and production of one of Costa Rica's most famous exports: chocolate. You'll participate in the cacao harvest as well as the drying and grinding of the seeds used to produce creamy cocoa butter. You'll learn how a traditional Costa Rican cocoa drink was developed centuries ago, and, of course, sample the freshly made chocolate.",
+  description: "with a two-hour, hands-on tour in which you’ll learn about the origin, history, and production of one of Costa Rica's most famous exports: chocolate. You'll participate in the cacao harvest as well as the drying and grinding of the seeds.",
   route_id: route7.id
 )
 
@@ -340,7 +340,7 @@ route8 = Route.create!(
 )
 
 landmark16 = Landmark.create!(
-  title: "Sky Adventures Monteverde ParkSky Adventures Monteverde Park",
+  title: "Sky Adventures Monteverde",
   location: "Provincia de Puntarenas, Monteverde, 60109, Costa Rica",
   description: "Its Sky Tram network of gondolas transport visitors from one adrenaline pumping activity to another. First, you'll start with a guided Sky Walk, which combines trails and suspension bridges that ultimately reach heights of up to 984 feet above the jungle canopy.",
   route_id: route8.id
@@ -372,7 +372,7 @@ route9 = Route.create!(
 landmark18 = Landmark.create!(
   title: "Sunset Catamaran Cruise",
   location: "Playa Arenilla, Papagayo Gulf Guanacaste Carrillo, Guanacaste Province, 50503, Costa Rica",
-  description: "The ship will stop in a tranquil bay, drop anchor, and you'll explore the crystalline waters while the crew prepares a dinner feast. While you eat, enjoy the sunset over the Pacific horizon while keeping a sharp eye out for dolphins, sea turtles, flying fish, or even a breaching whale.",
+  description: "The ship will stop in a tranquil bay, drop anchor, and you'll explore the crystalline waters while the crew prepares a dinner feast. While you eat, enjoy the sunset over the Pacific horizon while keeping a sharp eye out for dolphins, sea turtles, flying fish.",
   route_id: route9.id
 )
 
