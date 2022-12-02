@@ -6,16 +6,19 @@ class RoutesController < ApplicationController
   def new
     @trip = Trip.find(params[:trip_id])
     @route = Route.new
+    @route.landmarks.build
     @routes = @trip.routes
   end
 
   def create
     @trip = Trip.find(params[:trip_id])
     @route = Route.new(route_params)
+    @route.method = "test" if route_params[:method].nil?
+    @route.duration = 0 if route_params[:duration].nil?
     @route.trip = @trip
-    @routes = @trip.routes
-    if @route.save
-      @route = Route.new
+    if @route.save!
+      @landmark = Landmark.create(landmark_params)
+      @landmark.route = @route
       redirect_to new_trip_route_path(@trip)
     else
       render :new, status: :unprocessable_entity
@@ -36,5 +39,9 @@ class RoutesController < ApplicationController
 
   def route_params
     params.require(:route).permit(:destination, :method, :duration, :travel_date)
+  end
+
+  def landmark_params
+    params.require(:route).permit(landmark_attributes: %i[id title location photo])
   end
 end

@@ -10,10 +10,10 @@
         <div class="add-travel" data-add-method-target="button">
           <h2>Add landmark</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
-        </div>
           <% if @route.landmarks.count > 0 %>
             <%= link_to "skip to next step", new_trip_route_landmark_path(@trip, @route), class: "btn btn-flat mb-4" %>
           <% end %>
+        </div>
         <div class="d-none" data-add-method-target="form">
           <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
           <%= f.input :title, label: "Name your landmark!"%>
@@ -30,7 +30,7 @@
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
         </div>
         <div class="d-none" data-add-method-target="form">
-          <%= simple_form_for([@trip, @landmark]) do |f| %>
+          <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
           <%= f.input :title, label: "Name your landmark!"%>
           <%= f.input :location, label: "Where exactly is your landmark!?"%>
           <%= f.input :photo, label: "Upload a photo of your Landmark!", as: :file%>
@@ -38,7 +38,8 @@
           <% end %>
           <% if @route.landmarks.count > 0%>
             <p>Or, if you dont want to add any more landmarks</p>
-            <a><%= link_to "skip to next step", new_trip_landmark_path(@trip), class: "btn btn-flat mb-4" %></a>
+            <% @route = @trip.routes.select { |route| route.landmarks.empty? }.first %>
+            <a><%= link_to "skip to next step", new_trip_route_landmark_path(@trip, @route), class: "btn btn-flat mb-4" %></a>
           <% end %>
         </div>
       <% end %>

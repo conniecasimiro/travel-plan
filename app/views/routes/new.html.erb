@@ -2,7 +2,7 @@
   <div class="container-width" id="bg-blue" data-controller="add-method">
     <i class="fa-solid fa-delete-left"></i>
     <h1>Step two</h1>
-    <% unless current_user.trips.last.routes %>
+    <% if current_user.trips.last.routes.empty? %>
       <p>Please add where you first arrive!</p>
     <div class="add-travel" data-add-method-target="button">
       <h2>Add travel method</h2>
@@ -10,9 +10,9 @@
     </div>
     <div class="d-none" data-add-method-target="form">
         <%= simple_form_for([@trip, @route]) do |f| %>
-        <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
-        <%= f.input :destination, label: "First locatoin"%>
-        <%= f.submit 'Next step', class: "btn btn-flat mb-4"%>
+          <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
+          <%= f.input :destination, label: "First locatoin"%>
+          <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
         <% if current_user.trips.last.routes.count > 1 %>
           <a><%= link_to "skip ", new_trip_route_path(@trip), class: "btn btn-flat" %></a>
@@ -21,8 +21,8 @@
       <% else %>
         <p>If you traveled during you trip please add a travel method</p>
       <% @routes.each do |route|  %>
-      <%= route.method %>
-      <%= route.destination %>
+        <%= route.method %>
+        <%= route.destination %>
       <% end %>
       <div class="add-travel" data-add-method-target="button2">
         <h2>Add travel method</h2>
@@ -30,11 +30,11 @@
       </div>
       <div class="d-none" data-add-method-target="form2">
         <%= simple_form_for([@trip, @route]) do |f| %>
-        <%= f.input :travel_date, as: :date, html5: true%>
-        <%= f.input :destination, label: "Where was the destination?"%>
-        <%= f.input :method, label: "Which method did you use to travel?", collection: [ "Car", "Plane", "Train", "Ferry"]%>
-        <%= f.input :duration, label: "How many hour was your trip?", as: :integer, collection: 1..24 %>
-        <%= f.submit 'Add another', class: "btn btn-flat mb-4"%>
+          <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
+          <%= f.input :destination, label: "First locatoin"%>
+          <%= f.input :method, label: "travel method"%>
+          <%= f.input :duration, label: "How long did your trip take"%>
+          <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
       </div>
       <% unless @trip.routes.empty? %>

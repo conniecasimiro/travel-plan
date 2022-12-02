@@ -19,8 +19,7 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.new(landmark_params)
     @route = Route.find(params[:route_id])
     @landmark.route = @route
-    if @landmark.save
-      @landmark = Landmark.new
+    if @landmark.save!
       redirect_to new_trip_route_landmark_path(@trip, @route)
     else
       render :new, status: :unprocessable_entity
