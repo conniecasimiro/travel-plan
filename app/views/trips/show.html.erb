@@ -9,29 +9,33 @@
     data-map-rmarkerscar-value="<%= @rmarkerscar.to_json %>"
     data-map-rmarkersbus-value="<%= @rmarkersbus.to_json %>"
     data-map-rmarkersboat-value="<%= @rmarkersboat.to_json %>"
+    data-map-rmarkersbike-value="<%= @rmarkersbike.to_json %>"
     data-map-myarray-value= "<%= @arr%>">
 
+  <div class="topinfo container-title d-flex justify-content-between">
+    <%# trip title and description %>
+    <div class="title d-flex align-items-end">
+      <h1 class="me-2"><%= @trip.title %></h1>
+      <h3><em><%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
+    </div>
 
-  <%# Trip likes counter and button connected to JS controller likes %>
-  <div class="likes-section">
-    <div class="likes" data-controller="likes" data-likes-target="likes">
-      <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
-      <p class="likes-counter"data-likes-target="counter"><%= @trip.likes %></p>
-      <div class="d-none">
-        <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
-          <%= f.input :likes, input_html: {value: @trip.likes + 1}  %>
-          <%= f.submit %>
-        <% end %>
+    <%# Trip likes counter and button connected to JS controller likes %>
+    <div class="likes-section sticky-top ">
+      <div class="likes d-flex align-items-end" data-controller="likes" data-likes-target="likes">
+        <div class="likes-counter" data-likes-target="counter"><%= @trip.likes %></div>
+        <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
+        <div class="d-none">
+          <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
+            <%= f.input :likes, input_html: {value: @trip.likes += 1}  %>
+            <%= f.submit %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <%# trip title and description %>
+
   <div class="infoscon">
-    <div class="container-title">
-      <h1 class="me-2"><%= @trip.title %></h1>
-      <h3><em><%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
-    </div>
 
       <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
         <%# <div class="carousel-indicators">
