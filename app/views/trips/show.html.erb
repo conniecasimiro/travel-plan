@@ -104,6 +104,7 @@
     <%# comment section %>
     <div class="show-comments">
       <h1>Comments</h1>
+      <a><%= link_to "Add a Comment", new_trip_comment_path(@trip, @comment), class: "btn btn-flat" %></a>
       <% @comments.each do |comment| %>
         <h3><%= comment.user.first_name %></h3>
         <h3><%= comment.description %></h3>
