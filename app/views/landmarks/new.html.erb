@@ -2,11 +2,11 @@
   <div class="container-width" id="bg-blue" data-controller="add-method">
       <i class="fa-solid fa-delete-left"></i>
       <h1>Step Three</h1>
-      <% @route.landmarks.each do |x| %>
-      <p><%=  x.title  %></p>
-      <% end %>
+      <%# <% @trip.routes.last.landmarks.each do |x| %>
+      <%# <p><%=  x.title  %>
+      <%# <% end %>
       <% if @trip.routes.count == 1 %>
-        <p>Please add at least one landmark for your trip</p>
+        <p>Please add at least one landmark tostrong><%=@trip.routes.last.destination%></strong></p>
         <div class="add-travel" data-add-method-target="button">
           <h2>Add landmark</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
@@ -23,8 +23,7 @@
           <% end %>
         </div>
       <% else %>
-
-         <p>Please add at least one landmark for your tirp</p>
+        <p>Please add at least one landmark to <strong><%=@trip.routes.last.destination%></strong></p>
         <div class="add-travel" data-add-method-target="button">
           <h2>Add landmark</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>

@@ -38,7 +38,7 @@
         <% end %>
       </div>
       <% unless @trip.routes.empty? %>
-      <a><%= link_to "skip ", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-flat" %></a>
+      <a><%= link_to "Finish routes", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-flat" %></a>
       <% end %>
       <% end %>
   </div>
