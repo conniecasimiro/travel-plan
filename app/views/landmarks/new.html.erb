@@ -36,10 +36,13 @@
           <%= f.input :photo, label: "Upload a photo of your Landmark!", as: :file%>
           <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
           <% end %>
-          <% if @route.landmarks.count > 0%>
+          <% if @route.landmarks.count > 0 && @trip.routes.select { |route| route.landmarks.empty? }.empty? != true %>
+          <% raise %>
             <p>Or, if you dont want to add any more landmarks</p>
             <% @route = @trip.routes.select { |route| route.landmarks.empty? }.first %>
-            <a><%= link_to "skip to next step", new_trip_route_landmark_path(@trip, @route), class: "btn btn-flat mb-4" %></a>
+            <a><%= link_to "Complete leg", new_trip_route_landmark_path(@trip, @route), class: "btn btn-flat mb-4" %></a>
+            <% else %>
+             <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-flat mb-4" %></a>
           <% end %>
         </div>
       <% end %>
