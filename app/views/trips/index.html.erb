@@ -5,6 +5,7 @@
       <% @trips.each do |trip| %>
         <div class="col-sm-12 col-lg-4">
           <%= link_to trips_path, style: "text-decoration: none; color: black;" do %>
+          <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
             <div class="square-1">
               <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
                 <div class="carousel-inner">
@@ -23,6 +24,7 @@
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
+                  <% end %>
                   <% end %>
                 </div>
               </div>
