@@ -1,6 +1,5 @@
 <div id="container-flex">
   <div class="container-width" id="bg-blue" data-controller="add-method">
-    <i class="fa-solid fa-delete-left"></i>
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
       <p>Please add where you first arrive!</p>
@@ -11,7 +10,7 @@
     <div class="d-none" data-add-method-target="form">
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
-          <%= f.input :destination, label: "First locatoin"%>
+          <%= f.input :destination, label: "First destination", hint: "Where did you arrive?"%>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
         <% if current_user.trips.last.routes.count > 1 %>
@@ -31,9 +30,9 @@
       <div class="d-none" data-add-method-target="form2">
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
-          <%= f.input :destination, label: "First locatoin"%>
-          <%= f.input :method, label: "travel method"%>
-          <%= f.input :duration, label: "How long did your trip take"%>
+          <%= f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
+          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Boat", "Car"]%>
+          <%= f.input :duration, label: "How long did your trip take", collection: 18..60%>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
       </div>
@@ -48,7 +47,6 @@
     <div class="create-flex">
       <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle" id="grey-icon"></i>
-      <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle"></i>
     </div>
     <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>

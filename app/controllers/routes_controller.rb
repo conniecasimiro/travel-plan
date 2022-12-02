@@ -13,7 +13,7 @@ class RoutesController < ApplicationController
   def create
     @trip = Trip.find(params[:trip_id])
     @route = Route.new(route_params)
-    @route.method = "test" if route_params[:method].nil?
+    @route.method = "First location:" if route_params[:method].nil?
     @route.duration = 0 if route_params[:duration].nil?
     @route.trip = @trip
     if @route.save!
