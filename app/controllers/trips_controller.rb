@@ -56,6 +56,14 @@ class TripsController < ApplicationController
       }
     end
 
+
+    @rmarkersbike = @routes.where(method: "Motorcycle").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
     @rmarkersboat = @routes.where(method: "Boat").geocoded.map do |route|
       {
         lat: route.latitude,
