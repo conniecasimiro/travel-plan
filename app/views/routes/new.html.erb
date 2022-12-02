@@ -18,10 +18,9 @@
         <% end %>
     </div>
       <% else %>
-        <p>If you traveled during you trip please add a travel method</p>
+        <h5>If you traveled during you trip please add a travel method</h5>
       <% @routes.each do |route|  %>
-        <%= route.method %>
-        <%= route.destination %>
+        <p><strong><%= route.method%> <%= route.destination %></strong></p>
       <% end %>
       <div class="add-travel" data-add-method-target="button2">
         <h2>Add travel method</h2>
@@ -37,7 +36,8 @@
         <% end %>
       </div>
       <% unless @trip.routes.empty? %>
-      <a><%= link_to "Finish routes", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-flat" %></a>
+      <p>Or, if you've finished adding travel routes:</p>
+      <%= link_to "Continue", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-light " %>
       <% end %>
       <% end %>
   </div>
@@ -49,6 +49,6 @@
       <i class="fa-solid fa-circle" id="grey-icon"></i>
       <i class="fa-solid fa-circle"></i>
     </div>
-    <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>
+      <img src="https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png">
   </div>
 </div>
