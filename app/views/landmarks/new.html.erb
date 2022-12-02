@@ -11,9 +11,6 @@
           <h2>Add landmark</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
         </div>
-          <% if @route.landmarks.count > 0 %>
-            <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-flat mb-4" %></a>
-          <% end %>
         <div class="d-none" data-add-method-target="form">
           <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
           <%= f.input :title, label: "Name"%>
@@ -23,6 +20,9 @@
           <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
           <% end %>
         </div>
+        <% if @route.landmarks.count > 0 %>
+        <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-light mb-4" %></a>
+          <% end %>
       <% else %>
         <p>Please add at least one landmark to <strong><%=@trip.routes.last.destination%></strong></p>
         <div class="add-travel" data-add-method-target="button">
@@ -55,6 +55,6 @@
       <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle" id="grey-icon"></i>
     </div>
-    <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>
+    <img src="https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png">
   </div>
 </div>
