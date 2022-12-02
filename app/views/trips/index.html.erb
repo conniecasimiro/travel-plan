@@ -30,22 +30,22 @@
                 <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
                   <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
                 <% end %>
-              <% end %>
-            </div>
-            </div>
-            <div class="card-square-infos">
-              <div class="square-2">
-                <h5><%= trip.title %></h5>
-                <p> Tags </p>
               </div>
-            </div>
-            <div class="square-3">
-              <p> <%= trip.duration %> days </p>
-              <p>246 <i class="fa-solid fa-heart"></i></p>
+            <% end %>
+          </div>
+          <div class="card-square-infos">
+            <div class="square-2">
+              <h5><%= trip.title %></h5>
+              <p> Tags </p>
             </div>
           </div>
-        <% end %>
-      </div>
+          <div class="square-3">
+            <p> <%= trip.duration %> days </p>
+            <p>246 <i class="fa-solid fa-heart"></i></p>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <%= render "shared/footer" %>
   </div>
+  <%= render "shared/footer" %>
+</div>
