@@ -6,14 +6,21 @@ class LandmarksController < ApplicationController
   def new
     @trip = Trip.find(params[:trip_id])
     @landmark = Landmark.new
+    @route = Route.find(params[:route_id])
+
+
+    # if params[:next]
+    # @route = @trip.routes.first
+    # end
   end
 
   def create
     @trip = Trip.find(params[:trip_id])
     @landmark = Landmark.new(landmark_params)
-    @landmark.trip = @trip
-    if @landmark.save
-      redirect_to trip_path(@trip)
+    @route = Route.find(params[:route_id])
+    @landmark.route = @route
+    if @landmark.save!
+      redirect_to new_trip_route_landmark_path(@trip, @route)
     else
       render :new, status: :unprocessable_entity
     end

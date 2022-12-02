@@ -1,11 +1,60 @@
-<div class="container">
-  <div>
-    <h1>New Route</h1>
-    <%= simple_form_for([@trip, @landmark]) do |f| %>
-      <%= f.input :title, label: "Name your landmark!"%>
-      <%= f.input :location, label: "Where exactly is your landmark!?"%>
-      <%= f.input :photo, label: "Upload a photo of your Landmark!", as: :file%>
-      <%= f.submit 'Create Trip :)', class: "btn btn-flat mb-4"%>
-    <% end %>
+<div id="container-flex">
+  <div class="container-width" id="bg-blue" data-controller="add-method">
+       <%# <%= link_to trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: 'Are you certain you want to delete this?' }, class: "fa-solid fa-delete-left"%>
+      <h1>Step Three</h1>
+      <%# <% @trip.routes.last.landmarks.each do |x| %>
+      <%# <p><%=  x.title  %>
+      <%# <% end %>
+      <% if @trip.routes.count == 1 %>
+        <p>Please add at least one landmark for <strong><%=@trip.routes.last.destination%></strong></p>
+        <div class="add-travel" data-add-method-target="button">
+          <h2>Add landmark</h2>
+          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
+        </div>
+          <% if @route.landmarks.count > 0 %>
+            <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-flat mb-4" %></a>
+          <% end %>
+        <div class="d-none" data-add-method-target="form">
+          <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
+          <%= f.input :title, label: "Name"%>
+          <%= f.input :description, label: "Description"%>
+          <%= f.input :location, label: "Landmark address"%>
+          <%= f.input :photo, label: "Photo", as: :file%>
+          <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
+          <% end %>
+        </div>
+      <% else %>
+        <p>Please add at least one landmark to <strong><%=@trip.routes.last.destination%></strong></p>
+        <div class="add-travel" data-add-method-target="button">
+          <h2>Add landmark</h2>
+          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
+        </div>
+        <div class="d-none" data-add-method-target="form">
+          <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
+          <%= f.input :title, label: "Name"%>
+          <%= f.input :description, label: "Description"%>
+          <%= f.input :location, label: "Landmark address"%>
+          <%= f.input :photo, label: "Photo", as: :file%>
+          <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
+          <% end %>
+          <% if @route.landmarks.count > 0 && @trip.routes.select { |route| route.landmarks.empty? }.empty? != true %>
+            <p>Or, if you dont want to add any more landmarks</p>
+            <% @route = @trip.routes.select { |route| route.landmarks.empty? }.first %>
+            <a><%= link_to "Complete leg", new_trip_route_landmark_path(@trip, @route), class: "btn btn-flat mb-4" %></a>
+            <% else %>
+             <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-flat mb-4" %></a>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+  <div class="container-width" id="bg-light-blue">
+    <h1>Add your landmarks!</h1>
+    <h2>Create some landmarks for your first destination </h2>
+    <div class="create-flex">
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle"></i>
+      <i class="fa-solid fa-circle" id="grey-icon"></i>
+    </div>
+    <%= cl_image_tag "https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png" %>
   </div>
 </div>

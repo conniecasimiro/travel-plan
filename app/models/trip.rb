@@ -12,10 +12,10 @@ class Trip < ApplicationRecord
   }
 
   belongs_to :user
-  has_many :bookmarks
-  has_many :routes
-  has_many :landmarks, through: :routes
-  has_many :tags
-  has_many :comments
+  has_many :bookmarks, dependent: :destroy
+  has_many :routes, dependent: :destroy
+  has_many :landmarks, through: :routes, dependent: :destroy
+  has_many :tags, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :title, :description, :location, :duration, presence: true
 end

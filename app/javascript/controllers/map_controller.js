@@ -8,6 +8,7 @@ export default class extends Controller {
     rmarkerscar: Array,
     rmarkersbus: Array,
     rmarkersboat: Array,
+    rmarkersbike: Array,
     rmarkers: Array,
     myarray: Array
   }
@@ -38,6 +39,7 @@ export default class extends Controller {
     this.#addRmarkerscarToMap()
     this.#addRmarkersbusToMap()
     this.#addRmarkersboatToMap()
+    this.#addRmarkersbikeToMap()
 
     this.map.on('load', () => {
         this.map.addSource('route', {
@@ -146,6 +148,17 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
+
+  #addRmarkersbikeToMap() {
+    this.rmarkersbikeValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'markerbike';
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
+
 
 }
   // landmark(e) {

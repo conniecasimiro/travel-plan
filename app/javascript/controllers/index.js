@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddMethodController from "./add_method_controller"
+application.register("add-method", AddMethodController)
+
 import CreateTripController from "./create_trip_controller"
 application.register("create-trip", CreateTripController)
 
@@ -12,6 +15,9 @@ application.register("hello", HelloController)
 
 import LikesController from "./likes_controller"
 application.register("likes", LikesController)
+
+import RevealFormController from "./reveal_form_controller"
+application.register("reveal-form", RevealFormController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)

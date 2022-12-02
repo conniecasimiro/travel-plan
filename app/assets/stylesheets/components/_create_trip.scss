@@ -3,10 +3,32 @@
   padding-top: 7%;
   padding-left: 10%;
   padding-right: 10%;
-  max-height: 100vh;
+  max-height:max-content;
   .fa-solid {
     font-size: x-large;
     margin-bottom: 38px;
+  }
+}
+.container-width .fa-solid {
+  font-size: xx-large;
+  margin-bottom: 0px;
+}
+#bg-blue {
+  h1 {
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 20px;
+  }
+}
+.add-travel {
+  display: flex;
+  gap: 20px;
+  h2 {
+    margin: 0;
+  }
+  .fa-solid {
+    font-size: xxx-large;
   }
 }
 #container-flex {
@@ -14,11 +36,14 @@
   justify-self: center;
   grid-template-columns: 1fr 1fr;
   padding: 0 0;
-  background-color: white;
+  background-color: #BEDEF3;
   max-height: 100vh;
 }
 #bg-blue {
 background-color: #BEDEF3;
+}
+.create-hide {
+  display: none;
 }
 .create-flex {
   max-height: 100vh;

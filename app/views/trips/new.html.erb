@@ -1,6 +1,12 @@
 <div id="container-flex">
   <div class="container-width" id="bg-blue">
-      <i class="fa-solid fa-delete-left"></i>
+    <% if @trip.id %>
+       <%= link_to trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: 'Are you certain you want to delete this?' }, class: "fa-solid fa-delete-left"%>
+    <% else %>
+      <%= link_to trips_path(@trip) do %>
+        <div style="color:black;" class="fa-solid fa-delete-left"> </div>
+      <% end %>
+    <% end %>
       <h1>Step one</h1>
       <%= simple_form_for(@trip) do |f| %>
         <%# <%= f.input :start_date, as: :date, html5: true%>
