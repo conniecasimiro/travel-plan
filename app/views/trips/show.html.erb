@@ -1,94 +1,120 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container">
-    <div class="navbar">
+  <div class="container-landmark-outer"
+    data-controller="map"
+    data-map-lmarkers-value="<%= @lmarkers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-map-rmarkers-value="<%= @rmarkers.to_json %>"
+    data-map-rmarkersplane-value="<%= @rmarkersplane.to_json %>"
+    data-map-rmarkerscar-value="<%= @rmarkerscar.to_json %>"
+    data-map-rmarkersbus-value="<%= @rmarkersbus.to_json %>"
+    data-map-rmarkersboat-value="<%= @rmarkersboat.to_json %>"
+    data-map-myarray-value= "<%= @arr%>">
 
-    </div>
 
   <%# Trip likes counter and button connected to JS controller likes %>
-  <div class="likes" data-controller="likes" data-likes-target="likes">
-    <button class="like-button" data-likes-target="like" data-action ="click->likes#update">Like?</button>
-    <p class="likes-counter"data-likes-target="counter"><%= @trip.likes %></p>
-    <div class="d-none">
-      <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
-        <%= f.input :likes, input_html: {value: @trip.likes + 1}  %>
-        <%= f.submit %>
-      <% end %>
+  <div class="likes-section">
+    <div class="likes" data-controller="likes" data-likes-target="likes">
+      <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
+      <p class="likes-counter"data-likes-target="counter"><%= @trip.likes %></p>
+      <div class="d-none">
+        <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
+          <%= f.input :likes, input_html: {value: @trip.likes + 1}  %>
+          <%= f.submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <%# trip title and description %>
-  <div class="info">
-    <div class="d-flex justify-content-start align-items-center mb-2">
+  <div class="infoscon">
+    <div class="container-title">
       <h1 class="me-2"><%= @trip.title %></h1>
-      <h3> - <%= @trip.user.first_name %> <%= @trip.user.last_name %></h3>
+      <h3><em><%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
     </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
-      <%# <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div> %>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= cl_image_tag @landmarks[0].photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
-        </div>
-        <% @landmarks[1..-1].each do |landmark| %>
-          <div class="carousel-item">
-            <%= cl_image_tag landmark.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+      <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
+        <%# <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div> %>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= cl_image_tag @landmarks[0].photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
           </div>
-        <% end %>
+          <% @landmarks[1..-1].each do |landmark| %>
+            <div class="carousel-item">
+              <%= cl_image_tag landmark.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <%# <%= @trip.photo %>
+      <p><%= @trip.description %></p>
     </div>
-    <%# <%= @trip.photo %>
-    <p><%= @trip.description %></p>
-  </div>
 
       <%# map added and info about it %>
+      <div style="width: 100%; height: 600px;" class="d-flex"
+        data-map-target="map">
+      </div>
 
     <%# landmark title and info %>
-  <div class="landmarks">
+  <div class="something">
     <h1>Landmarks</h1>
     <% i = 0 %>
     <% day = 0 %>
     <% while i < (@routes.length - 1) do %>
-      <% if i == 0 && ((day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i) == 1 ) %>
-        <h3>Day 1</h3>
+      <% if (@routes[i+1].travel_date - @routes[i].travel_date).to_i == 1  %>
+        <h3>Day <%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i %> -  <em><%= @routes[i].destination %></em></h3>
       <% elsif (i + 1) < @routes.length %>
-        <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%></h3>
+        <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%> -  <em><%= @routes[i].destination %></em></h3>
       <% end %>
-      <%= @routes[i].destination %>
+
+      <div class="container-landmark">
       <% @routes[i].landmarks.each do |landmark| %>
         <% location = landmark.location.split(",").first %>
-        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location %>
+        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
       <% end %>
+      </div>
+
       <% i += 1 %>
     <% end %>
-    <h3>Day <%= day + 1 %>-<%= @trip.duration %></h3>
-    <%= @routes[-1].destination %>
+      <% if (@trip.duration - day) == 1  %>
+        <h3>Day <%= @trip.duration %> -  <em><%= @routes[i].destination %></em></h3>
+      <% else%>
+        <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
+      <% end %>
+
+
+      <div class="container-landmark">
     <% @routes[-1].landmarks.each do |landmark| %>
       <% location = landmark.location.split(",").first %>
-      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location %>
+      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
     <% end %>
+      </div>
   </div>
 
     <%# comment section %>
-    <div class="comments">
-      <h1>comments</h1>
+    <div class="show-comments">
+      <h1>Comments</h1>
+      <a><%= link_to "Add a Comment", new_trip_comment_path(@trip, @comment), class: "btn btn-flat" %></a>
       <% @comments.each do |comment| %>
         <h3><%= comment.user.first_name %></h3>
         <h3><%= comment.description %></h3>
       <% end %>
     </div>
+
   </div>
-  <%= render "shared/footer" %>
+    <div class="bottom">
+      <%= render "shared/footer" %>
+    </div>
 </div>

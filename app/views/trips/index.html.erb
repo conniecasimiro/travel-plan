@@ -4,17 +4,17 @@
     <%# narbar section %>
 
     <%# trip picture and details %>
-    <div class="trip-cards">
-      <h1>Trips!</h1>
-      <% @trips.each do |trip|%>
-      <li><%= trip.title%></li>
-      <li><%= trip.duration %></li>
-      <li><%= trip.location %></li>
+
+
+  <div class="container-square">
+      <% @trips.each do |trip| %>
+        <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel") %>
+      </div>
+
+        </div>
       <%= link_to 'Details', trip_path(trip), class: "btn btn-primary"%>
-      <%# <li><%= trip.photo %><%#/li>
-      <%# trip price %>
-      <%# trip tags %>
       <% end %>
+
     </div>
   </div>
   <%= render "shared/footer" %>

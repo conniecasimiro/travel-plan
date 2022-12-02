@@ -33,14 +33,90 @@ class TripsController < ApplicationController
     @landmarks = @trip.landmarks
     @comments = Comment.where(trip_id: @trip.id)
 
+    # The `geocoded` scope filters only flats with coordinates
+    @lmarkers = @landmarks.geocoded.map do |landmark|
+      {
+        lat: landmark.latitude,
+        lng: landmark.longitude,
+        id: landmark.id
+      }
+    end
+
+    @rmarkers = @routes.geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkersplane = @routes.where(method: "Plane").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkersboat = @routes.where(method: "Boat").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkersbus = @routes.where(method: "Bus").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+    @rmarkerscar = @routes.where(method: "Car").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
+
+    @arr = []
+    @routes.each do |route|
+      @arr << [route.longitude, route.latitude]
+    end
   end
 
   def index
-    @trips = Trip.all
+    @landmark = Landmark.all
+
+    if params[:query].present?
+      sql_query = <<~SQL
+        trips.location ILIKE :query
+        OR trips.description ILIKE :query
+        OR users.first_name ILIKE :query
+        OR users.last_name ILIKE :query
+      SQL
+      @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @trips = Trip.all
+    end
+    # @trips = Trip.all
   end
 
-  # def likes
-  # end
+  def carousel
+    @landmark = Landmark.all
+
+    if params[:query].present?
+      sql_query = <<~SQL
+        trips.location ILIKE :query
+        OR trips.description ILIKE :query
+        OR users.first_name ILIKE :query
+        OR users.last_name ILIKE :query
+      SQL
+      @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @trips = Trip.all
+    end
+    # @trips = Trip.all
+  end
 
   def destroy
     @trip = Trip.find(params[:id])

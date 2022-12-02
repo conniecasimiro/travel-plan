@@ -18,3 +18,6 @@ application.register("likes", LikesController)
 
 import RevealFormController from "./reveal_form_controller"
 application.register("reveal-form", RevealFormController)
+
+import MapController from "./map_controller"
+application.register("map", MapController)
