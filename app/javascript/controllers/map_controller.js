@@ -7,6 +7,7 @@ export default class extends Controller {
     rmarkersplane: Array,
     rmarkerscar: Array,
     rmarkersbus: Array,
+    rmarkersboat: Array,
     rmarkers: Array,
     myarray: Array
   }
@@ -36,6 +37,7 @@ export default class extends Controller {
     this.#addRmarkersplaneToMap()
     this.#addRmarkerscarToMap()
     this.#addRmarkersbusToMap()
+    this.#addRmarkersboatToMap()
 
     this.map.on('load', () => {
         this.map.addSource('route', {
@@ -129,6 +131,16 @@ export default class extends Controller {
     this.rmarkersbusValue.forEach((marker) => {
       const el = document.createElement('div');
       el.className = 'markerbus';
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
+
+  #addRmarkersboatToMap() {
+    this.rmarkersboatValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'markerboat';
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
