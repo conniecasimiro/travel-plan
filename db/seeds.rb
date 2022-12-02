@@ -390,3 +390,116 @@ landmark19 = Landmark.create!(
 file19 = URI.open('https://cdn.kimkim.com/files/a/images/ee1d14ed59a15551c156c1aea4cf1d09359aa943/big-772dc1dc5dbb90a2584efa54718817f1.jpg')
 landmark19.photo.attach(io: file19, filename: 'lala.jpg', content_type: 'image/jpg')
 landmark19.save
+
+
+#third trip
+
+trip3 = Trip.create!(
+  title: "Becoming an Arepa",
+  location: "Venezuela",
+  duration: 2404,
+  description: "Venezuela is a country on the northern coast of South America with diverse natural attractions. Along its Caribbean coast are tropical resort islands including Isla de Margarita and the Los Roques archipelago.",
+  likes: 13241,
+  user: user1,
+)
+
+Tag.create!(
+  title: "Hiking",
+  trip_id: trip3.id
+)
+
+Tag.create!(
+  title: "Jungle",
+  trip_id: trip3.id
+)
+
+Tag.create!(
+  title: "City",
+  trip_id: trip3.id
+)
+
+Tag.create!(
+  title: "Beach",
+  trip_id: trip3.id
+)
+
+route10 = Route.create!(
+  destination: "Petare",
+  method: "Motorcycle",
+  duration: 4,
+  travel_date: "2022-01-14",
+  trip_id: trip3.id
+)
+
+landmark20 = Landmark.create!(
+  title: "Training",
+  location: "Metropolitan District of Caracas, Caracas, Venezuela",
+  description: "Dulce Nombre de Jesus de Petare is a neighborhood in Miranda, Venezuela, and is part of the Metropolitan District of Caracas. It is located in the Sucre Municipality, one of the five divisions of Caracas.",
+  route_id: route10.id
+)
+
+file20 = URI.open('https://cdn.shortpixel.ai/spai/w_1029+q_lossy+ret_img+to_auto/https://cdn.cronica.uno/wp-content/uploads/2022/02/18083847/Petare-401_38_00000-1920x1136.jpg')
+landmark20.photo.attach(io: file20, filename: 'lala.jpg', content_type: 'image/jpg')
+landmark20.save
+
+landmark21 = Landmark.create!(
+  title: "Art",
+  location: "Metropolitan District of Caracas, Caracas, Venezuela",
+  description: "Beautiful art museum in the heart of Caracas, Venezuela definitely recommended",
+  route_id: route10.id
+)
+
+file21 = URI.open('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRq9cMQsz__tGbskreCfgebPxjbgIB3d6_SeyvdbE6AzVku0dRCDelGynV-dDyaqfdwmcWjXkx0pJASzA')
+landmark21.photo.attach(io: file21, filename: 'lala.jpg', content_type: 'image/jpg')
+landmark21.save
+
+
+route11 = Route.create!(
+  destination: "Maturin",
+  method: "Plane",
+  duration: 4,
+  travel_date: "2022-12-14",
+  trip_id: trip3.id
+)
+
+
+landmark22 = Landmark.create!(
+  title: "Art",
+  location: "Maturin, Venezuela",
+  description: "A night view of fountain in Redoma Juana La Avanzadora",
+  route_id: route11.id
+)
+
+file22 = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Redoma_Juana_La_Avanzadora_%28Noche%29.JPG/2560px-Redoma_Juana_La_Avanzadora_%28Noche%29.JPG')
+landmark22.photo.attach(io: file22, filename: 'lala.jpg', content_type: 'image/jpg')
+landmark22.save
+
+landmark23 = Landmark.create!(
+  title: "Zoo",
+  location: "Maturin, Venezuela",
+  description: "La Guaricha Zoological Park",
+  route_id: route11.id
+)
+
+file23 = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Plaza_los_escritores_de_Maturin_2017.jpg/1920px-Plaza_los_escritores_de_Maturin_2017.jpg')
+landmark23.photo.attach(io: file23, filename: 'lala.jpg', content_type: 'image/jpg')
+landmark23.save
+
+route12 = Route.create!(
+  destination: "Los Medanos de Coro",
+  method: "Plane",
+  duration: 1,
+  travel_date: "2022-12-14",
+  trip_id: trip3.id
+)
+
+landmark24 = Landmark.create!(
+  title: "The Desert of Venezuela",
+  location: "Coro, Venezuela",
+  description: "Los medanos de Coro is considered one of the most distinguished landscape of Venezuela since it is the only dessert found in this country",
+  route_id: route12.id
+)
+
+file24 = URI.open('https://lacgeo.com/sites/default/files/styles/large/public/medanos_de_coro_park_venezuela_opt.jpg?itok=q20fP1ca')
+landmark24.photo.attach(io: file24, filename: 'lala.jpg', content_type: 'image/jpg')
+landmark24.save
