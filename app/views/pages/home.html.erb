@@ -20,7 +20,7 @@
     <div class="container-square">
 
       <% @trips.each do |trip| %>
-        <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel") %>
+        <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel", photo: trip.landmarks[0].photo.key, photo2: trip.landmarks[1..-1]) %>
     <% end %>
 
 

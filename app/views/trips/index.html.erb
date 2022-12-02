@@ -1,21 +1,51 @@
 <div class="body">
   <%= render "shared/navbar" %>
   <div class="container">
-    <%# narbar section %>
-
-    <%# trip picture and details %>
-
-
-  <div class="container-square">
+    <div class="row">
       <% @trips.each do |trip| %>
-        <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel") %>
+        <div class="col-sm-12 col-lg-4">
+          <%= link_to trips_path, style: "text-decoration: none; color: black;" do %>
+            <div class="square-1">
+              <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+                  </div>
+                  <% trip.landmarks[1..-1].each do |landmark| %>
+                    <div class="carousel-item">
+                      <%= cl_image_tag landmark.photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" id=<%=trip.id %> >
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  <% end %>
+                </div>
+              </div>
+              <div class="avatar-end">
+                <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
+                <% end %>
+              <% end %>
+            </div>
+            </div>
+            <div class="card-square-infos">
+              <div class="square-2">
+                <h5><%= trip.title %></h5>
+                <p> Tags </p>
+              </div>
+            </div>
+            <div class="square-3">
+              <p> <%= trip.duration %> days </p>
+              <p>246 <i class="fa-solid fa-heart"></i></p>
+            </div>
+          </div>
+        <% end %>
       </div>
-
-        </div>
-      <%= link_to 'Details', trip_path(trip), class: "btn btn-primary"%>
-      <% end %>
-
     </div>
+    <%= render "shared/footer" %>
   </div>
-  <%= render "shared/footer" %>
-</div>
