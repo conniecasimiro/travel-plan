@@ -30,8 +30,8 @@
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
           <%= f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
-          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Boat", "Car"]%>
-          <%= f.input :duration, label: "How long did your trip take", collection: 18..60%>
+          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Boat", "Motorbike", "Car", "Bus"]%>
+          <%= f.input :duration, label: "How long did your trip take", collection: 1..24%>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
       </div>
