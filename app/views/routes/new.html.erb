@@ -18,10 +18,15 @@
         <% end %>
     </div>
       <% else %>
-        <h5>If you traveled during you trip please add a travel method</h5>
+
       <% @routes.each do |route|  %>
-        <p><strong><%= route.method%> <%= route.destination %></strong></p>
+        <div class="create-route">
+          <div class="create-icon"></div>
+          <p><strong><%= route.method%> <%= route.destination %></strong></p>
+        </div>
       <% end %>
+
+      <h5>If you traveled during you trip please add a travel method</h5>
       <div class="add-travel" data-add-method-target="button2">
         <h2>Add travel method</h2>
         <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm2"></i>
