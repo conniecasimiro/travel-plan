@@ -1,17 +1,21 @@
 .create-route {
 overflow: hidden;
 background: white;
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.081);
 display: flex;
+gap: 10px;
 align-items: center;
-width: 254px;
-height: 60px;
+width: 300px;
+height: 45px;
 border-radius: 50px 0px 50px 0px;
+  p {
+    margin-bottom: 0px;
+  }
 }
 .create-icon {
-width: 100px;
-height: 60px;
+width: 80px;
+height: 45px;
 border-radius: 50px 0px 50px 0px;
-background: rgb(255, 255, 255);
-border: solid rgb(161, 161, 161);
+background: $bgblue;
+border-width: thin;
 }

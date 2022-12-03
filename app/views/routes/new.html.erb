@@ -21,7 +21,9 @@
 
       <% @routes.each do |route|  %>
         <div class="create-route">
-          <div class="create-icon"></div>
+          <div class="create-icon">
+            <img src="https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png">
+          </div>
           <p><strong><%= route.method%> <%= route.destination %></strong></p>
         </div>
       <% end %>
