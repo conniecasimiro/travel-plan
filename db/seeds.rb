@@ -503,3 +503,5 @@ landmark24 = Landmark.create!(
 file24 = URI.open('https://lacgeo.com/sites/default/files/styles/large/public/medanos_de_coro_park_venezuela_opt.jpg?itok=q20fP1ca')
 landmark24.photo.attach(io: file24, filename: 'lala.jpg', content_type: 'image/jpg')
 landmark24.save
+
+puts "Seed completed succesfully!"

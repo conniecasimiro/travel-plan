@@ -1,21 +1,17 @@
 <div id="container-flex">
   <div class="container-width" id="bg-blue">
-    <% if @trip.id %>
-       <%= link_to trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: 'Are you certain you want to delete this?' }, class: "fa-solid fa-delete-left"%>
-    <% else %>
-      <%= link_to trips_path(@trip) do %>
-        <div style="color:black;" class="fa-solid fa-delete-left"> </div>
-      <% end %>
+    <%= link_to trips_path(@trip) do %>
+    <div style="color:black;" class="fa-solid fa-delete-left"> </div>
     <% end %>
-      <h1>Step one</h1>
-      <%= simple_form_for(@trip) do |f| %>
-        <%# <%= f.input :start_date, as: :date, html5: true%>
-        <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
-        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
-        <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
-        <%= f.input :location, label: "Area", hint: "The main area duration"%>
-        <%= f.submit 'Continue', class: "btn btn-flat mb-4"%>
-      <% end %>
+    <h1>Step one</h1>
+    <%= simple_form_for(@trip) do |f| %>
+      <%# <%= f.input :start_date, as: :date, html5: true%>
+      <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
+      <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
+      <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
+      <%= f.input :location, label: "Area", hint: "The main area of your trip"%>
+      <%= f.submit 'Continue', class: "btn btn-flat mb-4"%>
+    <% end %>
   </div>
   <div class="container-width" id="bg-light-blue">
     <h1>Create your trip</h1>
