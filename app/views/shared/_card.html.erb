@@ -1,16 +1,13 @@
-
 <div class="card-square">
-  <%= link_to trips_path, style: "text-decoration: none; color: black;" do %>
     <div class="square-1">
-      <%= photo %>
+      <div class="card-square-img">
+      <%= cl_image_tag photo, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+      </div>
       <div class="avatar-end">
-        <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
           <%# <%= image_tag userphoto, class: "avatar-card"%>
-        <% end %>
       </div>
     </div>
-  <% end %>
   <div class="card-square-infos">
     <div class="square-2">
       <h5><%= title %></h5>
