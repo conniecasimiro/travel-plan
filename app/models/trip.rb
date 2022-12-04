@@ -18,4 +18,5 @@ class Trip < ApplicationRecord
   has_many :tags, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates :title, :description, :location, :duration, presence: true
+  validates :title, length: { maximum: 42 }
 end

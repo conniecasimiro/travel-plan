@@ -1,24 +1,41 @@
-<div class="card-square">
-    <%= link_to trips_path, style: "text-decoration: none; color: black;" do %>
-    <div class="square-1">
 
-    <%= photo %>
+<div class="card-square">
+  <%= link_to trips_path, style: "text-decoration: none; color: black;" do %>
+    <div class="square-1">
+      <%= photo %>
       <div class="avatar-end">
         <%= link_to root_path, style: "text-decoration: none; color: black;" do %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-card"%>
+          <%# <%= image_tag userphoto, class: "avatar-card"%>
         <% end %>
-       <% end %>
-    </div>
-</div>
-    <div class="card-square-infos">
-      <div class="square-2">
-      <h5><%= title %></h5>
-      <p> Tags </p>
       </div>
     </div>
-    <div class="square-3">
-      <p> <%= duration %> days </p>
-      <p>246 <i class="fa-solid fa-heart"></i></p>
-
+  <% end %>
+  <div class="card-square-infos">
+    <div class="square-2">
+      <h5><%= title %></h5>
+      <ul>
+        <% tags.each do |tag| %>
+          <li class="tag">
+            <% case tag.title %>
+            <% when "Hiking" %>
+              <i class="fa-solid fa-person-hiking"></i>
+            <% when "Mountains" %>
+              <i class="fa-solid fa-mountain"></i>
+            <% when "City" %>
+              <i class="fa-solid fa-city"></i>
+            <% when "Jungle" %>
+              <i class="fa-solid fa-leaf"></i>
+            <% when "Beach" %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
+    <div class="square-3 d-flex justify-content-between align-items-center" >
+      <p id="duration"> <%= duration %> days </p>
+      <p> <%= likes %> <i class="fa-solid fa-heart"></i></p>
+    </div>
+  </div>
 </div>

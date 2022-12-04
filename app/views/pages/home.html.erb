@@ -21,7 +21,7 @@
 
       <% @trips.each do |trip| %>
         <% unless trip.landmarks.empty? %>
-          <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel", photo: trip.landmarks[0].photo.key, photo2: trip.landmarks[1..-1]) %>
+          <%= render "shared/card", title: trip.title, duration: trip.duration, photo: (render "carousel", photo: trip.landmarks[0].photo.key, photo2: trip.landmarks[1..-1]), tags: trip.tags, likes: trip.likes%>
         <% end %>
       <% end %>
 
