@@ -5,6 +5,7 @@
       <%# <% @trip.routes.last.landmarks.each do |x| %>
       <%# <p><%=  x.title  %>
       <%# <% end %>
+
       <% if @trip.routes.count == 1 %>
         <h5>Please add at least one landmark or highlight from time in:</h5>
         <div class="create-route">
@@ -52,19 +53,20 @@
           <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
           <% end %>
         </div>
-
           <% if @route.landmarks.count > 0 && @trip.routes.select { |route| route.landmarks.empty? }.empty? != true %>
             <p>Or, if you dont want to add any more landmarks</p>
             <% @route = @trip.routes.select { |route| route.landmarks.empty? }.first %>
             <a><%= link_to "Complete leg", new_trip_route_landmark_path(@trip, @route), class: "btn btn-flat mb-4" %></a>
-            <% else %>
-             <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-flat mb-4" %></a>
           <% end %>
+          <% if @trip.routes.select { |route| route.landmarks.empty? }.empty?%>
+            <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-flat mb-4" %></a>
+          <% end %>
+
       <% end %>
   </div>
   <div class="container-width" id="bg-light-blue">
     <h1>Add your landmarks!</h1>
-    <h2>Create some landmarks to your destinations.</h2>
+    <h2>Create some landmarks for each destination of your trip.</h2>
     <div class="create-flex">
       <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle"></i>
