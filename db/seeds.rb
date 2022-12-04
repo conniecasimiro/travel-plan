@@ -464,7 +464,7 @@ route11 = Route.create!(
 
 
 landmark22 = Landmark.create!(
-  title: "Art",
+  title: "Art yay",
   location: "Maturin, Venezuela",
   description: "A night view of fountain in Redoma Juana La Avanzadora",
   route_id: route11.id
