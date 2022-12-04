@@ -1,5 +1,6 @@
 .create-route {
 overflow: hidden;
+position: relative;
 background: white;
 box-shadow: 0 0 15px rgba(0, 0, 0, 0.081);
 display: flex;
@@ -18,4 +19,16 @@ height: 45px;
 border-radius: 50px 0px 50px 0px;
 background: $bgblue;
 border-width: thin;
+display: flex;
+align-items: center;
+justify-content: center;
+ img {
+  width: 30px;
+ }
+}
+#route-icon {
+  width: 25px;
+  margin: 0px auto ;
+  margin-bottom: -20px;
+  margin-top: -20px;
 }
