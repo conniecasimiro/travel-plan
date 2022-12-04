@@ -2,7 +2,7 @@
   <div class="container-width" id="bg-blue" data-controller="add-method">
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
-      <p>Please add where you first arrive!</p>
+      <h5>Where did you first arrive on your trop?</h5>
     <div class="add-travel" data-add-method-target="button">
       <h2>Add travel method</h2>
       <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>

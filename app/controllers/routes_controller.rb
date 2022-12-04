@@ -27,8 +27,8 @@ class RoutesController < ApplicationController
     @route.duration = 0 if route_params[:duration].nil?
     @route.trip = @trip
     if @route.save!
-      @landmark = Landmark.create(landmark_params)
-      @landmark.route = @route
+      # @landmark = Landmark.create(landmark_params)
+      # @landmark.route = @route
       redirect_to new_trip_route_path(@trip)
     else
       render :new, status: :unprocessable_entity
