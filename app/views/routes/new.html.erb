@@ -18,10 +18,24 @@
         <% end %>
     </div>
       <% else %>
-        <h5>If you traveled during you trip please add a travel method</h5>
       <% @routes.each do |route|  %>
-        <p><strong><%= route.method%> <%= route.destination %></strong></p>
+        <% if route.method != "first_location" %>
+          <img id="route-icon" src="https://res.cloudinary.com/dblvfwtds/image/upload/v1670107398/route-solid_mztkqa.svg">
+        <% end %>
+        <div class="create-route">
+          <div class="create-icon">
+            <img src="<%= @route_icons[route.method.to_sym.downcase] %>">
+          </div>
+          <% if route.method == "first_location" %>
+            <p><%= "Arrive in: " %></p>
+          <% else %>
+            <p><%= route.method %> to: </p>
+          <% end %>
+          <p><strong> <%= route.destination %></strong></p>
+        </div>
       <% end %>
+
+      <h5>If you traveled during you trip please add a travel method</h5>
       <div class="add-travel" data-add-method-target="button2">
         <h2>Add travel method</h2>
         <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm2"></i>
@@ -30,7 +44,7 @@
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
           <%= f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
-          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Boat", "Motorbike", "Car", "Bus"]%>
+          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Ferry", "yacht", "Motorbike", "Car", "Bus", ]%>
           <%= f.input :duration, label: "How long did your trip take", collection: 1..24%>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
