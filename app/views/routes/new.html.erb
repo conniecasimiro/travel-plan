@@ -2,7 +2,7 @@
   <div class="container-width" id="bg-blue" data-controller="add-method">
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
-      <p>Please add where you first arrive!</p>
+      <h5>Where did you first arrive on your trop?</h5>
     <div class="add-travel" data-add-method-target="button">
       <h2>Add travel method</h2>
       <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
@@ -17,7 +17,9 @@
           <a><%= link_to "skip ", new_trip_route_path(@trip), class: "btn btn-flat" %></a>
         <% end %>
     </div>
-      <% else %>
+    <% else %>
+    <h5 data-add-method-target="title">Did you travel anywhere from <strong><%=@trip.routes.last.destination%>?</strong></h5>
+    <div data-add-method-target="routes">
       <% @routes.each do |route|  %>
         <% if route.method != "first_location" %>
           <img id="route-icon" src="https://res.cloudinary.com/dblvfwtds/image/upload/v1670107398/route-solid_mztkqa.svg">
@@ -34,8 +36,7 @@
           <p><strong> <%= route.destination %></strong></p>
         </div>
       <% end %>
-
-      <h5>If you traveled during you trip please add a travel method</h5>
+    </div>
       <div class="add-travel" data-add-method-target="button2">
         <h2>Add travel method</h2>
         <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm2"></i>
@@ -50,7 +51,7 @@
         <% end %>
       </div>
       <% unless @trip.routes.empty? %>
-      <p>Or, if you've finished adding travel routes:</p>
+      <p>Or, if you're finished continue to the next step:</p>
       <%= link_to "Continue", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-light " %>
       <% end %>
       <% end %>

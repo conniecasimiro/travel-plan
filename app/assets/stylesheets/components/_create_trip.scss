@@ -21,7 +21,7 @@
   padding-left: 10%;
   padding-right: 10%;
   padding-bottom: 10%;
-  height: 80%;
+  height: 100%;
   gap: 20px;
   position: relative;
   .fa-delete-left {
@@ -51,6 +51,7 @@
 .add-travel {
   display: flex;
   gap: 20px;
+  align-items: center;
   h2 {
     margin: 0;
     margin-bottom: 0px;
