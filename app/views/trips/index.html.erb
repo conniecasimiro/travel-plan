@@ -1,6 +1,7 @@
 <div class="body">
   <%= render "shared/navbar" %>
   <div class="container">
+    <h1>Find inspiration for your next trip from one of our many users...</h1>
     <div class="indexcards">
       <% @trips.each do |trip| %>
         <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
@@ -11,5 +12,5 @@
       <% end %>
     </div>
   </div>
-  <%= render "shared/footer" %>
 </div>
+  <%= render "shared/footer" %>
