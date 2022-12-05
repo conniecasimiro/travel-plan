@@ -4,7 +4,9 @@
       <%= cl_image_tag photo, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
       </div>
       <div class="avatar-end">
-          <%= cl_image_tag userphoto, class: "avatar-card"%>
+          <% if userphoto.present? %>
+            <%= cl_image_tag userphoto, class: "avatar-card"%>
+          <% end %>
           <%# <%= image_tag userphoto, class: "avatar-card"%>
       </div>
     </div>
