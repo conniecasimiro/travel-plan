@@ -68,66 +68,61 @@
       </div>
     </div>
 
-  <div class="container-landmark-outer">
-  <div class="infoscon">
-
-
-      <%# <%= @trip.photo %>
-      <p><%= @trip.description %></p>
-    </div>
-
-      <%# map added and info about it %>
-
-    <%# landmark title and info %>
-  <div class="something">
-    <h1>Landmarks</h1>
-    <% i = 0 %>
-    <% day = 0 %>
-    <% while i < (@routes.length - 1) do %>
-      <% if (@routes[i+1].travel_date - @routes[i].travel_date).to_i == 1  %>
-        <h3>Day <%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i %> -  <em><%= @routes[i].destination %></em></h3>
-      <% elsif (i + 1) < @routes.length %>
-        <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%> -  <em><%= @routes[i].destination %></em></h3>
-      <% end %>
-
-      <div class="container-landmark">
-      <% @routes[i].landmarks.each do |landmark| %>
-        <% location = landmark.location.split(",").first %>
-        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
-      <% end %>
+    <div class="container-landmark-outer">
+      <div class="infoscon">
+        <p><%= @trip.description %></p>
       </div>
 
-      <% i += 1 %>
-    <% end %>
-      <% if (@trip.duration - day) == 1  %>
-        <h3>Day <%= @trip.duration %> -  <em><%= @routes[i].destination %></em></h3>
-      <% else%>
-        <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
-      <% end %>
-
-
-      <div class="container-landmark">
-    <% @routes[-1].landmarks.each do |landmark| %>
-      <% location = landmark.location.split(",").first %>
-      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
-    <% end %>
+      <%# map landmarks %>
+      <div class="maplandmarks">
+        <div style="width: 100%; height: 600px;" data-map-target="maplandmarks">
+        </div>
       </div>
-  </div>
 
-    <%# comment section %>
-    <div class="show-comments">
-      <h1>Comments</h1>
-      <a><%= link_to "Add a Comment", new_trip_comment_path(@trip, @comment), class: "btn btn-flat" %></a>
-      <% @comments.each do |comment| %>
-        <h3><%= comment.user.first_name %></h3>
-        <h3><%= comment.description %></h3>
-      <% end %>
+      <%# landmark title and info %>
+      <div class="something">
+        <h1>Landmarks</h1>
+        <% i = 0 %>
+        <% day = 0 %>
+        <% while i < (@routes.length - 1) do %>
+          <% if (@routes[i+1].travel_date - @routes[i].travel_date).to_i == 1  %>
+            <h3>Day <%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i %> -  <em><%= @routes[i].destination %></em></h3>
+          <% elsif (i + 1) < @routes.length %>
+            <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%> -  <em><%= @routes[i].destination %></em></h3>
+          <% end %>
+          <div class="container-landmark">
+            <% @routes[i].landmarks.each do |landmark| %>
+              <% location = landmark.location.split(",").first %>
+              <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
+            <% end %>
+          </div>
+          <% i += 1 %>
+        <% end %>
+        <% if (@trip.duration - day) == 1  %>
+          <h3>Day <%= @trip.duration %> -  <em><%= @routes[i].destination %></em></h3>
+        <% else%>
+          <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
+        <% end %>
+        <div class="container-landmark">
+          <% @routes[-1].landmarks.each do |landmark| %>
+            <% location = landmark.location.split(",").first %>
+            <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
+          <% end %>
+        </div>
+      </div>
+
+      <%# comment section %>
+      <div class="show-comments">
+        <h1>Comments</h1>
+        <a><%= link_to "Add a Comment", new_trip_comment_path(@trip, @comment), class: "btn btn-flat" %></a>
+        <% @comments.each do |comment| %>
+          <h3><%= comment.user.first_name %></h3>
+          <h3><%= comment.description %></h3>
+        <% end %>
+      </div>
     </div>
-
-  </div>
     <div class="bottom">
       <%= render "shared/footer" %>
     </div>
-
   </div>
 </div>
