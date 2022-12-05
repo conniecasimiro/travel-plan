@@ -1,6 +1,10 @@
 <%= render "shared/navbar" %>
 <body class="body">
+ <% if @user.coverphoto.key.present? %>
 <div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.coverphoto.key%>');">
+            <% else %>
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('logo.png');">
+          <% end %>
   <div class="container d-flex">
     <div class="profile-info">
       <% if @user.photo.attached? %>
