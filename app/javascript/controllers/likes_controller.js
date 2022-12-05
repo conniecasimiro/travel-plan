@@ -10,18 +10,36 @@ export default class extends Controller {
 
   update(event) {
     event.preventDefault()
-    this.counterTarget.innerText = parseInt(this.counterTarget.innerText) + 1
-    this.likeTarget.setAttribute("disabled", "")
-    console.log(this.formTarget)
+    if (document.getElementsByClassName('red').length > 0) {
+      this.likeTarget.classList.remove('red')
+      this.counterTarget.innerText = parseInt(this.counterTarget.innerText) - 1
+      // this.likeTarget.setAttribute("disabled", "")
+      console.log(this.formTarget)
 
-    fetch(this.formTarget.action, {
-      method: this.formTarget.method,
-      headers: { "Accept": "application/json" },
-      body: new FormData(this.formTarget)
-    })
+      fetch(this.formTarget.action, {
+        method: this.formTarget.method,
+        headers: { "Accept": "application/json" },
+        body: new FormData(this.formTarget)
+      })
       .then(response => response.json())
       .then((data) => {
         console.log(data)
       })
-  }
+    } else {
+      this.likeTarget.classList.add('red')
+      this.counterTarget.innerText = parseInt(this.counterTarget.innerText) + 1
+        // this.likeTarget.setAttribute("disabled", "")
+        console.log(this.formTarget)
+
+        fetch(this.formTarget.action, {
+          method: this.formTarget.method,
+          headers: { "Accept": "application/json" },
+          body: new FormData(this.formTarget)
+        })
+          .then(response => response.json())
+          .then((data) => {
+            console.log(data)
+          })
+      }
+    }
 }
