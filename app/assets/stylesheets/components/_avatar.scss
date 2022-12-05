@@ -27,10 +27,14 @@
 
   .avatar-card {
     width: 55px;
+    height: 55px;
     border-radius: 50%;
+    object-fit: cover;
   }
 
   .avatar-profile {
-    width: 200px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
+    object-fit: cover;
   }
