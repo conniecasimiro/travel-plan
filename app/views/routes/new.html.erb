@@ -2,7 +2,7 @@
   <div class="container-width" id="bg-blue" data-controller="add-method">
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
-      <h5>Where did you first arrive on your trop?</h5>
+      <h5>Where did you first arrive on your trip?</h5>
     <div class="add-travel" data-add-method-target="button">
       <h2>Add travel method</h2>
       <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
@@ -51,7 +51,7 @@
         <% end %>
       </div>
       <% unless @trip.routes.empty? %>
-      <p>Or, if you're finished continue to the next step:</p>
+      <h5><strong>Or</strong>, if you're finished continue to the next step:</h5>
       <%= link_to "Continue", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-light " %>
       <% end %>
       <% end %>
