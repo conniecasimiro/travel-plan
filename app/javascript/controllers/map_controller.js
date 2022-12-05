@@ -13,7 +13,7 @@ export default class extends Controller {
     myarray: Array
   }
 
-  static targets = ["card", "map"]
+  static targets = ["card", "map", "maplandmarks"]
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -34,6 +34,19 @@ export default class extends Controller {
 
     });
 
+    this.maplandmarks = new mapboxgl.Map({
+      container: this.maplandmarksTarget,
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v10',
+
+
+    });
+
+    // landmark map
+    this.#addLmarkersToMap()
+    this.#fitMapToLmarkers()
+
+    // route map
     this.#fitMapToRmarkers()
     this.#addRmarkersplaneToMap()
     this.#addRmarkerscarToMap()
@@ -85,7 +98,7 @@ export default class extends Controller {
     this.lmarkersValue.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
+        .addTo(this.maplandmarks)
     })
   }
 
@@ -93,7 +106,7 @@ export default class extends Controller {
   #fitMapToLmarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.lmarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
   #addRmarkersToMap() {
