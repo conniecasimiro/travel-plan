@@ -44,6 +44,7 @@ class LandmarksController < ApplicationController
   def destroy
     @landmark = Landmark.find(params[:id])
     @landmark.destroy
+    redirect_to trips_path
   end
 
   private
