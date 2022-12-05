@@ -22,7 +22,7 @@
       <% @trips.each do |trip| %>
         <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
           <% unless trip.landmarks.empty? %>
-            <%= render "shared/card", title: trip.title, duration: trip.duration, photo: trip.landmarks[0].photo.key, tags: trip.tags, likes: trip.likes%>
+            <%= render "shared/card", title: trip.title, duration: trip.duration, photo: trip.landmarks[0].photo.key, tags: trip.tags, likes: trip.likes, userphoto: trip.user.photo.key %>
           <% end %>
         <% end %>
       <% end %>

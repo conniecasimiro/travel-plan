@@ -9,6 +9,33 @@
   margin-bottom: 20px;
 }
 
+.route-landmark {
+  overflow: hidden;
+  position: relative;
+  background: #e9f4fb;;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.081);
+  gap: 19px;
+  display: flex;
+  align-items: center;
+  width: 240px;
+  height: 55px;
+  border-radius: 5px 5px 5px 5px;
+    h5 {
+      margin-bottom: 0px;
+    }
+}
+.route-landmark-img {
+  width: 80px;
+  height: 55px;
+  border-width: thin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+  }
 .card-landmark {
   margin: 10px;
   width: 630px;

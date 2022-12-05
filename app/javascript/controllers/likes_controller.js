@@ -8,7 +8,8 @@ export default class extends Controller {
     console.log(this.counterTarget)
   }
 
-  update() {
+  update(event) {
+    event.preventDefault()
     this.counterTarget.innerText = parseInt(this.counterTarget.innerText) + 1
     this.likeTarget.setAttribute("disabled", "")
     console.log(this.formTarget)

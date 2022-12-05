@@ -21,8 +21,14 @@ user1 = User.create!(
   bio: "Three years ago I quit my job and decised to backpack across the world. I wanted to visit at 100 countries before I turned 50."
 )
 
+user1file1 = URI.open('https://mensline.org.au/wp-content/uploads/2020/05/Excuses-header-1024x683.jpg')
+user1.photo.attach(io: user1file1, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
+user1file2 = URI.open('https://www.campusfrance.org/sites/default/files/styles/mobile_visuel_principal_page/public/medias/images/2022-02/Ocean.jpg?itok=tHyKsBah')
+user1.coverphoto.attach(io: user1file2, filename: 'TorresDelPaine.jpg', content_type: 'image/jpg')
+user1.save
+
 trip1 = Trip.create!(
-  title: "City to Valley - North to South of Chile in 2 weeks",
+  title: "City to Valley - North to South of Chile",
   location: "Chile",
   duration: 13,
   description: "Stunning diverse landscapes cover Chile all the way from the North to the South. Our 2 week Chile itinerary will take you through four regions: the wild south of Patagonia in Torres Del Paine National Park, the bohemian port city of Valparaiso, the mystical Elqui Valley where mountains are covered in cacti, and lastly to the Atacama Desert, considered one of the best places in the world for star gazing. Your 2 weeks in Chile will be filled with adventure!",
@@ -42,11 +48,6 @@ Tag.create!(
 
 Tag.create!(
   title: "City",
-  trip_id: trip1.id
-)
-
-Tag.create!(
-  title: "Dessert",
   trip_id: trip1.id
 )
 

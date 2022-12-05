@@ -28,12 +28,16 @@
   right: 10px;
   }
 
-.avatar-card {
-  width: 55px;
-  border-radius: 50%;
-}
+  .avatar-card {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-.avatar-profile {
-  width: 200px;
-  border-radius: 50%;
-}
+  .avatar-profile {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+  }

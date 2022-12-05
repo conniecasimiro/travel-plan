@@ -1,28 +1,30 @@
 <%= render "shared/navbar" %>
 <body class="body">
-<div class="banner-profile" style="background-image: url('<%= cl_image_path @user.coverphoto.key%>')">
-  </div>
-<div class="container-profile">
-<div class="profile-info">
-    <% if @user.photo.attached? %>
-     <%= cl_image_tag @user.photo.key, class: "avatar-profile" %>
-     <% end %>
+<div class="banner-profile" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.coverphoto.key%>');">
+  <div class="container d-flex">
+    <div class="profile-info">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-profile" %>
+      <% end %>
     </div>
     <div class="profile-1">
-    <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
-    <h4><%= @user.bio %></h4>
+      <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
+      <h4><%= @user.bio %></h4>
     </div>
+  </div>
 </div>
+
 <div class="container">
-<h1>Information to go here</h1>
+<h1>My trips</h1>
 <div class="container-square">
-        <%= render "shared/card" %>
-        <%= render "shared/card" %>
-        <%= render "shared/card" %>
-        <%= render "shared/card" %>
-        <%= render "shared/card" %>
-        <%= render "shared/card" %>
-        <%= render "shared/card" %>
+  <% @trips.each do |trip| %>
+    <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+        <% unless trip.landmarks.empty? %>
+          <%= render "shared/card", title: trip.title, duration: trip.duration, photo: trip.landmarks[0].photo.key, tags: trip.tags, likes: trip.likes, userphoto: trip.user.photo.key %>
+        <% end %>
+    <% end %>
+  <% end %>
+
 </div>
 
 </div>

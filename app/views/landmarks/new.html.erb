@@ -7,7 +7,8 @@
       <%# <% end %>
 
       <% if @trip.routes.count == 1 %>
-        <h5>Please add at least one landmark or highlight from time in:</h5>
+        <h5>Please add at least one landmark or highlight from your time in:</h5>
+        <%# The route card for a single route %>
         <div class="create-route">
           <div class="create-icon">
             <img src="<%= @route_icons[@route.method.to_sym.downcase] %>">
@@ -15,6 +16,15 @@
           <p>Location: </p>
           <p><strong> <%= @route.destination %></strong></p>
         </div>
+        <%# The routes landmark cards  %>
+        <% @route.landmarks.each do |landmark| %>
+          <div class="route-landmark">
+            <%=cl_image_tag landmark.photo.key, class: "route-landmark-img"  %>
+            <div class="route-landmark-info">
+              <h5><strong><%= landmark.title.truncate(14) %></strong></h5>
+            </div>
+          </div>
+        <% end %>
         <div class="add-travel" data-add-method-target="button">
           <h2>Add landmark</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
@@ -32,7 +42,8 @@
           <a><%= link_to "Create trip!", trip_path(@trip), class: "btn btn-light mb-4" %></a>
         <% end %>
       <% else %>
-        <h5>Please add at least one landmark or highlight from time in:</h5>
+        <h5>Please add at least one landmark or highlight from your time in:</h5>
+
         <div class="create-route">
           <div class="create-icon">
             <img src="<%= @route_icons[@route.method.to_sym.downcase] %>">
@@ -40,6 +51,17 @@
           <p>Location: </p>
           <p><strong> <%= @route.destination %></strong></p>
         </div>
+
+        <% @route.landmarks.each do |landmark| %>
+          <div class="route-landmark">
+            <%=cl_image_tag landmark.photo.key, class: "route-landmark-img"  %>
+            <div class="route-landmark-info">
+              <h5><strong><%= landmark.title.truncate(14) %></strong></h5>
+            </div>
+          </div>
+        <% end %>
+
+
         <div class="add-travel" data-add-method-target="button">
           <h2>Add landmark</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
