@@ -24,7 +24,7 @@ export default class extends Controller {
 
     console.log(this.myarrayValue)
 
-    console.log("hellooo!")
+    console.log("helloo")
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
@@ -42,6 +42,7 @@ export default class extends Controller {
     this.#addRmarkersbikeToMap()
 
     this.map.on('load', () => {
+      console.log("pleaseee")
         this.map.addSource('route', {
             'type': 'geojson',
             'data': {
