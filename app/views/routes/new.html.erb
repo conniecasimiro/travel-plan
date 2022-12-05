@@ -1,5 +1,8 @@
 <div id="container-flex">
   <div class="container-width" id="bg-blue" data-controller="add-method">
+    <%= link_to  trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your trip?"} do %>
+      <div style="color:black;" class="fa-solid fa-delete-left"> </div>
+    <% end %>
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
       <h5>Where did you first arrive on your trip?</h5>

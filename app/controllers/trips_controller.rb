@@ -124,12 +124,12 @@ class TripsController < ApplicationController
     else
       @trips = Trip.all
     end
-    # @trips = Trip.all
   end
 
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
+    redirect_to trips_path, status: :see_other, notice: "Your trip was successfully deleted!"
   end
 
   private
