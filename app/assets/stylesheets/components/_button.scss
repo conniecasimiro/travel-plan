@@ -63,25 +63,3 @@
     list-style: none;
   }
 }
-
-.like-button {
-  text-decoration: none;
-  border: none;
-  background-color: $bgblue;
-  font-size: 80px;
-  }
-
-
-  .like-button:disabled {
-      text-decoration: none;
-      border: none;
-      background-color: $bgblue;
-      color: red;
-    }
-
-
-.likes-counter {
-  margin-top: -30px;
-  text-align: center;
-    font-size: 30px;
-}

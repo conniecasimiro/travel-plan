@@ -1,8 +1,18 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container">
-    <h1>Find inspiration for your next trip from one of our many users...</h1>
-    <div class="indexcards">
+  <div class="container mt-4">
+    <h2>Find inspiration for your next trip from one of our users...</h2>
+    <div>
+      <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a Trip!"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+    <div class="indexcards mt-2">
       <% @trips.each do |trip| %>
         <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
           <% unless trip.landmarks.empty? %>

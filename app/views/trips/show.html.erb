@@ -27,15 +27,12 @@
         </div>
       </div>
     </div>
-
-
     <div class="d-flex">
       <div class="carouselwidth">
         <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <%= cl_image_tag @landmarks[0].photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
-
               <div class="carouselcaption d-flex align-items-end">
                 <h1 class="me-2"><%= @trip.title %></h1>
                 <h3><em>by <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
