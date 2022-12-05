@@ -57,3 +57,28 @@
     font-size: 28px;
   }
 }
+
+
+.carouselcaption {
+  position: absolute;
+  right: 3%;
+  bottom: 1.25rem;
+  left: 3%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 0px 25px #000000;
+
+  h1 {
+    font-weight: 900;
+  }
+}
+
+.carouselwidth {
+  width: 66%;
+}
+
+.mapwidth {
+  width: 34%;
+}

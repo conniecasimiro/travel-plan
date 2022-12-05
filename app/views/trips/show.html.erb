@@ -1,6 +1,6 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container-landmark-outer"
+  <div
     data-controller="map"
     data-map-lmarkers-value="<%= @lmarkers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -12,18 +12,12 @@
     data-map-rmarkersbike-value="<%= @rmarkersbike.to_json %>"
     data-map-myarray-value= "<%= @arr%>">
 
-  <div class="topinfo container-title d-flex justify-content-between">
-    <%# trip title and description %>
-    <div class="title d-flex align-items-end">
-      <h1 class="me-2"><%= @trip.title %></h1>
-      <h3><em><%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
-    </div>
 
     <%# Trip likes counter and button connected to JS controller likes %>
-    <div class="likes-section sticky-top ">
-      <div class="likes d-flex align-items-end" data-controller="likes" data-likes-target="likes">
-        <div class="likes-counter" data-likes-target="counter"><%= @trip.likes %></div>
+    <div class="likes-section">
+      <div class="likes" data-controller="likes" data-likes-target="likes">
         <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
+        <div class="likes-counter" data-likes-target="counter"><%= @trip.likes %></div>
         <div class="d-none">
           <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
             <%= f.input :likes, input_html: {value: @trip.likes += 1}  %>
@@ -32,24 +26,27 @@
         </div>
       </div>
     </div>
-  </div>
 
 
-  <div class="infoscon">
-
+  <div class="d-flex">
+    <div class="carouselwidth">
       <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
-        <%# <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div> %>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <%= cl_image_tag @landmarks[0].photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+            <%= cl_image_tag @landmarks[0].photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+
+            <div class="carouselcaption d-flex align-items-end">
+              <h1 class="me-2"><%= @trip.title %></h1>
+              <h3><em>by <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
+            </div>
           </div>
           <% @landmarks[1..-1].each do |landmark| %>
             <div class="carousel-item">
-              <%= cl_image_tag landmark.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+              <%= cl_image_tag landmark.photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+              <div class="carouselcaption d-flex align-items-end">
+                <h1 class="me-2"><%= @trip.title %></h1>
+                <h3><em>by <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
+              </div>
             </div>
           <% end %>
         </div>
@@ -62,14 +59,24 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+    </div>
+
+    <div class="mapwidth">
+      <div style="width: 100%; height: 550px;" class="d-flex"
+        data-map-target="map">
+      </div>
+    </div>
+  </div>
+
+  <div class="container-landmark-outer">
+  <div class="infoscon">
+
+
       <%# <%= @trip.photo %>
       <p><%= @trip.description %></p>
     </div>
 
       <%# map added and info about it %>
-      <div style="width: 100%; height: 600px;" class="d-flex"
-        data-map-target="map">
-      </div>
 
     <%# landmark title and info %>
   <div class="something">
@@ -121,4 +128,6 @@
     <div class="bottom">
       <%= render "shared/footer" %>
     </div>
+
+  </div>
 </div>
