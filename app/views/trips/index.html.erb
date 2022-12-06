@@ -9,15 +9,15 @@
         class: "form-control",
         placeholder: "Find a Trip!"
       %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
     <% end %>
     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group"></div>
     <div class="d-flex justify-content-center fitler-buttons">
-       <%=link_to "Hiking", trips_path(filter: "Hiking"), class: "button-17 #{"selected" if params[:filter] == "Hiking"}" %>
-       <%=link_to "Mountains", trips_path(filter: "Mountains"), class: "button-17 #{"selected" if params[:filter] == "Mountains"}" %>
-       <%=link_to "City", trips_path(filter: "City"), class: "button-17 #{"selected" if params[:filter] == "City"}" %>
-       <%=link_to "Beach", trips_path(filter: "Beach"), class: "button-17 #{"selected" if params[:filter] == "Beach"}" %>
-       <%=link_to "Jungle", trips_path(filter: "Jungle"), class: "button-17 #{"selected" if params[:filter] == "Jungle"}" %>
+       <%=link_to "Hiking", trips_path(filter: "Hiking"), class: "button-17", id: "#{"selected" if params[:filter] == "Hiking"}" %>
+       <%=link_to "Mountains", trips_path(filter: "Mountains"), class: "button-17", id: "#{"selected" if params[:filter] == "Mountains"}" %>
+       <%=link_to "City", trips_path(filter: "City"), class: "button-17", id: "#{"selected" if params[:filter] == "City"}" %>
+       <%=link_to "Beach", trips_path(filter: "Beach"), class: "button-17", id: "#{"selected" if params[:filter] == "Beach"}" %>
+       <%=link_to "Jungle", trips_path(filter: "Jungle"), class: "button-17", id: "#{"selected" if params[:filter] == "Jungle"}" %>
     </div>
   </div>
     <div class="indexcards mt-2">
