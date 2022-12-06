@@ -189,7 +189,7 @@ route4 = Route.create!(
 landmark7 = Landmark.create!(
   title: "Paranal Obervatory",
   location: "Taltal, Antofagasta, Chile",
-  description: " get to see the telescope and where the astronomers work, we got to see their famous residence featured in the movie James Bond Quantum Solace! Even better, the tour is free. Space is limited since they only run tours on Saturdays.",
+  description: "Get to see the telescope and where the astronomers work, we got to see their famous residence featured in the movie James Bond Quantum Solace! Even better, the tour is free.",
   route_id: route4.id
 )
 

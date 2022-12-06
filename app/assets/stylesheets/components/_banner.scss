@@ -72,18 +72,33 @@
   }
 }
 
-.carouselwidth {
-  width: 66%;
-}
-
-.mapwidth {
-  width: 34%;
+.mapandlandmarks {
+  position: relative;
 }
 
 .maplandmarks {
   width: 50%;
+  position: sticky;
 }
 
 .landmarkwidth {
   width: 50%;
+}
+
+.carouselwidth {
+  width: 100%;
+}
+
+.mymap {
+  width: 100%;
+  height: 600px;
+}
+#mymap {
+  width: 100%;
+  height: 600px;
+}
+
+#mymap2 {
+  width: 100%;
+  height: 600px;
 }
