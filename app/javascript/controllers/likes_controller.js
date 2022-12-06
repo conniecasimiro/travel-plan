@@ -2,8 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="likes"
 export default class extends Controller {
-  static targets = ["like", "counter", "form", "delete", "formWrapper"]
 
+  static targets = ["like", "counter", "form", "delete", "formWrapper"]
   update(event) {
     event.preventDefault()
     const token = document.querySelector('meta[name="csrf-token"]').content
