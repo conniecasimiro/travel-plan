@@ -15,6 +15,8 @@ p {
 
 .red {
   color:red;
+  animation: heartBeat; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
 }
 
 .likes {
