@@ -25,7 +25,7 @@
         <% end %>
         <div class="add-travel" data-add-method-target="button">
           <h2>Add landmark</h2>
-          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm click->add-method#revealMap"></i>
+          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm click->address-autocomplete#revealMap"></i>
         </div>
         <div class="d-none" data-add-method-target="form" >
           <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
@@ -34,8 +34,8 @@
           <%# f.input :location, label: "Landmark address"%>
 
           <%=f.input :location,
-          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-          wrapper_html: {data: {address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
+          <div data-address-autocomplete-target="search"></div>
 
           <%= f.input :photo, label: "Photo", as: :file%>
           <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
