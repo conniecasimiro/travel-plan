@@ -100,6 +100,7 @@ class TripsController < ApplicationController
       sql_query = <<~SQL
         trips.location ILIKE :query
         OR trips.description ILIKE :query
+        OR trips.title ILIKE :query
         OR users.first_name ILIKE :query
         OR users.last_name ILIKE :query
       SQL
