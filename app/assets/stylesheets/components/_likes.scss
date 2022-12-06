@@ -4,7 +4,7 @@ margin: 0;
 position: absolute;
 right: 20px;
 top: 70px;
-z-index: 1;
+z-index: 3;
 p {
   font-size: 30px;
   padding-right: 10px;
@@ -40,7 +40,20 @@ p {
 
 
 .likes-counter {
-  margin-top: -30px;
+  margin-top: -20px;
   text-align: center;
   font-size: 30px;
+  color: whitesmoke;
+  backdrop-filter: invert(90%);
+  margin-top: 1px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+}
+
+.like-button {
+  backdrop-filter: invert(90%);
+  margin-bottom: 0px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
