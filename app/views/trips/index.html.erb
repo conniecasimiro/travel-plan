@@ -1,6 +1,6 @@
 <div class="body">
   <%= render "shared/navbar" %>
-  <div class="container mt-4">
+  <div class="container mt-4" data-controller="filter">
     <h2 class="mb-3">Find inspiration for your next trip from one of our users...</h2>
     <div class="mb-3">
       <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
@@ -13,20 +13,11 @@
     <% end %>
     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group"></div>
     <div class="d-flex justify-content-center fitler-buttons">
-      <input type="Checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-      <label  class="button-17" for="btncheck1">Hiking</label>
-
-      <input type="Checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-      <label class="button-17" for="btncheck2">Mountains</label>
-
-      <input type="Checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-      <label class="button-17" for="btncheck3">City</label>
-
-      <input type="Checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-      <label class="button-17" for="btncheck3">Beach</label>
-
-      <input type="Checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-      <label id="border-right" class="button-17" for="btncheck3">Jungle</label>
+       <%=link_to "Hiking", trips_path(filter: "Hiking"), class: "button-17 #{"selected" if params[:filter] == "Hiking"}" %>
+       <%=link_to "Mountains", trips_path(filter: "Mountains"), class: "button-17 #{"selected" if params[:filter] == "Mountains"}" %>
+       <%=link_to "City", trips_path(filter: "City"), class: "button-17 #{"selected" if params[:filter] == "City"}" %>
+       <%=link_to "Beach", trips_path(filter: "Beach"), class: "button-17 #{"selected" if params[:filter] == "Beach"}" %>
+       <%=link_to "Jungle", trips_path(filter: "Jungle"), class: "button-17 #{"selected" if params[:filter] == "Jungle"}" %>
     </div>
   </div>
     <div class="indexcards mt-2">

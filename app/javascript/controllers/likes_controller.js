@@ -4,8 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["like", "counter", "form"]
   connect() {
-    console.log(this.likeTarget)
-    console.log(this.counterTarget)
+    // console.log(this.likeTarget)
+    // console.log(this.counterTarget)
   }
 
   update(event) {
