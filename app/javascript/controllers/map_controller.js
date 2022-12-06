@@ -10,7 +10,7 @@ export default class extends Controller {
     rmarkersboat: Array,
     rmarkersbike: Array,
     rmarkers: Array,
-    index: Number,
+    landmarkarray: Array,
     myarray: Array
   }
 
@@ -27,9 +27,9 @@ export default class extends Controller {
 
     console.log(Number(this.lengthTarget.innerText))
 
-    console.log(this.indexValue)
+    console.log(this.landmarkarrayValue)
 
-    console.log("helloo00")
+    console.log("hello!!o")
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
@@ -46,6 +46,9 @@ export default class extends Controller {
 
 
     });
+
+    this.a = 0;
+    this.b = 0;
 
     // landmark map
     this.#addLmarkersToMap()
@@ -96,54 +99,79 @@ export default class extends Controller {
 
   }
 
+
     zoom0 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[0].lng, this.rmarkersValue[0].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(0, (this.landmarkarrayValue[0])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 1500 })
     }
 
     zoom1 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[1].lng, this.rmarkersValue[1].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(this.landmarkarrayValue[0], (this.landmarkarrayValue[0] + this.landmarkarrayValue[1])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 1500 })
     }
 
     zoom2 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[2].lng, this.rmarkersValue[2].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1], (this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
     }
 
     zoom3 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[3].lng, this.rmarkersValue[3].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
     }
 
+
     zoom4 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[4].lng, this.rmarkersValue[4].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
     }
 
     zoom5 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[5].lng, this.rmarkersValue[5].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
     }
 
     zoom6 () {
-      console.log("helooooo0")
+      console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      bounds.extend([ this.rmarkersValue[6].lng, this.rmarkersValue[6].lat ])
-      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
     }
+
+    zoom7 () {
+      console.log("a")
+      const bounds = new mapboxgl.LngLatBounds()
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
+    }
+
+
+    zoom8 () {
+      console.log("a")
+      const bounds = new mapboxgl.LngLatBounds()
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
+    }
+
+    zoom9 () {
+      console.log("a")
+      const bounds = new mapboxgl.LngLatBounds()
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8] + this.landmarkarrayValue[])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
+    }
+
 
 
   #addLmarkersToMap() {

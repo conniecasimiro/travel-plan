@@ -91,6 +91,11 @@ class TripsController < ApplicationController
     @routes.each do |route|
       @arr << [route.longitude, route.latitude]
     end
+
+    @landmarkarr = []
+    @routes.each do |route|
+      @landmarkarr << route.landmarks.length
+    end
   end
 
   def index
