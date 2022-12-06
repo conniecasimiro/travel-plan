@@ -168,7 +168,7 @@ export default class extends Controller {
     zoom9 () {
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
-      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8] + this.landmarkarrayValue[])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+      this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8] + this.landmarkarrayValue[9])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
       this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 14, duration: 1500 })
     }
 
