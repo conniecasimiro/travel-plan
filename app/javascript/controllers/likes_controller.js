@@ -2,35 +2,27 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="likes"
 export default class extends Controller {
-  static targets = ["like", "counter", "form"]
-  connect() {
-    console.log(this.likeTarget)
-    console.log(this.counterTarget)
-  }
+  static targets = ["like", "counter", "form", "delete", "formWrapper"]
 
   update(event) {
     event.preventDefault()
-    if (document.getElementsByClassName('red').length > 0) {
+    const token = document.querySelector('meta[name="csrf-token"]').content
+    if (this.hasDeleteTarget) {
       this.likeTarget.classList.remove('red')
       this.counterTarget.innerText = parseInt(this.counterTarget.innerText) - 1
-      // this.likeTarget.setAttribute("disabled", "")
-      console.log(this.formTarget)
+      fetch(this.deleteTarget.innerText, {
+        method: "DELETE",
+        headers: { "Accept": "application/json", "X-CSRF-Token": token },
+      })
+        .then(response => response.json())
+        .then((data) => {
+          console.log("Deleted bookmark", data)
+          this.formWrapperTarget.innerHTML = data.form
+        })
 
-      fetch(this.formTarget.action, {
-        method: this.formTarget.method,
-        headers: { "Accept": "application/json" },
-        body: new FormData(this.formTarget)
-      })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data)
-      })
     } else {
       this.likeTarget.classList.add('red')
       this.counterTarget.innerText = parseInt(this.counterTarget.innerText) + 1
-        // this.likeTarget.setAttribute("disabled", "")
-        console.log(this.formTarget)
-
         fetch(this.formTarget.action, {
           method: this.formTarget.method,
           headers: { "Accept": "application/json" },
@@ -38,8 +30,10 @@ export default class extends Controller {
         })
           .then(response => response.json())
           .then((data) => {
-            console.log(data)
+            console.log("Created bookmark", data)
+            this.formWrapperTarget.innerHTML = data.form
           })
       }
     }
+
 }

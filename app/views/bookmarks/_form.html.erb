@@ -1,0 +1,10 @@
+  <% bookmark = Bookmark.find_by(user: current_user, trip: trip) %>
+  <% if bookmark %>
+    <div data-likes-target="delete">
+      <%= bookmark_path(bookmark) %>
+    </div>
+  <% else %>
+    <%= simple_form_for ([trip, Bookmark.new]), data: {likes_target: "form"} do |f| %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
