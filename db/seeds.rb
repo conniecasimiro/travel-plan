@@ -62,8 +62,8 @@ trip1.tags.push(beach)
 
 route0 = Route.create!(
   destination: "Puerto Natales",
-  method: "Plane",
-  duration: 3,
+  method: "first_location ",
+  duration: "2",
   travel_date: "2022-11-10",
   trip_id: trip1.id
 )
@@ -225,8 +225,8 @@ trip2.tags.push(jungle)
 
 route5 = Route.create!(
   destination: "San José",
-  method: "Plane",
-  duration: 3,
+  method: "first_location",
+  duration: "2",
   travel_date: "2022-01-5",
   trip_id: trip2.id
 )
@@ -325,7 +325,7 @@ landmark15.save
 
 route8 = Route.create!(
   destination: "Monteverde, Costa Rica",
-  method: "Boat",
+  method: "Ferry",
   duration: 3,
   travel_date: "2022-01-11",
   trip_id: trip2.id
@@ -388,11 +388,10 @@ trip3.tags.push(beach)
 trip3.tags.push(city)
 
 
-
 route10 = Route.create!(
   destination: "Petare",
-  method: "Motorcycle",
-  duration: 4,
+  method: "first_location",
+  duration: "2",
   travel_date: "2022-01-14",
   trip_id: trip3.id
 )
@@ -452,7 +451,7 @@ landmark23.save
 
 route12 = Route.create!(
   destination: "Los Medanos de Coro",
-  method: "Plane",
+  method: "Motorcycle",
   duration: 1,
   travel_date: "2022-12-14",
   trip_id: trip3.id

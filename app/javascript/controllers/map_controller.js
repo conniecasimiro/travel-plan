@@ -9,50 +9,44 @@ export default class extends Controller {
     rmarkersbus: Array,
     rmarkersboat: Array,
     rmarkersbike: Array,
+    rmarkersyacht: Array,
+    rmarkersfirst: Array,
     rmarkers: Array,
     landmarkarray: Array,
     myarray: Array
   }
 
-  static targets = ["card", "map", "maplandmarks", "length"]
+  static targets = ["card", "map", "maplandmarks", "length", "btn", "place"]
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
-
 
     console.log(this.rmarkersValue)
 
     console.log(this.myarrayValue)
 
-    console.log(Number(this.lengthTarget.innerText))
+    console.log(this.rmarkersfirstValue)
 
     console.log(this.landmarkarrayValue)
 
-    console.log("hello!!o")
+    console.log("hello1")
+
+    this.btnTarget.focus()
+
+    console.log(this.btnTarget.focus)
 
     this.map = new mapboxgl.Map({
-      container: this.mapTarget,
+      container: this.placeTarget,
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: 'mapbox://styles/mapbox/streets-v10',
 
     });
 
-    this.maplandmarks = new mapboxgl.Map({
-      container: this.maplandmarksTarget,
-        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-        style: 'mapbox://styles/mapbox/streets-v10',
 
-
-
-    });
-
-    this.a = 0;
-    this.b = 0;
 
     // landmark map
-    this.#addLmarkersToMap()
-    this.#fitMapToLmarkers()
+    // this.#addLmarkersToMap()
+    // this.#fitMapToLmarkers()
 
     // route map
     this.#fitMapToRmarkers()
@@ -61,6 +55,8 @@ export default class extends Controller {
     this.#addRmarkersbusToMap()
     this.#addRmarkersboatToMap()
     this.#addRmarkersbikeToMap()
+    this.#addRmarkersfirstToMap()
+    this.#addRmarkersyachtToMap()
 
     this.map.on('load', () => {
       console.log("pleaseee")
@@ -97,6 +93,71 @@ export default class extends Controller {
     // this.#addLmarkersToMap()
     // this.#fitMapToLmarkers()
 
+  }
+
+  routes () {
+    this.placeTarget.hidden = false
+    console.log("im here")
+    this.map = new mapboxgl.Map({
+      container: this.placeTarget,
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v10',
+
+    });
+    this.#fitMapToRmarkers()
+    this.#addRmarkersplaneToMap()
+    this.#addRmarkerscarToMap()
+    this.#addRmarkersbusToMap()
+    this.#addRmarkersboatToMap()
+    this.#addRmarkersbikeToMap()
+    this.#addRmarkersfirstToMap()
+    this.#addRmarkersyachtToMap()
+
+    this.map.on('load', () => {
+      console.log("pleaseee")
+        this.map.addSource('route', {
+            'type': 'geojson',
+            'data': {
+                'type': 'Feature',
+                'properties': {},
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': this.myarrayValue
+                }
+            }
+        });
+        this.map.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': 'route',
+            'layout': {
+                'line-join': 'round',
+                'line-cap': 'round'
+            },
+            'paint': {
+                'line-color': '#888',
+                'line-width': 5
+            }
+        });
+    });
+  }
+
+  landmarks () {
+    this.placeTarget.hidden = false
+    this.maplandmarks = new mapboxgl.Map({
+      container: this.placeTarget,
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v10',
+
+    });
+    this.#addLmarkersToMap()
+    this.#fitMapToLmarkers()
+
+  }
+
+  comments () {
+    this.placeTarget.hidden = true
+    this.mapTarget.hidden = true
   }
 
 
@@ -247,6 +308,26 @@ export default class extends Controller {
     this.rmarkersbikeValue.forEach((marker) => {
       const el = document.createElement('div');
       el.className = 'markerbike';
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
+
+  #addRmarkersfirstToMap() {
+    this.rmarkersfirstValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'first';
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
+
+  #addRmarkersyachtToMap() {
+    this.rmarkersyachtValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'markeryacht';
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)

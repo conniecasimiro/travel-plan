@@ -12,6 +12,8 @@
     data-map-rmarkersbus-value="<%= @rmarkersbus.to_json %>"
     data-map-rmarkersboat-value="<%= @rmarkersboat.to_json %>"
     data-map-rmarkersbike-value="<%= @rmarkersbike.to_json %>"
+    data-map-rmarkersyacht-value="<%= @rmarkersyacht.to_json %>"
+    data-map-rmarkersfirst-value="<%= @rmarkersfirst.to_json %>"
     data-map-landmarkarray-value= "<%= @landmarkarr %>"
     data-map-myarray-value= "<%= @arr%>">
 
@@ -70,18 +72,25 @@
       <div class="mapandlandmarks d-flex">
         <div class="maplandmarks">
           <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Routes</button>
-              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Landmarks</button>
+            <div class="d-flex" id="" role="tablist">
+              <button class="mynav-link2 connie" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" data-map-target="btn" data-action="click->map#routes">Routes</button>
+              <button class="mynav-link2 connie" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" data-action="click->map#landmarks">Landmarks</button>
+              <button class="mynav-link2 connie" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" data-action="click->map#comments">Comments</button>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-              <div class="mymap" data-map-target="map"></div>
+            <div id="divv" data-map-target="place">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div class="mymap" data-map-target="map"></div>
+              </div>
+              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" >
+                <div class="mymap" data-map-target="maplandmarks"></div>
+              </div>
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-              <div class="mymap" data-map-target="maplandmarks"></div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0" >
+              <div id="mymap">
+                Comment lalalal
+              </div>
             </div>
           </div>
         </div>
