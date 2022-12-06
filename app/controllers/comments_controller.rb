@@ -9,14 +9,18 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.trip = @trip
-    @comment.save!
     if @comment.save
-      redirect_to trip_path(@trip)
+      respond_to do |format|
+        format.html { redirect_to trip_path(@trip), notice: "comment was successfully created." }
+        format.turbo_stream
+      end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def index
-    @comments = Comment.all
+    @quotes = Quote.ordered
   end
 
   def show
@@ -37,8 +41,11 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to trip_comments_path(@comment), notice: "Comment was successfully destroyed." }
+      format.turbo_stream
+    end
   end
-
   # def likes
   # end
 
