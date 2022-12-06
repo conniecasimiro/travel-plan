@@ -31,15 +31,11 @@
           <div class="create-icon">
             <img src="<%= @route_icons[route.method.to_sym.downcase] %>">
           </div>
-          <% if route.method == "first_location" %>
-          <% else %>
-            <p><%= route.method %> to: </p>
-          <% end %>
           <p><strong> <%= route.destination.truncate(30) %></strong></p>
         </div>
       <% end %>
     </div>
-        <div class="add-travel" data-add-method-target="button">
+        <div class="add-travel" data-add-method-target="button2">
           <h2>Add Travel Method</h2>
           <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm2 click->address-autocomplete#revealMap"></i>
         </div>
@@ -70,6 +66,6 @@
       <i class="fa-solid fa-circle" id="grey-icon"></i>
       <i class="fa-solid fa-circle"></i>
     </div>
-      <img src="https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png">
+      <%=image_tag("travel_methods")%>
   </div>
 </div>
