@@ -1,16 +1,16 @@
 <div class="card-square">
   <div class="square-1">
     <div class="card-square-img">
-      <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+      <% if trip.landmarks[0].photo.attached? %>
+        <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+      <% end %>
     </div>
     <div class="avatar-end">
         <% if trip.user.photo.attached? %>
           <%= cl_image_tag trip.user.photo.key, class: "avatar-card"%>
         <% end %>
-        <%# <%= image_tag userphoto, class: "avatar-card"%>
     </div>
   </div>
-
   <div class="card-square-infos">
     <div class="square-2">
       <h5><%= trip.title %></h5>

@@ -23,10 +23,16 @@
          <h1>My trips</h1>
         <div class="container-square">
           <% @trips.each do |trip| %>
-          <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
-            <% unless trip.landmarks.empty? %>
-            <%= render "shared/card", title: trip.title, duration: trip.duration, photo: trip.landmarks[0].photo.key, tags: trip.tags, likes: trip.likes, userphoto: trip.user.photo.key %>
+            <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+              <% unless trip.landmarks.empty? %>
+               <%= render "shared/card", trip: trip %>
+              <% end %>
             <% end %>
+          <% end %>
+
+          <% @bookmarks.each do |book| %>
+            <% if book.present? %>
+              <%= render "shared/card", trip: book.trip %>
             <% end %>
           <% end %>
         </div>

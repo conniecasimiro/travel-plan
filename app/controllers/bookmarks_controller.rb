@@ -18,7 +18,7 @@ class BookmarksController < ApplicationController
   end
 
   def index
-    @bookmark.all
+    @bookmark = Bookmark.all
   end
 
   def show
