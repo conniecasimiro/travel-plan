@@ -1,0 +1,29 @@
+.mynav-link {
+  background-color: #b1b1b1;
+  border: none;
+  width: 50%;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: 300;
+}
+
+
+
+.mynav-link2 {
+  background-color: #dbdbdb;
+  border: none;
+  width: 50%;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-weight: 400;
+}
+
+.connie:focus {
+  background-color:  #c6c6c6;
+}
+
+.connie:focus {
+  outline-width: 0;
+}
