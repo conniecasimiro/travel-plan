@@ -84,3 +84,5 @@ gem "pg_search"
 gem "opensearch-ruby"
 
 gem "searchkick", "~> 4.0"
+
+gem 'humanize'

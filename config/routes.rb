@@ -8,9 +8,8 @@ Rails.application.routes.draw do
     resources :landmarks, only: [:index, :edit, :destroy, :show, :update]
     resources :routes, only: [:index, :create, :new, :edit, :destroy, :show, :update ]do
       resources :landmarks, only: [:create, :new]
+      resources :tags, only: [:create, :new]
     end
-
-    resources :tags, only: [:create, :new, :edit, :destroy, :update]
     resources :comments, only: [:index, :create, :new, :edit, :destroy, :show, :update]
   end
   resources :bookmarks, only: [:destroy]

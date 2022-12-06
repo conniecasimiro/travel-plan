@@ -1,17 +1,21 @@
-<div id="container-flex">
+<div id="container-flex" data-controller="add-method">
   <div class="container-width" id="bg-blue">
     <%= link_to trips_path(@trip) do %>
     <div style="color:black;" class="fa-solid fa-delete-left"> </div>
     <% end %>
     <h1>Step one</h1>
-    <%= simple_form_for(@trip) do |f| %>
-      <%# <%= f.input :start_date, as: :date, html5: true%>
-      <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
-      <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
-      <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
-      <%= f.input :location, label: "Area", hint: "The main area of your trip"%>
-      <%= f.submit 'Continue', class: "btn btn-flat mb-4"%>
-    <% end %>
+      <%= simple_form_for(@trip) do |f| %>
+        <%# <%= f.input :start_date, as: :date, html5: true%>
+        <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
+        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
+        <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
+        <%= f.input :location, label: "Area", hint: "The main area of your trip"%>
+        <p>Trip tags</p>
+        <div class="check-boxes">
+          <%=f.collection_check_boxes :tag_ids, Tag.all, :id, :title %>
+        </div>
+        <%= f.submit 'Continue', class: "btn btn-flat mb-4"%>
+      <% end %>
   </div>
   <div class="container-width" id="bg-light-blue">
     <h1>Create your trip</h1>

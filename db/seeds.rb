@@ -12,6 +12,27 @@ Landmark.destroy_all
 Route.destroy_all
 Trip.destroy_all
 User.destroy_all
+hiking = Tag.create!(
+  title: "Hiking"
+)
+
+mountains = Tag.create!(
+  title: "Mountains"
+)
+
+city = Tag.create!(
+  title: "City"
+)
+
+jungle = Tag.create!(
+  title: "Jungle"
+)
+
+beach = Tag.create!(
+  title: "Beach"
+)
+
+
 
 user1 = User.create!(
   first_name: "John",
@@ -35,21 +56,9 @@ trip1 = Trip.create!(
   likes: 124,
   user: user1,
 )
+trip1.tags.push(hiking)
 
-Tag.create!(
-  title: "Hiking",
-  trip_id: trip1.id
-)
 
-Tag.create!(
-  title: "Mountains",
-  trip_id: trip1.id
-)
-
-Tag.create!(
-  title: "City",
-  trip_id: trip1.id
-)
 
 
 route0 = Route.create!(
@@ -180,7 +189,7 @@ route4 = Route.create!(
 landmark7 = Landmark.create!(
   title: "Paranal Obervatory",
   location: "Taltal, Antofagasta, Chile",
-  description: " get to see the telescope and where the astronomers work, we got to see their famous residence featured in the movie James Bond Quantum Solace! Even better, the tour is free. Space is limited since they only run tours on Saturdays.",
+  description: "Get to see the telescope and where the astronomers work, we got to see their famous residence featured in the movie James Bond Quantum Solace! Even better, the tour is free.",
   route_id: route4.id
 )
 
@@ -210,26 +219,9 @@ trip2 = Trip.create!(
   likes: 132,
   user: user1,
 )
+trip2.tags.push(hiking)
+trip2.tags.push(mountains)
 
-Tag.create!(
-  title: "Hiking",
-  trip_id: trip2.id
-)
-
-Tag.create!(
-  title: "Jungle",
-  trip_id: trip2.id
-)
-
-Tag.create!(
-  title: "City",
-  trip_id: trip2.id
-)
-
-Tag.create!(
-  title: "Beach",
-  trip_id: trip2.id
-)
 
 
 route5 = Route.create!(
@@ -404,25 +396,10 @@ trip3 = Trip.create!(
   user: user1,
 )
 
-Tag.create!(
-  title: "Hiking",
-  trip_id: trip3.id
-)
+trip3.tags.push(beach)
+trip3.tags.push(city)
 
-Tag.create!(
-  title: "Jungle",
-  trip_id: trip3.id
-)
 
-Tag.create!(
-  title: "City",
-  trip_id: trip3.id
-)
-
-Tag.create!(
-  title: "Beach",
-  trip_id: trip3.id
-)
 
 route10 = Route.create!(
   destination: "Petare",

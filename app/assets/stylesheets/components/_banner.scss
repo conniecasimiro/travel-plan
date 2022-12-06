@@ -33,9 +33,6 @@
   padding-top: 20px;
   margin-bottom: 20px;
   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
-
-
-
 }
 
 .container-profile {
@@ -75,10 +72,33 @@
   }
 }
 
-.carouselwidth {
-  width: 66%;
+.mapandlandmarks {
+  position: relative;
 }
 
-.mapwidth {
-  width: 34%;
+.maplandmarks {
+  width: 50%;
+  position: sticky;
+}
+
+.landmarkwidth {
+  width: 50%;
+}
+
+.carouselwidth {
+  width: 100%;
+}
+
+.mymap {
+  width: 100%;
+  height: 600px;
+}
+#mymap {
+  width: 100%;
+  height: 600px;
+}
+
+#mymap2 {
+  width: 100%;
+  height: 600px;
 }

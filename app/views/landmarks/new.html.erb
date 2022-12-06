@@ -1,11 +1,10 @@
 <div id="container-flex">
   <div class="container-width" id="bg-blue" data-controller="add-method">
-       <%# <%= link_to trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: 'Are you certain you want to delete this?' }, class: "fa-solid fa-delete-left"%>
+    <%= link_to  new_trip_route_path(@trip) do %>
+      <div style="color:black;" class="fa-solid fa-delete-left"> </div>
+    <% end %>
+       <%= link_to root_path, data: { turbo_method: :delete, turbo_confirm: 'Are you certain you want to delete this?' }, class: "fa-solid fa-delete-left" %>
       <h1>Step Three</h1>
-      <%# <% @trip.routes.last.landmarks.each do |x| %>
-      <%# <p><%=  x.title  %>
-      <%# <% end %>
-
       <% if @trip.routes.count == 1 %>
         <h5>Please add at least one landmark or highlight from your time in:</h5>
         <%# The route card for a single route %>
@@ -94,6 +93,6 @@
       <i class="fa-solid fa-circle"></i>
       <i class="fa-solid fa-circle" id="grey-icon"></i>
     </div>
-    <img src="https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png">
+    <%=image_tag("landmarks")%>
   </div>
 </div>
