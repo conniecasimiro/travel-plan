@@ -57,9 +57,8 @@ trip1 = Trip.create!(
   user: user1,
 )
 trip1.tags.push(hiking)
-
-
-
+trip1.tags.push(mountains)
+trip1.tags.push(beach)
 
 route0 = Route.create!(
   destination: "Puerto Natales",
@@ -221,7 +220,7 @@ trip2 = Trip.create!(
 )
 trip2.tags.push(hiking)
 trip2.tags.push(mountains)
-
+trip2.tags.push(jungle)
 
 
 route5 = Route.create!(
@@ -252,7 +251,7 @@ route6 = Route.create!(
 
 landmark10 = Landmark.create!(
   title: "Tortuguero National Park",
-  location: "Limón Province, Costa Rica",
+  location: "Playa Bonita, Costa Rica",
   description: "Once aboard for the approximately 90-minute trip, you can relax and enjoy the ambiance as you zip along the calm waters—maybe make a game of spotting fish and birds as you enter Tortuguero National Park",
   route_id: route6.id
 )
@@ -281,7 +280,7 @@ route7 = Route.create!(
 
 landmark12 = Landmark.new(
   title: "Whitewater Rafting",
-  location: "Río Sarapiquí, Heredia Province, Puerto Viejo de Sarapiqui, Costa Rica",
+  location: "Río Agua Caliente, Alajuela Province, San Carlos, Costa Rica",
   description: "After a lesson from your professional guide, you'll begin the seven-mile river journey featuring over 30 class III and IV rapids. About halfway through the trip, you’ll take a break on shore for some refreshing tropical fruit and a traditional Costa Rican lunch.",
   route_id: route7.id
   # photo: open("res.cloudinary.com/dblvfwtds/image/upload/v1669735145/torres-del-paine_100659397dmitry-pichugin-shutterstock_2500x1250_tmhbce.jpg")
@@ -293,7 +292,7 @@ landmark12.save
 
 landmark13 = Landmark.create!(
   title: "Tabacón Hot Springs",
-  location: "Tabacon Hot Springs, 21007, Provincia de Alajuela, La Fortuna, 21007, Costa Rica",
+  location: "Calle 470, Provincia de Alajuela, La Fortuna, 21007, Costa Rica",
   description: " soothe your muscles with a dip in the mineral-rich waters in and around the Tabacón Thermal Resort. These hot springs have been used as therapeutic baths for more than 200 years, and the resort includes a spa where various treatments, like couples massages. ",
   route_id: route7.id
 )
@@ -304,7 +303,7 @@ landmark13.save
 
 landmark14 = Landmark.create!(
   title: "Hike Arenal 1968 ",
-  location: "Calle Real el Castillo, Alajuela Province, San Carlos, 21007, Costa Rica",
+  location: "Arenal Volcano, Alajuela Province, San Carlos, Costa Rica",
   description: "A private reserve named after the year of the last major eruption of the volcano. The event was so catastrophic that it transformed some of the region’s topography: lava fields now dominate one side of Arenal. Hiking trails wind through those lava fields.",
   route_id: route7.id
 )
@@ -345,7 +344,7 @@ landmark16.save
 
 landmark17 = Landmark.create!(
   title: "Cloud Forest Reserve Guided Hike ",
-  location: "Carr. a Reserva de Monteverde, Provincia de Puntarenas, Monteverde, Costa Rica",
+  location: "Reserva de Monteverde, Provincia de Puntarenas, Monteverde, Costa Rica",
   description: "One of the jewels in Costa Rica's ecological crown. Known as the 'green lung of Costa Rica' due to its rich biodiversity, this 26,000-acre reserve is located high in the mountainous northwest region of the country, and thus receives much precipitation.",
   route_id: route8.id
 )
@@ -364,7 +363,7 @@ route9 = Route.create!(
 
 landmark18 = Landmark.create!(
   title: "Sunset Catamaran Cruise",
-  location: "Playa Arenilla, Papagayo Gulf Guanacaste Carrillo, Guanacaste Province, 50503, Costa Rica",
+  location: "Calle Jobito, Provincia de Guanacaste, Coco, Costa Rica",
   description: "The ship will stop in a tranquil bay, drop anchor, and you'll explore the crystalline waters while the crew prepares a dinner feast. While you eat, enjoy the sunset over the Pacific horizon while keeping a sharp eye out for dolphins, sea turtles, flying fish.",
   route_id: route9.id
 )
@@ -372,17 +371,6 @@ landmark18 = Landmark.create!(
 file18 = URI.open('https://cdn.kimkim.com/files/a/trip_plan/days/photos/3140c95f54e893d02c4b3c5379271c2c25d0204f/big-04b7136a6e1dcc91ad2d6c4290e5dc40.jpg')
 landmark18.photo.attach(io: file18, filename: 'lala.jpg', content_type: 'image/jpg')
 landmark18.save
-
-landmark19 = Landmark.create!(
-  title: "Horseback Riding",
-  location: "Guanacaste Province, Coco, Costa Rica",
-  description: "First, you'll embark on a 40-minute horseback-riding excursion. Marvel at the surrounding views as you make your way higher and higher into the park.",
-  route_id: route9.id
-)
-
-file19 = URI.open('https://cdn.kimkim.com/files/a/images/ee1d14ed59a15551c156c1aea4cf1d09359aa943/big-772dc1dc5dbb90a2584efa54718817f1.jpg')
-landmark19.photo.attach(io: file19, filename: 'lala.jpg', content_type: 'image/jpg')
-landmark19.save
 
 
 #third trip
@@ -411,7 +399,7 @@ route10 = Route.create!(
 
 landmark20 = Landmark.create!(
   title: "Training",
-  location: "Metropolitan District of Caracas, Caracas, Venezuela",
+  location: "Calle Sucre, Caracas 1020, Distrito Capital, Venezuela",
   description: "Dulce Nombre de Jesus de Petare is a neighborhood in Miranda, Venezuela, and is part of the Metropolitan District of Caracas. It is located in the Sucre Municipality, one of the five divisions of Caracas.",
   route_id: route10.id
 )
@@ -422,7 +410,7 @@ landmark20.save
 
 landmark21 = Landmark.create!(
   title: "Art",
-  location: "Metropolitan District of Caracas, Caracas, Venezuela",
+  location: "Caracas 1080, Miranda, Venezuela",
   description: "Beautiful art museum in the heart of Caracas, Venezuela definitely recommended",
   route_id: route10.id
 )
@@ -440,7 +428,6 @@ route11 = Route.create!(
   trip_id: trip3.id
 )
 
-
 landmark22 = Landmark.create!(
   title: "Art yay",
   location: "Maturin, Venezuela",
@@ -454,7 +441,7 @@ landmark22.save
 
 landmark23 = Landmark.create!(
   title: "Zoo",
-  location: "Maturin, Venezuela",
+  location: "Zona Industrial, Maturin 6201, Monagas, Venezuela",
   description: "La Guaricha Zoological Park",
   route_id: route11.id
 )
