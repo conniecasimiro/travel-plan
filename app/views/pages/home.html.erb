@@ -1,38 +1,32 @@
-  <%= render "shared/navbar" %>
+<%= render "shared/navbar" %>
 <div class="body">
+  <%= render "shared/iconbar" %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/porto-timoni-beach-corfu-greece-royalty-free-image-1650564691.jpg);">
     <%= link_to root_path, style: "text-decoration: none;" do %>
       <h1>Travel Plan</h1>
     <% end %>
     <p>Make your dreams come true. Find inspiration for your dream trip. </p>
     <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a Trip!"
-      %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Trip!"%>
       <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
     <% end %>
   </div>
   <div class="container">
     <h1>Some ideas to get you started</h1>
     <div class="container-inner">
-    <div class="container-square">
-
-      <% @trips.each do |trip| %>
-        <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+      <div class="container-square">
+        <% @trips.each do |trip| %>
           <% unless trip.landmarks.empty? %>
-            <%= render "shared/card", title: trip.title, duration: trip.duration, photo: trip.landmarks[0].photo.key, tags: trip.tags, likes: trip.likes, userphoto: trip.user.photo.key %>
+            <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+              <%= render "shared/card", trip: trip %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
-
-
-          </div>
-              <div class="home-links">
-              <a><%= link_to "More inspiration...", trips_path, class: "btn btn-flat" %></a>
-            </div>
+      </div>
+      <div class="home-links">
+        <a><%= link_to "More inspiration...", trips_path, class: "btn btn-flat" %></a>
+      </div>
+    </div>
   </div>
-</div>
   <%= render "shared/footer" %>
 </div>

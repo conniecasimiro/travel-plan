@@ -10,10 +10,11 @@ export default class extends Controller {
     rmarkersboat: Array,
     rmarkersbike: Array,
     rmarkers: Array,
+    index: Number,
     myarray: Array
   }
 
-  static targets = ["card", "map", "maplandmarks"]
+  static targets = ["card", "map", "maplandmarks", "length"]
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -24,13 +25,16 @@ export default class extends Controller {
 
     console.log(this.myarrayValue)
 
-    console.log("helloo")
+    console.log(Number(this.lengthTarget.innerText))
+
+    console.log(this.indexValue)
+
+    console.log("helloo00")
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: 'mapbox://styles/mapbox/streets-v10',
-
 
     });
 
@@ -38,6 +42,7 @@ export default class extends Controller {
       container: this.maplandmarksTarget,
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: 'mapbox://styles/mapbox/streets-v10',
+
 
 
     });
@@ -89,9 +94,56 @@ export default class extends Controller {
     // this.#addLmarkersToMap()
     // this.#fitMapToLmarkers()
 
-
-
   }
+
+    zoom0 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[0].lng, this.rmarkersValue[0].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
+
+    zoom1 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[1].lng, this.rmarkersValue[1].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
+
+    zoom2 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[2].lng, this.rmarkersValue[2].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
+
+    zoom3 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[3].lng, this.rmarkersValue[3].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
+
+    zoom4 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[4].lng, this.rmarkersValue[4].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
+
+    zoom5 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[5].lng, this.rmarkersValue[5].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
+
+    zoom6 () {
+      console.log("helooooo0")
+      const bounds = new mapboxgl.LngLatBounds()
+      bounds.extend([ this.rmarkersValue[6].lng, this.rmarkersValue[6].lat ])
+      this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 7, duration: 0 })
+    }
 
 
   #addLmarkersToMap() {
