@@ -1,6 +1,8 @@
 <div class="icon-bar">
+  <% if user_signed_in? %>
   <a href= "/" class="Home"><i class="fa-solid fa-house"></i></a>
   <a href="/trips" class="Explore"><i class="fa-solid fa-earth-americas"></i></a>
   <a href="/trips/new" class="Create"><i class="fa-solid fa-plus"></i></a>
   <a href="/users/<%=current_user.id%>" class="Profile"><i class="fa-solid fa-user"></i></a>
+  <% end %>
 </div>
