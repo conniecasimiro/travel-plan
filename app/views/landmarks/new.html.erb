@@ -11,8 +11,7 @@
           <div class="create-icon">
             <img src="<%= @route_icons[@route.method.to_sym.downcase] %>">
           </div>
-          <p>Location: </p>
-          <p><strong> <%= @route.destination %></strong></p>
+          <p><strong> <%= @route.destination.truncate(30) %></strong></p>
         </div>
         <%# The routes landmark cards  %>
         <% @route.landmarks.each do |landmark| %>
@@ -51,8 +50,7 @@
           <div class="create-icon">
             <img src="<%= @route_icons[@route.method.to_sym.downcase] %>">
           </div>
-          <p>Location: </p>
-          <p><strong> <%= @route.destination %></strong></p>
+          <p><strong> <%= @route.destination.truncate(30) %></strong></p>
         </div>
 
         <% @route.landmarks.each do |landmark| %>

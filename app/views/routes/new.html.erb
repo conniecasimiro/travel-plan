@@ -1,19 +1,19 @@
-<div id="container-flex">
+<div id="container-flex" data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>">
   <div class="container-width" id="bg-blue" data-controller="add-method">
-    <%= link_to  trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your trip?"} do %>
-      <div style="color:black;" class="fa-solid fa-delete-left"> </div>
-    <% end %>
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
       <h5>Where did you first arrive on your trip?</h5>
-    <div class="add-travel" data-add-method-target="button">
-      <h2>Add travel method</h2>
-      <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm"></i>
-    </div>
+        <div class="add-travel" data-add-method-target="button">
+          <h2>Add Travel Method</h2>
+          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm click->address-autocomplete#revealMap"></i>
+        </div>
     <div class="d-none" data-add-method-target="form">
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
-          <%= f.input :destination, label: "First destination", hint: "Where did you arrive?"%>
+          <%# f.input :destination, label: "First destination", hint: "Where did you arrive?"%>
+          <%=f.input :destination,
+          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
+          <div data-address-autocomplete-target="search"></div>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
         <% if current_user.trips.last.routes.count > 1 %>
@@ -32,23 +32,26 @@
             <img src="<%= @route_icons[route.method.to_sym.downcase] %>">
           </div>
           <% if route.method == "first_location" %>
-            <p><%= "Arrive in: " %></p>
           <% else %>
             <p><%= route.method %> to: </p>
           <% end %>
-          <p><strong> <%= route.destination %></strong></p>
+          <p><strong> <%= route.destination.truncate(30) %></strong></p>
         </div>
       <% end %>
     </div>
-      <div class="add-travel" data-add-method-target="button2">
-        <h2>Add travel method</h2>
-        <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm2"></i>
-      </div>
+        <div class="add-travel" data-add-method-target="button">
+          <h2>Add Travel Method</h2>
+          <i class="fa-solid fa-circle-plus" data-action="click->add-method#displayForm2 click->address-autocomplete#revealMap"></i>
+        </div>
       <div class="d-none" data-add-method-target="form2">
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
-          <%= f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
-          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Ferry", "yacht", "Motorbike", "Car", "Bus", ]%>
+          <%# f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
+          <%=f.input :destination,
+          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
+          <div data-address-autocomplete-target="search"></div>
+
+          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Ferry", "yacht", "Motorcycle", "Car", "Bus", ]%>
           <%= f.input :duration, label: "How long did your trip take", collection: 1..24%>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
@@ -67,6 +70,6 @@
       <i class="fa-solid fa-circle" id="grey-icon"></i>
       <i class="fa-solid fa-circle"></i>
     </div>
-      <%=image_tag("travel_methods")%>
+      <img src="https://res.cloudinary.com/dblvfwtds/image/upload/v1669814162/image_3_cfsxtc.png">
   </div>
 </div>
