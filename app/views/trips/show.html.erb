@@ -1,5 +1,3 @@
-<% require 'humanize' %>
-
 <div class="body">
   <%= render "shared/navbar" %>
   <div
@@ -17,9 +15,7 @@
     data-map-landmarkarray-value= "<%= @landmarkarr %>"
     data-map-myarray-value= "<%= @arr%>">
 
-
     <%# Trip likes counter and button connected to JS controller likes %>
-
     <div class="likes-section">
       <div class="likes" data-controller="likes" data-likes-target="likes">
         <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
@@ -89,7 +85,21 @@
             </div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0" >
               <div id="mymap">
-                Comment lalalal
+             <div class="container-comments">
+        <div class="header">
+          <div>
+            <h1>Comments</h1>
+              <%= link_to "New comment",
+                  new_trip_comment_path(@trip, @comment),
+                  class: "btn",
+                  data: { turbo_frame: dom_id(Comment.new) } %>
+          </div>
+            <%= turbo_frame_tag dom_id(@comment) %>
+            <%= turbo_frame_tag "comments" do %>
+              <%= render @comments, trip: @trip %>
+            <% end %>
+        </div>
+      </div>
               </div>
             </div>
           </div>
@@ -162,26 +172,12 @@
 
 
       <%# comment section %>
-      <div class="container-comments">
-        <div class="header">
-          <div>
-            <h1>Comments</h1>
-              <%= link_to "New comment",
-                  new_trip_comment_path(@trip, @comment),
-                  class: "btn",
-                  data: { turbo_frame: dom_id(Comment.new) } %>
-          </div>
-            <%= turbo_frame_tag dom_id(@comment) %>
-            <%= turbo_frame_tag "comments" do %>
-              <%= render @comments, trip: @trip %>
-            <% end %>
-        </div>
-      </div>
+
 
 
     </div>
-    <div class="bottom">
-    </div>
-      <%= render "shared/footer" %>
+
   </div>
 </div>
+</div>
+      <%= render "shared/footer" %>
