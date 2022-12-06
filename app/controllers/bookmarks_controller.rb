@@ -4,19 +4,21 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @trip = Trip.find(params[:trip_id])
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = Bookmark.new
     @bookmark.user = current_user
     @bookmark.trip = @trip
-    @bookmark.save!
-    if @bookmark.save
-      redirect_to bookmark_path(@bookmark)
+    respond_to do |format|
+
+      if @bookmark.save
+        format.html {redirect_to trip_path(@trip)}
+        format.json
+      end
     end
   end
 
   def index
-    @bookmark.all
+    @bookmark = Bookmark.all
   end
 
   def show
@@ -24,10 +26,13 @@ class BookmarksController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
   end
 
-  private
-
-  def bookmark_params
-    params.require(:bookmark).permit(:user_id, :trip_id)
+  def destroy
+    @bookmark = Bookmark.find(params[:id])
+    @trip = @bookmark.trip
+    @bookmark.destroy
+    respond_to do |format|
+      format.json
+      format.html {redirect_to request.referer, status: :see_other}
+    end
   end
-
 end

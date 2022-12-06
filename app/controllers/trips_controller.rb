@@ -92,23 +92,35 @@ class TripsController < ApplicationController
     @routes.each do |route|
       @arr << [route.longitude, route.latitude]
     end
+
+    @landmarkarr = []
+    @routes.each do |route|
+      @landmarkarr << route.landmarks.length
+    end
   end
 
   def index
     @landmark = Landmark.all
-
     if params[:query].present?
+      sql_query = <<~SQL
+        trips.location ILIKE :query
+        OR trips.description ILIKE :query
+        OR trips.title ILIKE :query
+        OR users.first_name ILIKE :query
+        OR users.last_name ILIKE :query
+      SQL
+      @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    elsif params[:filter].present?
       sql_query = <<~SQL
         trips.location ILIKE :query
         OR trips.description ILIKE :query
         OR users.first_name ILIKE :query
         OR users.last_name ILIKE :query
       SQL
-      @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:filter]}%")
     else
       @trips = Trip.all
     end
-    # @trips = Trip.all
   end
 
   def carousel

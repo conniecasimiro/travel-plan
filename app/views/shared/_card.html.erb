@@ -1,21 +1,21 @@
 <div class="card-square">
   <div class="square-1">
     <div class="card-square-img">
-      <%= cl_image_tag photo, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
-      </div>
-      <div class="avatar-end">
-          <% if userphoto.present? %>
-            <%= cl_image_tag userphoto, class: "avatar-card"%>
-          <% end %>
-          <%# <%= image_tag userphoto, class: "avatar-card"%>
-      </div>
+      <% if trip.landmarks[0].photo.attached? %>
+        <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+      <% end %>
     </div>
-
+    <div class="avatar-end">
+        <% if trip.user.photo.attached? %>
+          <%= cl_image_tag trip.user.photo.key, class: "avatar-card"%>
+        <% end %>
+    </div>
+  </div>
   <div class="card-square-infos">
     <div class="square-2">
-      <h5><%= title %></h5>
+      <h5><%= trip.title %></h5>
       <ul>
-        <% tags.each do |tag| %>
+        <% trip.tags.each do |tag| %>
           <li class="tag">
           <% case tag.title %>
             <% when "Hiking" %>
@@ -28,25 +28,37 @@
               <i class="fa-solid fa-leaf fa-fw circle-icon"></i>
             <% when "Beach" %>
               <i class="fa-solid fa-umbrella-beach fa-fw circle-icon"></i>
+            <% else %>
+              <i></i>
             <% end %>
           </li>
         <% end %>
       </ul>
     </div>
     <div class="days">
-      <p id="duration"> <%= duration %> days </p>
+      <p id="duration"> <%= trip.duration %> days </p>
     </div>
     <div class="square-3" >
-       <div class="likes" data-controller="likes" data-likes-target="likes">
-          <button class="like-button-index" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
-        <div class="likes-counter-index" data-likes-target="counter"><%= likes %></div>
-          <div class="d-none">
-            <%= simple_form_for :likes, data: {likes_target: "form"} do |f| %>
-              <%= f.input :likes, input_html: {value: likes += 1}  %>
+      <% bookmark = Bookmark.find_by(user: current_user, trip: trip) %>
+      <div class="likes" data-controller="likes" data-likes-target="likes">
+        <div class="likes-counter-index" data-likes-target="counter">
+          <%= trip.likes %>
+        </div>
+        <button class="like-button-index <%= bookmark ? "red" : "" %>" data-likes-target="like" data-action="click->likes#update">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        <div class="d-none" data-likes-target="formWrapper">
+          <% if bookmark %>
+            <div data-likes-target="delete">
+              <%= bookmark_path(bookmark) %>
+            </div>
+          <% else %>
+            <%= simple_form_for ([trip, Bookmark.new]), data: {likes_target: "form"} do |f| %>
               <%= f.submit %>
             <% end %>
-          </div>
+          <% end %>
         </div>
+      </div>
     </div>
   </div>
 </div>
