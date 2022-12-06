@@ -1,7 +1,9 @@
 .navbar-travelplan {
   justify-content: space-between;
   background: $navblue;
-
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 2px -2px gray;
 }
 
 .navbar-travelplan .navbar-collapse {

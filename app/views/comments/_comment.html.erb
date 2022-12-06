@@ -1,0 +1,20 @@
+<%= turbo_frame_tag comment do %>
+  <div class="comment">
+    <div class="comment-image">
+      <% if comment.user.photo.key.present? %>
+        <%= cl_image_tag comment.user.photo.key, class: "comment-img" %>
+      <% else %>
+        <%= image_tag "defav1", class: "comment-img" %>
+      <% end %>
+    </div>
+      <div class="comment-infos">
+        <div class="userbox">
+          <p><%= comment.user.first_name %> <%= comment.user.last_name %></p>
+          <p><em><%= comment.updated_at %></em></p>
+        </div>
+        <div class="comment-desc">
+          <p> <strong> <%= comment.description %></strong></p>
+        </div>
+    </div>
+  </div>
+<% end %>

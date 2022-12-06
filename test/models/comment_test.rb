@@ -6,18 +6,18 @@ class CommentTest < ActiveSupport::TestCase
   # end
 
   setup do
-    @comment = comments(:first)
+    @comment = comments.ordered.first
   end
 
   test "Showing a comment" do
-    visit comments_path
+    visit trip_comments_path
     click_link @comment.name
 
-    assert_selector "h1", text: @comment.name
+    assert_selector "h1", text: @comment.description
   end
 
   test "Creating a new comment" do
-    visit comments_path
+    visit trip_comments_path
     assert_selector "h1", text: "comments"
 
     click_on "New comment"
@@ -31,7 +31,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "Updating a comment" do
-    visit comments_path
+    visit trip_comments_path
     assert_selector "h1", text: "comments"
 
     click_on "Edit", match: :first
@@ -45,10 +45,10 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "Destroying a comment" do
-    visit comments_path
-    assert_text @comment.name
+    visit trip_comments_path
+    assert_text @comment.description
 
     click_on "Delete", match: :first
-    assert_no_text @comment.name
+    assert_no_text @comment.description
   end
 end

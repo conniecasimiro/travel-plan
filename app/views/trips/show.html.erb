@@ -153,14 +153,23 @@
 
 
       <%# comment section %>
-      <div class="show-comments">
-        <h1>Comments</h1>
-        <a><%= link_to "Add a Comment", new_trip_comment_path(@trip, @comment), class: "btn btn-flat" %></a>
-        <% @comments.each do |comment| %>
-          <h3><%= comment.user.first_name %></h3>
-          <h3><%= comment.description %></h3>
-        <% end %>
+      <div class="container-comments">
+        <div class="header">
+          <div>
+            <h1>Comments</h1>
+              <%= link_to "New comment",
+                  new_trip_comment_path(@trip, @comment),
+                  class: "btn",
+                  data: { turbo_frame: dom_id(Comment.new) } %>
+          </div>
+            <%= turbo_frame_tag dom_id(@comment) %>
+            <%= turbo_frame_tag "comments" do %>
+              <%= render @comments, trip: @trip %>
+            <% end %>
+        </div>
       </div>
+
+
     </div>
     <div class="bottom">
       <%= render "shared/footer" %>

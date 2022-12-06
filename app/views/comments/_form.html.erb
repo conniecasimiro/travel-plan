@@ -1,0 +1,11 @@
+<%= simple_form_for [@trip, @comment], html: { class: "comment form" } do |f| %>
+  <% if comment.errors.any? %>
+    <div class="error-message">
+      <%= comment.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :description, input_html: { autofocus: true } %>
+  <%= f.submit "Comment", class: "btn btn--secondary" %>
+  <%= link_to "Cancel", trip_path(@trip), class: "btn btn--light" %>
+<% end %>
