@@ -62,7 +62,7 @@ trip1.tags.push(beach)
 
 route0 = Route.create!(
   destination: "Puerto Natales",
-  method: "first_location ",
+  method: "first_location",
   duration: "2",
   travel_date: "2022-11-10",
   trip_id: trip1.id
