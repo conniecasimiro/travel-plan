@@ -7,6 +7,9 @@ import { application } from "./application"
 import AddMethodController from "./add_method_controller"
 application.register("add-method", AddMethodController)
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
 import CreateTripController from "./create_trip_controller"
 application.register("create-trip", CreateTripController)
 

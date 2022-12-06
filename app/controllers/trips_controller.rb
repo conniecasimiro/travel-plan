@@ -33,6 +33,7 @@ class TripsController < ApplicationController
     @routes = @trip.routes
     @landmarks = @trip.landmarks
     @comments = Comment.where(trip_id: @trip.id)
+    @comment = Comment.new
 
     # The `geocoded` scope filters only flats with coordinates
     @lmarkers = @landmarks.geocoded.map do |landmark|
