@@ -41,12 +41,12 @@
     <div class="square-3" >
       <% bookmark = Bookmark.find_by(user: current_user, trip: trip) %>
       <div class="likes" data-controller="likes" data-likes-target="likes">
-        <div class="likes-counter-index" data-likes-target="counter">
-          <%= trip.likes %>
-        </div>
         <button class="like-button-index <%= bookmark ? "red" : "" %>" data-likes-target="like" data-action="click->likes#update">
           <i class="fa-solid fa-heart"></i>
         </button>
+        <div class="likes-counter-index" data-likes-target="counter">
+          <%= trip.likes %>
+        </div>
         <div class="d-none" data-likes-target="formWrapper">
           <% if bookmark %>
             <div data-likes-target="delete">

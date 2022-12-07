@@ -14,61 +14,60 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  }
+}
 
 
 .card-square-img {
-img {
-  height: 300;
-  border-top-right-radius: 5px;
-border-top-left-radius: 5px;
-object-fit: cover;
-}
+  img {
+    height: 300;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    object-fit: cover;
+  }
 }
 
 .card-square-infos {
-padding: 12px 15px 1px;
+  padding: 12px 15px 1px;
 }
 
 .square-1 {
-position: relative;
+  position: relative;
 }
 
 .square-2 {
-
-h5{
-width: 200px;
-margin-top: -5px;
-font-weight: bold;
-font-size: 20px;
-}
-p {
-margin: 2px;
-}
-
-ul {
-  padding: 0;
-  position: absolute;
-  bottom: 40px;
-  li {
-    display:inline;
+  h5{
+    width: 200px;
+    margin-top: -5px;
+    font-weight: bold;
+    font-size: 20px;
   }
+  p {
+    margin: 2px;
   }
+  ul {
+    padding: 0;
+    position: absolute;
+    bottom: 40px;
+    li {
+      display:inline;
+    }
+    }
 }
+
 .days {
   position: absolute;
   bottom: 0;
 }
 
 .square-3 {
-position: absolute;
-bottom: 0;
-display: flex;
-right: 0;
-padding-right: 25px;
-i {
-  font-size: 30px;
-}
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  right: 0;
+  padding-right: 25px;
+  i {
+    font-size: 30px;
+  }
 }
 
 .home-links{
@@ -97,5 +96,4 @@ i {
 .likes-counter-index {
   font-size: 20px;
   margin-bottom: 10px;
-
 }

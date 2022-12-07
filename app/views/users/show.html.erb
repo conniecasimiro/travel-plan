@@ -29,13 +29,17 @@
               <% end %>
             <% end %>
           <% end %>
+        </div>
 
+        <h1 class="mt-5">My favorites</h1>
+        <div class="container-square">
           <% @bookmarks.each do |book| %>
             <% if book.present? %>
               <%= render "shared/card", trip: book.trip %>
             <% end %>
           <% end %>
         </div>
+
     </div>
   </div>
 <%= render "shared/footer" %>
