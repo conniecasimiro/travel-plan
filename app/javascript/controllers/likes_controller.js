@@ -4,6 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   static targets = ["like", "counter", "form", "delete", "formWrapper"]
+
+  connect(){
+    console.log("fix my maps")
+  }
   update(event) {
     event.preventDefault()
     const token = document.querySelector('meta[name="csrf-token"]').content

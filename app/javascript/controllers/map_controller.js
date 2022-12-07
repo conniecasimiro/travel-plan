@@ -21,19 +21,19 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    console.log(this.rmarkersValue)
+    // console.log(this.rmarkersValue)
 
-    console.log(this.myarrayValue)
+    // console.log(this.myarrayValue)
 
-    console.log(this.rmarkersfirstValue)
+    // console.log(this.rmarkersfirstValue)
 
-    console.log(this.landmarkarrayValue)
+    // console.log(this.landmarkarrayValue)
 
-    console.log("hello1")
+    // console.log("hello1")
 
-    this.btnTarget.focus()
+    // this.btnTarget.focus()
 
-    console.log(this.btnTarget.focus)
+    console.log("my button", this.btnTarget.focus)
 
     this.map = new mapboxgl.Map({
       container: this.placeTarget,
@@ -41,7 +41,6 @@ export default class extends Controller {
         style: 'mapbox://styles/mapbox/streets-v10',
 
     });
-
 
 
     // landmark map

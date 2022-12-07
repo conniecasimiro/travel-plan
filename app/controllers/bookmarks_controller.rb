@@ -24,6 +24,8 @@ class BookmarksController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @bookmarks = Bookmark.where(user: current_user)
+    @trip = Trip.find(params[:trip_id])
+    @bookmark.trip = @trip
   end
 
   def destroy
