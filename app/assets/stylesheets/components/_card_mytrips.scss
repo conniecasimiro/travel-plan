@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 10px 0px 10px;
-justify-items: center;
+  justify-items: center;
   }
 
 .card-mytrips {
@@ -20,7 +20,7 @@ justify-items: center;
 
 .card-mytrips-img {
   width: 200px;
-  height: 100px;
+  height: 120px;
   left: 0%;
   top: 0%;
   object-fit: cover;
@@ -34,6 +34,9 @@ justify-items: center;
   display: flex;
   justify-content: space-between;
   text-align: left;
+  .likes-counter-index {
+    margin-bottom: 0;
+  }
   h3 {
     margin: 0 auto;
   }
