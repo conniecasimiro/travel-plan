@@ -133,12 +133,9 @@ class TripsController < ApplicationController
       @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     elsif params[:filter].present?
       sql_query = <<~SQL
-        trips.location ILIKE :query
-        OR trips.description ILIKE :query
-        OR users.first_name ILIKE :query
-        OR users.last_name ILIKE :query
+        tags.title ILIKE :query
       SQL
-      @trips = Trip.joins(:user).where(sql_query, query: "%#{params[:filter]}%")
+      @trips = Trip.joins(:tags).where(sql_query, query: "%#{params[:filter]}%")
     else
       @trips = Trip.all
     end

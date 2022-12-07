@@ -1,5 +1,7 @@
 .fitler-buttons {
   gap: 10px;
+  align-items: center;
+  justify-content: space-between;
   a {
     border-radius: 5px;
     background-color: white;
@@ -7,14 +9,24 @@
     padding: 5px;
     width: 6em;
     text-decoration: none;
-
+    font-size: 1rem;
   }
 }
-#selected{
-  background-color: #4a699e;
-  color: white;
+.search-and-filters {
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
 }
-
+#search-button{
+  background-color: #4a699e;
+}
+#selected{
+  background-color: #fbc3c3;
+  color: black;
+}
+.body-header {
+  margin-top: 34px;
+}
 /* CSS */
 .button-17 {
   align-items: center;

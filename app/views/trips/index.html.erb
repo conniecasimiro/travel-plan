@@ -1,23 +1,23 @@
 <div class="body">
   <%= render "shared/navbar" %>
   <div class="container mt-4" data-controller="filter">
-    <h2 class="mb-3">Find inspiration for your next trip from one of our users...</h2>
-    <div class="mb-3">
-      <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+    <h2 class="mb-3 body-header">Trips that inspire you</h2>
+    <div class="mb-3 d-flex search-and-filters">
+      <%= form_with url: trips_path, method: :get, class: "d-flex search-style" do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Find a Trip!"
       %>
-      <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
-    <% end %>
-    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group"></div>
-    <div class="d-flex justify-content-center fitler-buttons">
+      <%= submit_tag "Search", class: "btn btn-primary", id: "search-button" %>
+      <% end %>
+      <div class="d-flex justify-content-center fitler-buttons">
        <%=link_to "Hiking", trips_path(filter: "Hiking"), class: "button-17", id: "#{"selected" if params[:filter] == "Hiking"}" %>
        <%=link_to "Mountains", trips_path(filter: "Mountains"), class: "button-17", id: "#{"selected" if params[:filter] == "Mountains"}" %>
        <%=link_to "City", trips_path(filter: "City"), class: "button-17", id: "#{"selected" if params[:filter] == "City"}" %>
        <%=link_to "Beach", trips_path(filter: "Beach"), class: "button-17", id: "#{"selected" if params[:filter] == "Beach"}" %>
        <%=link_to "Jungle", trips_path(filter: "Jungle"), class: "button-17", id: "#{"selected" if params[:filter] == "Jungle"}" %>
+    </div>
     </div>
     <% if @trips.empty? %>
       <h2 style="margin: 10% auto;width:-moz-fit-content;width:fit-content;">No trips fit your search.. Please try again</h2>
