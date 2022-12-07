@@ -1,5 +1,8 @@
 <div id="container-flex" data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>">
   <div class="container-width" id="bg-blue" data-controller="add-method">
+   <%= link_to  new_trip_path(@trip) do %>
+      <div style="color:black;" class="fa-solid fa-delete-left"> </div>
+    <% end %>
     <h1>Step two</h1>
     <% if current_user.trips.last.routes.empty? %>
       <h5>Where did you first arrive on your trip?</h5>
