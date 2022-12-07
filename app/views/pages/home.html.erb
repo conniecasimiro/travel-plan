@@ -32,7 +32,7 @@
     <h1 id="heading-black">Some ideas to get you started</h1>
     <div class="container-inner">
       <div class="container-square">
-        <% @trips.each do |trip| %>
+        <% @featured.each do |trip| %>
           <% unless trip.landmarks.empty? %>
             <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do%>
               <%= render "shared/card", trip: trip %>
