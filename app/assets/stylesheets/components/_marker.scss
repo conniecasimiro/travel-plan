@@ -52,6 +52,15 @@
   cursor: pointer;
 }
 
+.markertrain {
+  background-image: url('train.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .first {
   background-image: url('mypin.png');
   background-size: cover;

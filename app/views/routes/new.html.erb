@@ -56,9 +56,8 @@
         <% end %>
       </div>
       <% unless @trip.routes.empty? %>
-      <h5><strong>Or</strong>, if you're finished continue to the next step:</h5>
-      <%= link_to "Continue", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-light " %>
-      <% end %>
+        <h5><strong>Or</strong>, if you're finished continue to the next step:</h5>
+        <%= link_to "Continue", new_trip_route_landmark_path(@trip, @trip.routes.first), class: "btn btn-light " %><% end %>
       <% end %>
   </div>
   <div class="container-width" id="bg-light-blue">

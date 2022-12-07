@@ -10,6 +10,7 @@ export default class extends Controller {
     rmarkersboat: Array,
     rmarkersbike: Array,
     rmarkersyacht: Array,
+    rmarkerstrain: Array,
     rmarkersfirst: Array,
     rmarkers: Array,
     landmarkarray: Array,
@@ -57,6 +58,7 @@ export default class extends Controller {
     this.#addRmarkersbikeToMap()
     this.#addRmarkersfirstToMap()
     this.#addRmarkersyachtToMap()
+    this.#addRmarkerstrainToMap()
 
     this.map.on('load', () => {
       console.log("pleaseee")
@@ -112,6 +114,7 @@ export default class extends Controller {
     this.#addRmarkersbikeToMap()
     this.#addRmarkersfirstToMap()
     this.#addRmarkersyachtToMap()
+    this.#addRmarkerstrainToMap()
 
     this.map.on('load', () => {
       console.log("pleaseee")
@@ -237,7 +240,9 @@ export default class extends Controller {
 
   #addLmarkersToMap() {
     this.lmarkersValue.forEach((marker) => {
-      new mapboxgl.Marker()
+      const el = document.createElement('div');
+      el.className = 'first';
+      new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.maplandmarks)
     })
@@ -328,6 +333,16 @@ export default class extends Controller {
     this.rmarkersyachtValue.forEach((marker) => {
       const el = document.createElement('div');
       el.className = 'markeryacht';
+      new mapboxgl.Marker(el)
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(this.map)
+    })
+  }
+
+  #addRmarkerstrainToMap() {
+    this.rmarkerstrainValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'markertrain';
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)

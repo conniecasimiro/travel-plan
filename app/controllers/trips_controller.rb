@@ -101,6 +101,13 @@ class TripsController < ApplicationController
       }
     end
 
+    @rmarkerstrain = @routes.where(method: "Train").geocoded.map do |route|
+      {
+        lat: route.latitude,
+        lng: route.longitude
+      }
+    end
+
 
     @arr = []
     @routes.each do |route|
