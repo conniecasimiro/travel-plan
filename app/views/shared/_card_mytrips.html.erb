@@ -1,0 +1,38 @@
+<div class="card-mytrips">
+  <div class="mytrips-1">
+    <div class="card-mytrips-img">
+      <% if trip.landmarks[0].photo.attached? %>
+        <%= cl_image_tag trip.landmarks[0].photo.key, height: 100, width: 200, class:"d-block w-100", style:"object-fit: cover" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-mytrips-infos">
+    <div class="mytrips-2">
+      <p><%= trip.title %></p>
+
+    </div>
+
+    <div class="mytrips-3" >
+      <% bookmark = Bookmark.find_by(user: current_user, trip: trip) %>
+      <div class="likes" data-controller="likes" data-likes-target="likes">
+        <div class="likes-counter-index" data-likes-target="counter">
+          <%= trip.likes %>
+        </div>
+        <button class="like-button-index <%= bookmark ? "red" : "" %>" data-likes-target="like" data-action="click->likes#update">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        <div class="d-none" data-likes-target="formWrapper">
+          <% if bookmark %>
+            <div data-likes-target="delete">
+              <%= bookmark_path(bookmark) %>
+            </div>
+          <% else %>
+            <%= simple_form_for ([trip, Bookmark.new]), data: {likes_target: "form"} do |f| %>
+              <%= f.submit %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

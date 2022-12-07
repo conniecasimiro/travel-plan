@@ -19,28 +19,33 @@
             </div>
           </div>
         </div>
-      <div class="container">
-         <h1>My trips</h1>
-        <div class="container-square">
-          <% @trips.each do |trip| %>
-            <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
-              <% unless trip.landmarks.empty? %>
-               <%= render "shared/card", trip: trip %>
+      <div class="profile-outer">
+      <div class="headers-profile">
+          <h1>My trips</h1>
+          <h1>My bookmarks</h1>
+      </div>
+       <div class="container-bookmark">
+            <div class="container-mytrips">
+                <% @trips.each do |trip| %>
+              <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+                <% unless trip.landmarks.empty? %>
+               <%= render "shared/card_mytrips", trip: trip %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
+          </div>
+          <div class="container-mybookmarks">
+              <% @bookmarks.each do |book| %>
+                <% if book.present? %>
+                <%= render "shared/card", trip: book.trip %>
+                <% else %>
+                <p>You haven't bookmarked any trips yet.</p>
+                 <a><%= link_to "Explore now...", trips_path, class: "btn btn-flat" %></a>
+                <% end %>
+              <% end %>
+          </div>
         </div>
-
-        <h1 class="mt-5">My favorites</h1>
-        <div class="container-square">
-          <% @bookmarks.each do |book| %>
-            <% if book.present? %>
-              <%= render "shared/card", trip: book.trip %>
-            <% end %>
-          <% end %>
-        </div>
-
     </div>
-  </div>
+   </div>
 <%= render "shared/footer" %>
   </div>
