@@ -46,8 +46,10 @@
         <%= simple_form_for([@trip, @route]) do |f| %>
           <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival", required: false, label_html: { class:"simple-form-style" }%>
           <%# f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
+
           <%=f.input :destination,
           input_html: {data: {address_autocomplete_target: "address"}, class: "d-none simple-form-style"}, required: false%>
+
           <div data-address-autocomplete-target="search" class="simple-form-style"></div>
 
           <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Ferry", "yacht", "Motorcycle", "Car", "Bus", ], required: false, label_html: { class:"simple-form-style" }%>
