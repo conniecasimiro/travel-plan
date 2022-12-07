@@ -20,11 +20,10 @@
           </div>
         </div>
       <div class="profile-outer">
-      <div class="headers-profile">
-          <h1>My trips</h1>
-          <h1>My bookmarks</h1>
-      </div>
-       <div class="container-bookmark">
+
+       <div class="container my-profile">
+       <div class="mytrips-outer">
+               <h1>My created trips</h1>
             <div class="container-mytrips">
                 <% @trips.each do |trip| %>
                 <% unless trip.landmarks.empty? %>
@@ -34,6 +33,9 @@
               <% end %>
             <% end %>
           </div>
+          </div>
+            <div class="mybookmarks-outer">
+            <h1>Bookmarked trips</h1>
           <div class="container-mybookmarks">
            <% if @bookmarks.empty? %>
            <div class="empty-bookmarks">
@@ -44,10 +46,11 @@
               <% @bookmarks.each do |book| %>
                 <% if book.present? %>
                   <%= link_to trip_path(book.trip), style: "text-decoration: none; color: black;" do %>
-                  <%= render "shared/card", trip: book.trip %>
+                  <%= render "shared/card_bookmark", trip: book.trip %>
                   <% end %>
                 <% end %>
               <% end %>
+              </div>
           </div>
         </div>
     </div>
