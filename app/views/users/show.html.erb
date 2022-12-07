@@ -27,9 +27,9 @@
        <div class="container-bookmark">
             <div class="container-mytrips">
                 <% @trips.each do |trip| %>
-              <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
                 <% unless trip.landmarks.empty? %>
-               <%= render "shared/card_mytrips", trip: trip %>
+                  <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+                  <%= render "shared/card_mytrips", trip: trip %>
                 <% end %>
               <% end %>
             <% end %>
@@ -43,9 +43,8 @@
                     <% end %>
               <% @bookmarks.each do |book| %>
                 <% if book.present? %>
-              <%= link_to trip_path(book.trip), style: "text-decoration: none; color: black;" do %>
-                <%= render "shared/card", trip: book.trip %>
-
+                  <%= link_to trip_path(book.trip), style: "text-decoration: none; color: black;" do %>
+                  <%= render "shared/card", trip: book.trip %>
                   <% end %>
                 <% end %>
               <% end %>
