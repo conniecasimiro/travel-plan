@@ -8,20 +8,20 @@
       <% end %>
       <p>Make your dreams come true. Find inspiration for your dream trip. </p>
       <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Trip!"%>
+        <%= text_field_tag :query, params[:query], class: "form-control search-style", placeholder: "Find a Trip!"%>
         <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
       <% end %>
        <div class="container position-relative" id="homepagecelebs">
-    <div id="carouselExampleInterval" class="carousel slide mt-5" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active text-center" data-bs-interval="3000">
-            <h4 style="color:white;"><i class="fa-solid fa-quote-left"></i> I got inspiration for my favourite holiday from Travel Plan!   <i class="fa-solid fa-quote-right"></i></h4>
+        <div id="carouselExampleInterval" class="carousel slide mt-5" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+              <h4 style="color:#cadbe6;"><i class="fa-solid fa-quote-left"></i> I got inspiration for my favourite holiday from Travel Plan!   <i class="fa-solid fa-quote-right"></i></h4>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+              <h4 style="color:#cadbe6;"><i class="fa-solid fa-quote-left"></i> I love that I can follow my favoruite bloggers trips. <i class="fa-solid fa-quote-right"></i></h4>
           </div>
-          <div class="carousel-item text-center" data-bs-interval="3000">
-            <h4 style="color:white;"><i class="fa-solid fa-quote-left"></i> I love that I can follow my favoruite bloggers trips. <i class="fa-solid fa-quote-right"></i></h4>
-          </div>
-          <div class="carousel-item text-center">
-            <h4 style="color:white;"><i class="fa-solid fa-quote-left"></i> Before I plan any holiday I check Travel Plan for ideas. <i class="fa-solid fa-quote-right"></i></h4>
+          <div class="carousel-item">
+            <h4 style="color:#cadbe6;"><i class="fa-solid fa-quote-left"></i> Before I plan any holiday I check Travel Plan for ideas. <i class="fa-solid fa-quote-right"></i></h4>
           </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
         <% end %>
       </div>
       <div class="home-links">
-        <a><%= link_to "More inspiration...", trips_path, class: "btn btn-flat" %></a>
+        <a><%= link_to "Get inspired!", trips_path, class: "btn btn-flat" %></a>
       </div>
     </div>
   </div>
