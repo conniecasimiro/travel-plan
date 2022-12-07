@@ -5,23 +5,26 @@
   padding: 10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  font-weight: 300;
+
 }
 
-
-
 .mynav-link2 {
-  background-color: #dbdbdb;
-  border: none;
+  background-color: #688397;
+  border-top: rgb(145, 156, 167) solid;
+  border-right: rgb(145, 156, 167) solid;
+  border-bottom: rgb(125, 116, 116) solid;
+  border-left: rgb(125, 116, 116) solid;
   width: 50%;
   padding: 10px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
   font-weight: 400;
+  font-weight: bolder;
+  color: white;
 }
 
 .connie:focus {
-  background-color:  #c6c6c6;
+  background-color: #546167;
 }
 
 .connie:focus {
