@@ -2,14 +2,16 @@
 <div class="body">
   <%= render "shared/iconbar" %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/porto-timoni-beach-corfu-greece-royalty-free-image-1650564691.jpg);">
-    <%= link_to root_path, style: "text-decoration: none;" do %>
-      <h1>Travel Plan</h1>
-    <% end %>
-    <p>Make your dreams come true. Find inspiration for your dream trip. </p>
-    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Trip!"%>
-      <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
-    <% end %>
+    <div class="container">
+      <%= link_to root_path, style: "text-decoration: none;" do %>
+        <h1>Travel Plan</h1>
+      <% end %>
+      <p>Make your dreams come true. Find inspiration for your dream trip. </p>
+      <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Trip!"%>
+        <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
+      <% end %>
+    </div>
   </div>
   <div class="container">
     <h1>Some ideas to get you started</h1>
