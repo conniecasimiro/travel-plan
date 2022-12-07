@@ -2,17 +2,33 @@
 <div class="body">
   <%= render "shared/iconbar" %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/porto-timoni-beach-corfu-greece-royalty-free-image-1650564691.jpg);">
-    <%= link_to root_path, style: "text-decoration: none;" do %>
-      <h1>Travel Plan</h1>
-    <% end %>
-    <p>Make your dreams come true. Find inspiration for your dream trip. </p>
-    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Trip!"%>
-      <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
-    <% end %>
+    <div class="container" id="banner-content">
+      <%= link_to root_path, style: "text-decoration: none;" do %>
+        <h1>Travel Plan</h1>
+      <% end %>
+      <p>Make your dreams come true. Find inspiration for your dream trip. </p>
+      <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a Trip!"%>
+        <%= submit_tag "Search", class: "btn btn-primary", id: "selected" %>
+      <% end %>
+       <div class="container position-relative" id="homepagecelebs">
+    <div id="carouselExampleInterval" class="carousel slide mt-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active text-center" data-bs-interval="3000">
+            <h4 style="color:white;"><i class="fa-solid fa-quote-left"></i> I got inspiration for my favourite holiday from Travel Plan!   <i class="fa-solid fa-quote-right"></i></h4>
+          </div>
+          <div class="carousel-item text-center" data-bs-interval="3000">
+            <h4 style="color:white;"><i class="fa-solid fa-quote-left"></i> I love that I can follow my favoruite bloggers trips. <i class="fa-solid fa-quote-right"></i></h4>
+          </div>
+          <div class="carousel-item text-center">
+            <h4 style="color:white;"><i class="fa-solid fa-quote-left"></i> Before I plan any holiday I check Travel Plan for ideas. <i class="fa-solid fa-quote-right"></i></h4>
+          </div>
+        </div>
+    </div>
   </div>
+</div>
   <div class="container">
-    <h1>Some ideas to get you started</h1>
+    <h1 id="heading-black">Some ideas to get you started</h1>
     <div class="container-inner">
       <div class="container-square">
         <% @trips.each do |trip| %>
