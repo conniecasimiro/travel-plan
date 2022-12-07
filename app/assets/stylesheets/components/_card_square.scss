@@ -71,8 +71,12 @@
 }
 
 .home-links{
-  text-align: end;
+  text-align: center;
   padding: 20px;
+  a {
+    width: 250px;
+    font-size: x-large;
+  }
 }
 
 .circle-icon {

@@ -28,15 +28,15 @@
         </div>
         <div class="d-none" data-add-method-target="form" >
           <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
-          <%= f.input :title, label: "Name"%>
-          <%= f.input :description, label: "Description"%>
+          <%= f.input :title, label: "Name", required: false, label_html: { class:"simple-form-style" }%>
+          <%= f.input :description, label: "Description", required: false, label_html: { class:"simple-form-style" }%>
           <%# f.input :location, label: "Landmark address"%>
 
           <%=f.input :location,
           input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
-          <div data-address-autocomplete-target="search"></div>
+          <div data-address-autocomplete-target="search" class="simple-form-style"></div>
 
-          <%= f.input :photo, label: "Photo", as: :file%>
+          <%= f.input :photo, label: "Photo", as: :file, required: false, label_html: { class:"simple-form-style" }%>
           <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
           <% end %>
         </div>
@@ -67,15 +67,15 @@
         </div>
         <div class="d-none" data-add-method-target="form">
           <%= simple_form_for([@trip, @route, @landmark]) do |f| %>
-          <%= f.input :title, label: "Name"%>
-          <%= f.input :description, label: "Description"%>
+          <%= f.input :title, label: "Name", required: false, label_html: { class:"simple-form-style" }%>
+          <%= f.input :description, label: "Description", required: false, label_html: { class:"simple-form-style" }%>
           <%# f.input :location, label: "Landmark address"%>
 
           <%=f.input :location,
           input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
-          <div data-address-autocomplete-target="search"></div>
+          <div data-address-autocomplete-target="search" class="simple-form-style"></div>
 
-          <%= f.input :photo, label: "Photo", as: :file%>
+          <%= f.input :photo, label: "Photo", as: :file, required: false, label_html: { class:"simple-form-style" }%>
           <%= f.submit 'Add Landmark', class: "btn btn-flat mb-4"%>
           <% end %>
         </div>

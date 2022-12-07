@@ -1,13 +1,4 @@
-.container-landmark {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5px;
-  justify-content: space-between;
-  background-color: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
+
 
 .route-landmark {
   overflow: hidden;
@@ -37,8 +28,13 @@
 
   }
 .card-landmark {
-  margin: 10px;
-  width: 630px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 610px;
   height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -68,6 +64,7 @@
 
 .landmark-1 {
   display: flex;
+
 }
 .landmark-2 {
   p {
@@ -76,10 +73,7 @@
 }
 
 
-.home-links{
-  text-align: end;
-  padding: 20px;
-}
+
 
 .location-end {
   text-align: end;

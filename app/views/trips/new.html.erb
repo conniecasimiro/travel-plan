@@ -6,13 +6,13 @@
     <h1>Step one</h1>
       <%= simple_form_for(@trip) do |f| %>
         <%# <%= f.input :start_date, as: :date, html5: true%>
-        <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"'%>
-        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible"%>
-        <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", as: :integer %>
-        <%= f.input :location, label: "Area", hint: "The main area of your trip"%>
-        <p>Trip tags</p>
+        <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"', required: false, label_html: { class:"simple-form-style" }%>
+        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible", required: false, label_html: { class:"simple-form-style" }%>
+        <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", required: false, as: :integer, label_html: { class:"simple-form-style" } %>
+        <%= f.input :location, label: "Area", hint: "The main area of your trip", required: false, label_html: { class:"simple-form-style" }%>
+        <p class="simple-form-style">Trip tags</p>
         <div class="check-boxes">
-          <%=f.collection_check_boxes :tag_ids, Tag.all, :id, :title %>
+          <%=f.collection_check_boxes :tag_ids, Tag.all, :id, :title, label_html: { class:"simple-form-style" } %>
         </div>
         <%= f.submit 'Continue', class: "btn btn-flat mb-4"%>
       <% end %>

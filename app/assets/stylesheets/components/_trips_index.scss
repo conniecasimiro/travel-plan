@@ -11,11 +11,9 @@
   }
 }
 #selected{
-  background-color: cornflowerblue;
+  background-color: #4a699e;
   color: white;
 }
-
-
 
 /* CSS */
 .button-17 {
@@ -68,7 +66,7 @@
 }
 
 .button-17:not(:disabled) {
-  box-shadow: rgba(60, 64, 67, .03) 0 1px 3px 0, rgba(60, 64, 67, .015) 0 4px 8px 3px;
+  box-shadow: rgba(60, 64, 67, .05) 0 1px 3px 0, rgba(60, 64, 67, .05) 0 4px 8px 3px;
 }
 
 .button-17:not(:disabled):hover {

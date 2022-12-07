@@ -19,32 +19,38 @@
             </div>
           </div>
         </div>
-      <div class="container">
-         <h1>My trips</h1>
-        <div class="container-square">
-          <% @trips.each do |trip| %>
-            <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
-              <% unless trip.landmarks.empty? %>
-               <%= render "shared/card", trip: trip %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <h1 class="mt-5">My favorites</h1>
-        <div class="container-square">
-        <% @trips.each do |trip| %>
-          <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
-              <% @bookmarks.each do |book| %>
-                <% if book.present? %>
-                  <%= render "shared/card", trip: book.trip %>
+      <div class="profile-outer">
+      <div class="headers-profile">
+          <h1>My trips</h1>
+          <h1>My bookmarks</h1>
+      </div>
+       <div class="container-bookmark">
+            <div class="container-mytrips">
+                <% @trips.each do |trip| %>
+                <% unless trip.landmarks.empty? %>
+                  <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+                  <%= render "shared/card_mytrips", trip: trip %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
+          </div>
+          <div class="container-mybookmarks">
+           <% if @bookmarks.empty? %>
+           <div class="empty-bookmarks">
+                <h5 style="margin: 20 auto;width:-moz-fit-content;width:fit-content;">You haven't bookmarked a trip yet</h5>
+                   <a style="height: 100px"><%= link_to "More inspiration...", trips_path, class: "btn btn-flat" %></a>
+                    </div>
+                    <% end %>
+              <% @bookmarks.each do |book| %>
+                <% if book.present? %>
+                  <%= link_to trip_path(book.trip), style: "text-decoration: none; color: black;" do %>
+                  <%= render "shared/card", trip: book.trip %>
+                  <% end %>
+                <% end %>
+              <% end %>
+          </div>
         </div>
-
     </div>
-  </div>
+   </div>
 <%= render "shared/footer" %>
   </div>

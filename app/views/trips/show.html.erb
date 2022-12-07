@@ -1,4 +1,6 @@
 <div class="body">
+  <%= render "shared/iconbar" %>
+
   <%= render "shared/navbar" %>
   <div
     data-controller="map"
@@ -127,7 +129,7 @@
         <%# landmark title and info %>
 
         <div class="landmarkwidth">
-          <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion ms-3" id="accordionPanelsStayOpenExample">
             <% i = 0 %>
             <% day = 0 %>
             <div data-map-target="length" style="display:none;">
@@ -137,18 +139,24 @@
               <% num = (i + 1).humanize.capitalize %>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-heading<%= num %>">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= num %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= num %>" data-action="click->map#zoom<%= i %>">
+                  <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= num %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= num %>" data-action="click->map#zoom<%= i %>">
                     <% if (@routes[i+1].travel_date - @routes[i].travel_date).to_i == 1  %>
-                      <h3>Day <%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i %> -  <em><%= @routes[i].destination %></em></h3>
+                      <div class=" flex-grow-1">
+                        <h3 style="font-size: 20px;">Day <%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i %></h3>
+                      </div>
+                      <h3 class="px-4" style="font-size: 20px;"><%= @routes[i].destination.split(",").first %></h3>
                     <% elsif (i + 1) < @routes.length %>
-                      <h3>Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%> -  <em><%= @routes[i].destination %></em></h3>
+                      <div class=" flex-grow-1">
+                        <h3 style="font-size: 20px;">Day <%= day + 1 %>-<%= day += (@routes[i+1].travel_date - @routes[i].travel_date).to_i%></h3>
+                      </div>
+                      <h3 class="px-4" style="font-size: 20px;"><%= @routes[i].destination.split(",").first %></h3>
                     <% end %>
                   </button>
                 </h2>
                 <div >
                 <% @routes[i].landmarks.each do |landmark| %>
                   <div id="panelsStayOpen-collapse<%= num %>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%= num %>">
-                    <div class="accordion-body">
+                    <div class="accordion-body p-0">
                       <div class="container-landmark">
                           <% location = landmark.location.split(",").first %>
                           <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
@@ -163,39 +171,38 @@
             <div class="accordion-item">
               <% num = (i + 1).humanize.capitalize %>
               <h2 class="accordion-header" id="panelsStayOpen-heading<%= num %>">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= num %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= num %>" data-action="click->map#zoom<%= i %>">
-                  <% if (@trip.duration - day) == 1 && @routes.present? %>
-                    <h3>Day <%= @trip.duration %> -  <em><%= @routes[i].destination %></em></h3>
+                <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= num %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= num %>" data-action="click->map#zoom<%= i %>">
+                  <% if (@trip.duration - day) == 1 && @routes.present?  %>
+                    <div class=" flex-grow-1">
+                      <h3 style="font-size: 20px;">Day <%= @trip.duration %></h3>
+                    </div>
+                    <h3 class="px-4" style="font-size: 20px"><%= @routes[i].destination.split(",").first %></h3>
                   <% elsif @routes.present?%>
-                    <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
+                    <div class=" flex-grow-1">
+                      <h3 style="font-size: 20px;">Day <%= day + 1 %>-<%= @trip.duration %></h3>
+                    </div>
+                    <h3 class="px-4" style="font-size: 20px"><%= @routes[-1].destination.split(",").first %></h3>
                   <% end %>
                 </button>
               </h2>
               <div id="panelsStayOpen-collapse<%= num %>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%= num %>">
-                <div class="accordion-body">
-                  <div class="container-landmark">
-                    <% if @routes.present? %>
-                      <% @routes[-1].landmarks.each do |landmark| %>
-                        <% location = landmark.location.split(",").first %>
-                        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
-                      <% end %>
+                <div class="accordion-body p-0">
+                  <% if @routes.present? %>
+                    <% @routes[-1].landmarks.each do |landmark| %>
+                      <% location = landmark.location.split(",").first %>
+                      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
                     <% end %>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
       <%# comment section %>
-
-
-
     </div>
-
   </div>
 </div>
 </div>
-      <%= render "shared/footer" %>
+</div>
+<%= render "shared/footer" %>
