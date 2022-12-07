@@ -14,7 +14,8 @@ p {
 }
 
 .red {
-  color:red;
+  color:red !important;
+  opacity: 1 !important;
   animation: heartBeat;
   animation-duration: 2s;
 }
@@ -27,6 +28,8 @@ p {
 
 .like-button {
   text-decoration: none;
+  color: dimgray;
+  opacity: .7;
   border: none;
   background-color: transparent;
   font-size: 80px;
@@ -41,20 +44,18 @@ p {
 
 
 .likes-counter {
-  margin-top: -20px;
+  margin-top: -19px;
   text-align: center;
   font-size: 30px;
   color: whitesmoke;
-  backdrop-filter: invert(90%);
-  margin-top: 1px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 
 }
 
-.like-button {
-  backdrop-filter: invert(90%);
-  margin-bottom: 0px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-}
+// .like-button {
+//   backdrop-filter: invert(90%);
+//   margin-bottom: 0px;
+//   border-top-right-radius: 10px;
+//   border-top-left-radius: 10px;
+// }

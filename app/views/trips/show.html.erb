@@ -17,33 +17,52 @@
 
     <%# Trip likes counter and button connected to JS controller likes %>
     <div class="likes-section">
+      <% bookmark = Bookmark.find_by(user: current_user, trip: @trip) %>
       <div class="likes" data-controller="likes" data-likes-target="likes">
-        <button class="like-button" data-likes-target="like" data-action ="click->likes#update"><i class="fa-solid fa-heart"></i></button>
-        <div class="likes-counter" data-likes-target="counter"><%= @trip.likes %></div>
-        <div class="d-none">
-          <%= simple_form_for @trip, data: {likes_target: "form"} do |f| %>
-            <%= f.input :likes, input_html: {value: @trip.likes += 1}  %>
-            <%= f.submit %>
+        <button class="like-button <%= bookmark ? "red" : "" %>" data-likes-target="like" data-action="click->likes#update">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        <div class="likes-counter" data-likes-target="counter">
+          <%= @trip.likes %>
+        </div>
+        <div class="d-none" data-likes-target="formWrapper">
+          <% if bookmark %>
+            <div data-likes-target="delete">
+              <%= bookmark_path(bookmark) %>
+            </div>
+          <% else %>
+            <%= simple_form_for ([@trip, Bookmark.new]), data: {likes_target: "form"} do |f| %>
+              <%= f.submit %>
+            <% end %>
           <% end %>
         </div>
       </div>
     </div>
+
     <div class="d-flex">
       <div class="carouselwidth">
         <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="true">
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= cl_image_tag @landmarks[0].photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
-            </div>
-            <% @landmarks[1..-1].each do |landmark| %>
-              <div class="carousel-item">
-                <%= cl_image_tag landmark.photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+
+            <% if @landmarks.present? %>
+              <div class="carousel-item active">
+
+                <% if @landmarks[0].photo.key.present? %>
+                  <%= cl_image_tag @landmarks[0].photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+                <% end %>
               </div>
+              <% @landmarks[1..-1].each do |landmark| %>
+                <div class="carousel-item">
+                  <% if landmark.photo.key.present? %>
+                    <%= cl_image_tag landmark.photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
-              <div class="carouselcaption d-flex align-items-end">
-                <h1 class="me-2"><%= @trip.title %></h1>
-                <h3><em>by <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
-              </div>
+            <div class="carouselcaption d-flex align-items-end">
+              <h1 class="me-2"><%= @trip.title %></h1>
+              <h3><em>By <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
+            </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -131,11 +150,8 @@
                   <div id="panelsStayOpen-collapse<%= num %>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%= num %>">
                     <div class="accordion-body">
                       <div class="container-landmark">
-
                           <% location = landmark.location.split(",").first %>
                           <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
-
-
                       </div>
                     </div>
                   </div>
@@ -148,9 +164,9 @@
               <% num = (i + 1).humanize.capitalize %>
               <h2 class="accordion-header" id="panelsStayOpen-heading<%= num %>">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= num %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= num %>" data-action="click->map#zoom<%= i %>">
-                  <% if (@trip.duration - day) == 1  %>
+                  <% if (@trip.duration - day) == 1 && @routes.present? %>
                     <h3>Day <%= @trip.duration %> -  <em><%= @routes[i].destination %></em></h3>
-                  <% else%>
+                  <% elsif @routes.present?%>
                     <h3>Day <%= day + 1 %>-<%= @trip.duration %> - <em><%= @routes[-1].destination %></em></h3>
                   <% end %>
                 </button>
@@ -158,9 +174,11 @@
               <div id="panelsStayOpen-collapse<%= num %>" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading<%= num %>">
                 <div class="accordion-body">
                   <div class="container-landmark">
-                    <% @routes[-1].landmarks.each do |landmark| %>
-                      <% location = landmark.location.split(",").first %>
-                      <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
+                    <% if @routes.present? %>
+                      <% @routes[-1].landmarks.each do |landmark| %>
+                        <% location = landmark.location.split(",").first %>
+                        <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
+                      <% end %>
                     <% end %>
                   </div>
                 </div>

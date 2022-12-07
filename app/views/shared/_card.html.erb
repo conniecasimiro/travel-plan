@@ -1,8 +1,10 @@
 <div class="card-square">
   <div class="square-1">
     <div class="card-square-img">
-      <% if trip.landmarks[0].photo.attached? %>
-        <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+      <% if trip.landmarks.present? %>
+        <% if trip.landmarks[0].photo.attached? %>
+          <%= cl_image_tag trip.landmarks[0].photo.key, height: 300, width: 300, class:"d-block w-100", style:"object-fit: cover" %>
+        <% end %>
       <% end %>
     </div>
     <div class="avatar-end">
