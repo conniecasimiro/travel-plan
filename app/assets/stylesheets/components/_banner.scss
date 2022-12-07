@@ -90,6 +90,8 @@
 .maplandmarks {
   width: 50%;
   position: sticky;
+  top: 0;
+  height: 90vh;
 }
 
 .landmarkwidth {
@@ -102,14 +104,12 @@
 
 .mymap {
   width: 100%;
-  height: 600px;
+  height: 90vh;
 }
 #mymap {
   width: 100%;
-  height: 600px;
-}
+  height: 90vh;}
 
 #divv {
   width: 100%;
-  height: 600px;
-}
+  height: 90vh;}
