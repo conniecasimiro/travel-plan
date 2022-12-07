@@ -12,11 +12,11 @@
         </div>
     <div class="d-none" data-add-method-target="form">
         <%= simple_form_for([@trip, @route]) do |f| %>
-          <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
+          <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival", required: false, label_html: { class:"simple-form-style" }%>
           <%# f.input :destination, label: "First destination", hint: "Where did you arrive?"%>
           <%=f.input :destination,
           input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
-          <div data-address-autocomplete-target="search"></div>
+          <div data-address-autocomplete-target="search" class="simple-form-style"></div>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
         <% if current_user.trips.last.routes.count > 1 %>
@@ -24,7 +24,7 @@
         <% end %>
     </div>
     <% else %>
-    <h5 data-add-method-target="title">Did you travel anywhere from <strong><%=@trip.routes.last.destination%>?</strong></h5>
+    <h5 data-add-method-target="title">Did you travel anywhere from <strong><%=@trip.routes.last.destination.truncate(30)%>?</strong></h5>
     <div data-add-method-target="routes">
       <% @routes.each do |route|  %>
         <% if route.method != "first_location" %>
@@ -44,14 +44,14 @@
         </div>
       <div class="d-none" data-add-method-target="form2">
         <%= simple_form_for([@trip, @route]) do |f| %>
-          <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival"%>
+          <%= f.input :travel_date, as: :date, html5: true, label: "Date of arrival", required: false, label_html: { class:"simple-form-style" }%>
           <%# f.input :destination, label: "Travel destination", hint: "Where did you travel to?"%>
           <%=f.input :destination,
           input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
           <div data-address-autocomplete-target="search"></div>
 
-          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Ferry", "yacht", "Motorcycle", "Car", "Bus", ]%>
-          <%= f.input :duration, label: "How long did your trip take", collection: 1..24%>
+          <%= f.input :method, label: "travel method", collection: [ "Plane", "Train", "Ferry", "yacht", "Motorcycle", "Car", "Bus", ], required: false, label_html: { class:"simple-form-style" }%>
+          <%= f.input :duration, label: "How long did your trip take", collection: 1..24, required: false, label_html: { class:"simple-form-style" }%>
           <%= f.submit 'Add route', class: "btn btn-flat mb-4"%>
         <% end %>
       </div>
