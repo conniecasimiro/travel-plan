@@ -1,20 +1,30 @@
+.mytrips-outer {
+  background-color: #bedef3;
+  h1 {
+  padding-left: 20px;
+  padding-top: 20px;
+  }
+    }
+
 .container-mytrips {
-  width: 490px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin: 20px;
+  padding: 10px 10px 10px;
+  border-radius: 2px;
+  width: 400px;
   padding: 10px 0px 10px;
   justify-items: center;
-  }
+}
+
 
 .card-mytrips {
-  margin-top: 20px;
   margin: 15px;
-  width: 200px;
-  height: 200px;
+  width: 370px;
+  height: 120px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
   justify-self: center;
+  display: flex;
 }
 
 
@@ -30,10 +40,10 @@
 }
 
 .card-mytrips-infos {
-  padding: 0px 15px 15px;
-  display: flex;
-  justify-content: space-between;
+  padding: 5px 15px 15px;
   text-align: left;
+  position: relative;
+  width: 100%;
   .likes-counter-index {
     margin-bottom: 0;
   }
@@ -42,13 +52,16 @@
   }
   p{
     margin: 0 auto;
-
   }
 }
-.mytrips-1 {
-  display: flex;
-  justify-content: space-between;
-}
+
+.mytrips-3 {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  text-align: center;
+  padding-right: 10px;
+  }
 
 
 

@@ -1,7 +1,28 @@
+.mybookmarks-outer {
+  background-color: #e9f4fb;
+h1 {
+padding-left: 20px;
+padding-top: 20px;
+
+}
+  }
+
+.my-profile {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 10px 0px 10px;
+  }
+
+.headers-profile {
+  padding: 10px 0px 10px;
+  justify-items: center;
+}
+
+
 .card-bookmark {
-  margin-top: 20px;
+  margin: 10px;
   width: 400px;
-  height: 250px;
+  height: 260px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
@@ -9,45 +30,65 @@
   justify-items: center;
 }
 
-.container-bookmark {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  padding: 10px 0px 10px;
-  }
-  .headers-profile {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    padding: 10px 0px 10px;
-    justify-items: center;
-    }
 
 .card-bookmark-img {
-left: 0%;
-top: 0%;
-object-fit: cover;
-border-top-left-radius: 5px;
-border-bottom-left-radius: 5px;
+  height: 150px;
+  width: 400px;
+  left: 0%;
+  top: 0%;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+  }
 
 }
 
 .card-bookmark-infos {
   padding: 0px 15px 15px;
-  display: flex;
-  justify-content: space-between;
   text-align: left;
-  h3 {
+  position: relative;
+  h3, p {
     margin: 0 auto;
   }
-  p{
-    margin: 0 auto;
+  .likes {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 5px;
+    margin: 0px;
+  }
+  .likes-counter-index {
+    margin: 0px;
+  }
+  .days {
+    position: absolute;
+    bottom: 0;
 
   }
 }
+
 .bookmark-1 {
+  position: relative;
   display: flex;
   justify-content: space-between;
+
 }
 
+.bookmark-2 {
+  h5 {
+padding-top: 5px;
+  }
+  ul {
+    padding: 0;
+    li {
+      display:inline;
+    }
+    }
+}
 
 .location-end {
   text-align: end;
@@ -57,24 +98,13 @@ border-bottom-left-radius: 5px;
     text-decoration: none;
     color: black;
   }
-
 }
 
-.container-mytrips {
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 20px;
-  padding: 10px 10px 10px;
-  border-radius: 2px;
-
-}
 
 .container-mybookmarks {
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px;
   padding: 10px 10px 10px;
   border-radius: 2px;
   justify-items: center;

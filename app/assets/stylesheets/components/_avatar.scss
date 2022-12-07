@@ -43,8 +43,22 @@
   }
 
   .avatar-profile {
-    width: 350px;
-    height: 350px;
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
     border-radius: 50%;
     object-fit: cover;
   }
+
+  .avatar-book {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    object-fit: cover;
+    margin-right: 10px;
+    margin-top: 10px;
+
+    }

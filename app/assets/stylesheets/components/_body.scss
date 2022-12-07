@@ -1,10 +1,12 @@
 .body {
   min-height:100vh;
   position: relative;
-  background-color: $bgblue;
-}
-
-.container {
-// padding: 10px 0px 50px;
+    background: linear-gradient(
+      to bottom,
+      #f6b4b4 0%,
+      #f6b4b4 20%,
+      #ffb453 95%,
+      #ffb453 100%
+    );
 
 }
