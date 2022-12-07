@@ -35,12 +35,18 @@
             <% end %>
           </div>
           <div class="container-mybookmarks">
+           <% if @bookmarks.empty? %>
+           <div class="empty-bookmarks">
+                <h5 style="margin: 20 auto;width:-moz-fit-content;width:fit-content;">You haven't bookmarked a trip yet</h5>
+                   <a style="height: 100px"><%= link_to "More inspiration...", trips_path, class: "btn btn-flat" %></a>
+                    </div>
+                    <% end %>
               <% @bookmarks.each do |book| %>
                 <% if book.present? %>
+              <%= link_to trip_path(book.trip), style: "text-decoration: none; color: black;" do %>
                 <%= render "shared/card", trip: book.trip %>
-                <% else %>
-                <p>You haven't bookmarked any trips yet.</p>
-                 <a><%= link_to "Explore now...", trips_path, class: "btn btn-flat" %></a>
+
+                  <% end %>
                 <% end %>
               <% end %>
           </div>
