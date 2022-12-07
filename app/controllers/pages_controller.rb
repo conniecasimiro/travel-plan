@@ -12,5 +12,6 @@ class PagesController < ApplicationController
     else
       @trips = Trip.all
     end
+    @featured = Trip.all.sample(4)
   end
 end
