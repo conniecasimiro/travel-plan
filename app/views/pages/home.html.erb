@@ -34,7 +34,7 @@
       <div class="container-square">
         <% @trips.each do |trip| %>
           <% unless trip.landmarks.empty? %>
-            <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do %>
+            <%= link_to trip_path(trip), style: "text-decoration: none; color: black;" do%>
               <%= render "shared/card", trip: trip %>
             <% end %>
           <% end %>
