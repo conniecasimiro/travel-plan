@@ -18,7 +18,12 @@
   justify-content: space-between;
 }
 #search-button{
-  background-color: #4a699e;
+  background-color: #597182ed;
+  border: rgb(194, 194, 194) solid;
+  font-size: 20px;
+  padding: 0px 10px 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 #selected{
   background-color: #fbc3c3;
@@ -65,6 +70,7 @@
 .button-17:hover {
   background: #F6F9FE;
   color: #174ea6;
+  height: auto;
 }
 
 .button-17:active {

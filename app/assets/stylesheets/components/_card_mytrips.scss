@@ -1,5 +1,5 @@
 .mytrips-outer {
-  background-color: #bedef3;
+  background-color: $navblue;
   h1 {
   padding-left: 20px;
   padding-top: 20px;
@@ -64,6 +64,10 @@
   }
 
 
+.home-links{
+  text-align: end;
+  padding: 20px;
+}
 
 .location-end {
   text-align: end;
