@@ -12,6 +12,10 @@ class PagesController < ApplicationController
     else
       @trips = Trip.all
     end
-    @featured = Trip.all.sample(4)
+    distinct_landmarks = Landmark.distinct(:route).distinct(:trip)
+    distinct_landmarks_route_ids = distinct_landmarks.pluck(:route_id)
+    routes = Route.where(id: distinct_landmarks_route_ids)
+    trip_ids = routes.pluck(:trip_id)
+    @featured = Trip.where(id: trip_ids)
   end
 end
