@@ -17,7 +17,7 @@ export default class extends Controller {
     myarray: Array
   }
 
-  static targets = ["card", "map", "maplandmarks", "length", "btn", "place"]
+  static targets = ["card", "map", "maplandmarks", "length", "btn", "btn2", "place"]
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
@@ -30,9 +30,9 @@ export default class extends Controller {
 
     // console.log(this.landmarkarrayValue)
 
-    // console.log("hello1")
+    console.log("hello5")
 
-    // this.btnTarget.focus()
+    this.btnTarget.focus()
 
     console.log("my button", this.btnTarget.focus)
 
@@ -144,6 +144,7 @@ export default class extends Controller {
     });
   }
 
+
   landmarks () {
     this.placeTarget.hidden = false
     this.maplandmarks = new mapboxgl.Map({
@@ -157,6 +158,7 @@ export default class extends Controller {
 
   }
 
+
   comments () {
     this.placeTarget.hidden = true
     this.mapTarget.hidden = true
@@ -164,13 +166,18 @@ export default class extends Controller {
 
 
     zoom0 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(0, (this.landmarkarrayValue[0])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
       this.maplandmarks.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 1500 })
     }
 
+
     zoom1 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0], (this.landmarkarrayValue[0] + this.landmarkarrayValue[1])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -178,6 +185,8 @@ export default class extends Controller {
     }
 
     zoom2 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1], (this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -185,6 +194,8 @@ export default class extends Controller {
     }
 
     zoom3 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -193,6 +204,8 @@ export default class extends Controller {
 
 
     zoom4 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -200,6 +213,8 @@ export default class extends Controller {
     }
 
     zoom5 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -207,6 +222,8 @@ export default class extends Controller {
     }
 
     zoom6 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -214,6 +231,8 @@ export default class extends Controller {
     }
 
     zoom7 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -222,6 +241,8 @@ export default class extends Controller {
 
 
     zoom8 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -229,6 +250,8 @@ export default class extends Controller {
     }
 
     zoom9 () {
+      this.#landmarks()
+      this.btn2Target.focus()
       console.log("a")
       const bounds = new mapboxgl.LngLatBounds()
       this.lmarkersValue.slice(this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2] + this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8], ( this.landmarkarrayValue[0] + this.landmarkarrayValue[1] + this.landmarkarrayValue[2]+ this.landmarkarrayValue[3] + this.landmarkarrayValue[4] + this.landmarkarrayValue[5] + this.landmarkarrayValue[6] + this.landmarkarrayValue[7] + this.landmarkarrayValue[8] + this.landmarkarrayValue[9])).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
@@ -346,6 +369,19 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
     })
+  }
+
+  #landmarks () {
+    this.placeTarget.hidden = false
+    this.maplandmarks = new mapboxgl.Map({
+      container: this.placeTarget,
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v10',
+
+    });
+    this.#addLmarkersToMap()
+    this.#fitMapToLmarkers()
+
   }
 
 
