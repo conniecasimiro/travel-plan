@@ -3,3 +3,36 @@
     font-size: 20px;
   }
 }
+
+
+.accordion-button:focus {
+  box-shadow: 0 0 2px rgba(0,0,0,0.8);
+  color: black;
+  background-color: $navblue;
+
+}
+
+.accordion-button {
+  button{
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+  color: black;
+  background-color: grey;
+}
+a {
+  color: black;
+}
+}
+
+.accordion-button {
+  button{
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+  color: black;
+  background-color: grey;
+
+}
+}
+
+.accordion-button:not(.collapsed) {
+  color: black;
+  background-color: $navblue;
+}
