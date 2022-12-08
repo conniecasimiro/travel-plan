@@ -91,8 +91,8 @@
           <nav>
             <div class="d-flex" id="" role="tablist">
               <button class="mynav-link2 connie" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" data-map-target="btn" data-action="click->map#routes">Routes</button>
-              <button class="mynav-link2 connie" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" data-action="click->map#landmarks">Landmarks</button>
-              <button class="mynav-link2 connie" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" data-action="click->map#comments">Comments</button>
+              <button class="mynav-link2 connie" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" data-map-target="btn2" data-action="click->map#landmarks" >Landmarks</button>
+              <button class="mynav-link2 connie" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" data-map-target="btn3" data-action="click->map#comments">Comments</button>
             </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -133,8 +133,41 @@
             <div data-map-target="length" style="display:none;">
               <%= (@routes.length) %>
             </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" data-action="click->map#zoom0">
+                    <% if (@routes[1].travel_date - @routes[0].travel_date).to_i == 1  %>
+                      <div class=" flex-grow-1">
+                        <h3 style="font-size: 20px;">Day <%= day += (@routes[1].travel_date - @routes[0].travel_date).to_i %></h3>
+                      </div>
+                      <h3 class="px-4" style="font-size: 20px;"><%= @routes[0].destination.split(",").first %></h3>
+                    <% elsif (1) < @routes.length %>
+                      <div class=" flex-grow-1">
+                        <h3 style="font-size: 20px;">Day <%= day + 1 %>-<%= day += (@routes[1].travel_date - @routes[0].travel_date).to_i%></h3>
+                      </div>
+                      <h3 class="px-4" style="font-size: 20px;"><%= @routes[0].destination.split(",").first %></h3>
+                    <% end %>
+                  </button>
+                </h2>
+                <div >
+                <% @routes[0].landmarks.each do |landmark| %>
+                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body p-0">
+                      <div class="container-landmark">
+                          <% location = landmark.location.split(",").first %>
+                          <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <% i += 1 %>
+              </div>
+
+
             <% while i < (@routes.length - 1) do %>
               <% num = (i + 1).humanize.capitalize %>
+
               <div class="accordion-item">
                 <h2 class="accordion-header" id="panelsStayOpen-heading<%= num %>">
                   <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= num %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= num %>" data-action="click->map#zoom<%= i %>">

@@ -17,11 +17,17 @@ export default class extends Controller {
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
 
-    const label = document.getElementById('new_route').children[2].querySelector(".form-label")
-    label.style.fontSize = '22px'
-    label.style.marginBottom = '-14px'
+    const landmarkLocationElement = document.getElementsByClassName('landmark_location')[0]
+    if (landmarkLocationElement) {
+      const label2 = landmarkLocationElement.children[0]
+      label2.style.marginBottom = '-14px'
+      label2.style.fontSize = '22px'
 
-
+    } else {
+      const label = document.getElementById('new_route').children[2].querySelector(".form-label")
+      label.style.fontSize = '22px'
+      label.style.marginBottom = '-14px'
+    }
   }
   disconnect() {
     this.geocoder.onRemove()
