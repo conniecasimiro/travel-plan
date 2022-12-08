@@ -34,7 +34,7 @@ export default class extends Controller {
 
     this.btnTarget.classList.add("conniee")
 
-    console.log("my button", this.btnTarget.focus)
+    console.log("my button", this.btnTarget.classList.add("conniee"))
 
     this.map = new mapboxgl.Map({
       container: this.placeTarget,
