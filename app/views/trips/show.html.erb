@@ -51,20 +51,20 @@
               <div class="carousel-item active">
 
                 <% if @landmarks[0].photo.key.present? %>
-                  <%= cl_image_tag @landmarks[0].photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+                  <%= cl_image_tag @landmarks[0].photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
                 <% end %>
               </div>
               <% @landmarks[1..-1].each do |landmark| %>
                 <div class="carousel-item">
                   <% if landmark.photo.key.present? %>
-                    <%= cl_image_tag landmark.photo.key, height: 550, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
+                    <%= cl_image_tag landmark.photo.key, height: 400, width: 400, class:"d-block w-100", style:"object-fit: cover" %>
                   <% end %>
                 </div>
               <% end %>
             <% end %>
             <div class="carouselcaption d-flex align-items-end">
-              <h1 class="me-2"><%= @trip.title %></h1>
-              <h3><em>By <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
+              <h1 class="title me-4"><%= @trip.title %></h1>
+              <h3 class= "username"><em>by <%= @trip.user.first_name %> <%= @trip.user.last_name %></em></h3>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -81,7 +81,7 @@
     </div>
 
     <div class="container-landmark-outer">
-      <div class="infoscon">
+      <div class="description">
         <p><%= @trip.description %></p>
       </div>
 
