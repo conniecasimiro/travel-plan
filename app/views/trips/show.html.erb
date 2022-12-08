@@ -1,6 +1,5 @@
 <div class="body">
   <%= render "shared/iconbar" %>
-
   <%= render "shared/navbar" %>
   <div
     data-controller="map"
@@ -95,40 +94,38 @@
               <button class="mynav-link2 connie" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" data-action="click->map#landmarks">Landmarks</button>
               <button class="mynav-link2 connie" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" data-action="click->map#comments">Comments</button>
             </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div id="divv" data-map-target="place">
-              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                <div class="mymap" data-map-target="map"></div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div id="divv" data-map-target="place">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                  <div class="mymap" data-map-target="map"></div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" >
+                  <div class="mymap" data-map-target="maplandmarks"></div>
+                </div>
               </div>
-              <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" >
-                <div class="mymap" data-map-target="maplandmarks"></div>
+              <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0" >
+                <div id="mymap">
+              <div class="container-comments">
+                <div class="header">
+                  <div>
+                    <h1>Comments</h1>
+                    <%= link_to "New comment",
+                        new_trip_comment_path(@trip, @comment),
+                        class: "btn",
+                        data: { turbo_frame: dom_id(Comment.new) } %>
+                  </div>
+                  <%= turbo_frame_tag dom_id(@comment) %>
+                  <%= turbo_frame_tag "comments" do %>
+                    <%= render @comments, trip: @trip %>
+                  <% end %>
+                </div>
+              </div>
               </div>
             </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0" >
-              <div id="mymap">
-             <div class="container-comments">
-        <div class="header">
-          <div>
-            <h1>Comments</h1>
-              <%= link_to "New comment",
-                  new_trip_comment_path(@trip, @comment),
-                  class: "btn",
-                  data: { turbo_frame: dom_id(Comment.new) } %>
-          </div>
-            <%= turbo_frame_tag dom_id(@comment) %>
-            <%= turbo_frame_tag "comments" do %>
-              <%= render @comments, trip: @trip %>
-            <% end %>
-        </div>
-      </div>
-              </div>
-            </div>
           </div>
         </div>
-
         <%# landmark title and info %>
-
         <div class="landmarkwidth">
           <div class="accordion ms-3" id="accordionPanelsStayOpenExample">
             <% i = 0 %>
@@ -194,6 +191,7 @@
                       <%= render "shared/card_landmark", name: landmark.title, description: landmark.description, photo: landmark.photo.key, location: location, id: landmark.id %>
                     <% end %>
                   <% end %>
+                  </div>
                 </div>
               </div>
             </div>
@@ -201,8 +199,7 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-</div>
-<%= render "shared/footer" %>
+    </div>
+    </div>
+    </div>
+    <%= render "shared/footer" %>

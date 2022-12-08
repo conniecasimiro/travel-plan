@@ -23,7 +23,7 @@
 
        <div class="container my-profile">
        <div class="mytrips-outer">
-               <h1>My created trips</h1>
+               <h1>My trips</h1>
             <div class="container-mytrips">
                 <% @trips.each do |trip| %>
                 <% unless trip.landmarks.empty? %>
@@ -35,7 +35,7 @@
           </div>
           </div>
             <div class="mybookmarks-outer">
-            <h1>Bookmarked trips</h1>
+            <h1>Favourites</h1>
           <div class="container-mybookmarks">
            <% if @bookmarks.empty? %>
            <div class="empty-bookmarks">
