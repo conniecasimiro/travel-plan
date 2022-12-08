@@ -9,17 +9,14 @@
 }
 
 .mynav-link2 {
-  background-color: #e7f1ff;
-  border-top: rgb(145, 156, 167) solid;
-  border-right: rgb(145, 156, 167) solid;
-  border-bottom: rgb(125, 116, 116) solid;
-  border-left: rgb(125, 116, 116) solid;
+  background-color: $navblue;
+  box-shadow: 0 0 2px rgba(0,0,0,0.4);
+
+border: none;
   width: 50%;
   padding: 10px;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  font-weight: 400;
-  font-weight: bolder;
   color: black;
 }
 
