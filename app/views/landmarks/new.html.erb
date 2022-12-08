@@ -33,7 +33,7 @@
           <%# f.input :location, label: "Landmark address"%>
 
           <%=f.input :location,
-          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
+          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}, required: false%>
           <div data-address-autocomplete-target="search" class="simple-form-style"></div>
 
           <%= f.input :photo, label: "Photo", as: :file, required: false, label_html: { class:"simple-form-style" }%>
@@ -72,7 +72,7 @@
           <%# f.input :location, label: "Landmark address"%>
 
           <%=f.input :location,
-          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}%>
+          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"}, required: false%>
           <div data-address-autocomplete-target="search" class="simple-form-style"></div>
 
           <%= f.input :photo, label: "Photo", as: :file, required: false, label_html: { class:"simple-form-style" }%>
