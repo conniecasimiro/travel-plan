@@ -7,7 +7,7 @@ display: flex;
 gap: 10px;
 align-items: center;
 width: 400px;
-height: 55px;
+min-height: 55px;
 border-radius: 50px 0px 50px 0px;
   p {
     margin-bottom: 0px;
@@ -15,7 +15,7 @@ border-radius: 50px 0px 50px 0px;
 }
 .create-icon {
 width: 120px;
-height: 55px;
+min-height: 55px;
 border-radius: 50px 0px 50px 0px;
 background: #E9F4FB;;
 border-width: thin;
