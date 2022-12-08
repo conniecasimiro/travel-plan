@@ -7,9 +7,9 @@
       <%= simple_form_for(@trip) do |f| %>
         <%# <%= f.input :start_date, as: :date, html5: true%>
         <%= f.input :title, label: "Title", hint: 'Example: "My Euro Travels"', required: false, label_html: { class:"simple-form-style" }%>
-        <%= f.input :description, label: "Description", hint: "Please be as discriptive as possible", required: false, label_html: { class:"simple-form-style" }%>
+        <%= f.input :description, label: "Description", hint: "Please be as descriptive as possible", required: false, label_html: { class:"simple-form-style" }%>
         <%= f.input :duration, label: "Duration", hint: "How many days was your trip?", required: false, as: :integer, label_html: { class:"simple-form-style" } %>
-        <%= f.input :location, label: "Area", hint: "The main area of your trip", required: false, label_html: { class:"simple-form-style" }%>
+        <%= f.input :location, label: "Area", hint: 'Examples: "South America", "Europe", "UK', required: false, label_html: { class:"simple-form-style" }%>
         <p class="simple-form-style">Trip tags</p>
         <div class="check-boxes">
           <%=f.collection_check_boxes :tag_ids, Tag.all, :id, :title, label_html: { class:"simple-form-style" } %>
