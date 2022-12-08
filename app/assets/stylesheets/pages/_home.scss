@@ -1,12 +1,25 @@
-// Specific CSS for your home-page
-#homepagecelebs {
-}
+
 #heading-black {
   color: black;
   font-size: xx-large;
 }
+
 .search-style {
   width: 800px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
-}
+  font-family: 'Arimo';
+  font-size: 20px;
+  }
+
+  .search-style:hover {
+    box-shadow: 0px 0px 1px black;
+    border: grey;
+
+    }
+
+.search-style:focus {
+  box-shadow: 0px 0px 1px black;
+  border: grey;
+  background-color: white;
+  }
