@@ -1,5 +1,5 @@
 .fitler-buttons {
-  gap: 10px;
+  gap: 14px;
   align-items: center;
   justify-content: space-between;
   a {
@@ -46,7 +46,7 @@
   display: inline-flex;
   fill: currentcolor;
   font-family: "Google Sans",Roboto,Arial,sans-serif;
-  font-size: 14px;
+  font-size: 22px;
   font-weight: 500;
   height: 48px;
   justify-content: center;
@@ -70,7 +70,7 @@
 .button-17:hover {
   background: #F6F9FE;
   color: #174ea6;
-  height: auto;
+  // height: auto;
 }
 
 .button-17:active {
